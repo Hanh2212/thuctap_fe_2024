@@ -38,9 +38,6 @@
 ##### 7.4 Cấu trúc cơ bản của phần tử table gồm những phần tử con nào, cho ví dụ và nêu ý nghĩa các phần tử con đó ? Cho ví dụ các trường hợp: rowspan, colspan ? Với trường hợp table có nhiều dữ liệu có thể chia table thành 3 phần nhỏ ? 3 phần đó là gì ? <t...>
 ##### 7.5 Có những loại form controls nào được dùng để thu thập thông tin từ khách truy cập trang web và cho vd ? VD: text input,...; form hoạt động và cấu trúc bao gồm những thành phần thuộc tính gì, cho vd
 ##### 7.6 Sử dụng thẻ iframe khi nào và như thế nào, cho vd.
-# This is a Heading h1
-## This is a Heading h2
-###### This is a Heading h6
 #### 8. Liệt kê 1 số ký tự đặc biệt trong html và cho vd ứng dụng trong thực tế
 #### 9. Cho vd về cách chia bố cục (layout) cho ứng dụng web bằng các thẻ HTML
 #### 10. Cho vd về Responsive web tương thích với các màn hình
