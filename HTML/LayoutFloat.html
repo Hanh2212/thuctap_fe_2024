@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Float Layout</title>
+    <style>
+        .container {
+            width: 100%;
+        }
+        .header, .footer {
+            background-color: #ccc;
+            text-align: center;
+            padding: 20px;
+        }
+        .sidebar {
+            float: left;
+            width: 25%;
+            background-color: #f4f4f4;
+            padding: 15px;
+        }
+        .content {
+            float: left;
+            width: 75%;
+            background-color: #e4e4e4;
+            padding: 15px;
+        }
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+</head>
+<body>
+    <div class="container clearfix">
+        <div class="header">Header</div>
+        <div class="sidebar">Sidebar</div>
+        <div class="content">Content</div>
+        <div class="footer">Footer</div>
+    </div>
+</body>
+</html>
