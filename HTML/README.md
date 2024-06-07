@@ -43,6 +43,10 @@
 #### 10. Cho vd về Responsive web tương thích với các màn hình
 #### 11. Trình bày ý nghĩa và ứng dụng của các quy tắc semantics trong html
 #### 12. Dựng template luyện tập
-* https://www.figma.com/design/yNXCeGf7pMEo0UF5psxZnQ/School-Solved---simple%C2%A0html%C2%A0template-code-for-school-(Community)?node-id=2415-26437&t=slsqbOjq2UkxI2dW-0
-* https://www.figma.com/design/Edy5OCpaOTKuy5OeqQjzqn/School-Genuine---responsive-website%C2%A0template-download-html-with%C2%A0css-for-school-(Community)?node-id=2415-26437&t=MqsGauTh1Nt6yMZo-0
-* https://www.figma.com/design/CVccjq5f0KwJLqHQxY8CCi/Medical-Universal---responsive-website%C2%A0template-download-html-with%C2%A0css-for-medical-(Community)?node-id=0-1&t=ItWNCHOHYxsbzqJe-0
+* Template 1: https://www.figma.com/design/yNXCeGf7pMEo0UF5psxZnQ/School-Solved---simple%C2%A0html%C2%A0template-code-for-school-(Community)?node-id=2415-26437&t=slsqbOjq2UkxI2dW-0
+* Template 2: https://www.figma.com/design/Edy5OCpaOTKuy5OeqQjzqn/School-Genuine---responsive-website%C2%A0template-download-html-with%C2%A0css-for-school-(Community)?node-id=2415-26437&t=MqsGauTh1Nt6yMZo-0
+* Template 3: https://www.figma.com/design/CVccjq5f0KwJLqHQxY8CCi/Medical-Universal---responsive-website%C2%A0template-download-html-with%C2%A0css-for-medical-(Community)?node-id=0-1&t=ItWNCHOHYxsbzqJe-0
+* Template 4: https://www.figma.com/design/JlHq3iZrubZF10Yzio2x2J/Course-Nation---html-and%C2%A0css-template%C2%A0with-source-code%C2%A0free%C2%A0download-for-course-(Community)?node-id=0-3&t=PXl8NZIVgnk05CMG-0
+* Template 5: https://www.figma.com/design/szvioVk9YdDjbCalmyV1mr/Publist---Free-Figma-Consulting-Dark-One-Page-Template-(Community)?node-id=964-5456&t=pyeJ6EZD2zQ5O28o-0
+* Template 6: https://www.figma.com/design/3E9u2FrVrSQEKXE5Bw676l/Figma-startup-landing-page-dark-(Community)?node-id=0-3517&t=ITsHJuwNK0akH8gS-0
+* Template 7: https://www.figma.com/design/HmokRsmI7kPY4LTY8URVUI/Free-Landing-Page-Template-(Community)?node-id=11-18409&t=DqfJj0lWqEF1TXi0-0
