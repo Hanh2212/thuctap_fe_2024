@@ -651,7 +651,7 @@ header{
     margin-top: 10px;
 }
 
-.news-layout-container-send-email form{
+.news-layout-container-send-email form {
     border-radius: 5px;
     text-align: center;
     display: flex;
@@ -659,24 +659,26 @@ header{
     align-items: center;
 }
 
-.news-layout-container-send-email input{
-    width: 70%;
+.news-layout-container-send-email input {
+    width: 50%;
     height: 58px;
     padding: 10px;
     border: solid 1px #E6E6E6;
+    border-right: none;
     border-radius: 5px 0 0 5px;
 }
 
-.news-layout-container-send-email input:focus{
+.news-layout-container-send-email input:focus {
     outline: none;
-    border: none;
+    border: solid 1px #007BFF;
+    border-right: none;
 }
 
-.news-layout-container-send-email button{
-    height: 58.2px;
+.news-layout-container-send-email button {
+    height: 58px;
     padding: 10px 20px;
-    margin-left: -5px;
     border: solid 1px #E6E6E6;
+    border-left: none;
     color: #fff;
     background-color: var(--color-primary);
     font-weight: 700;
@@ -684,7 +686,6 @@ header{
     border-radius: 0 5px 5px 0;
     cursor: pointer;
 }
-
 /* footer */
 footer{
     width: 100%;
