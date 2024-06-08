@@ -1,7 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 *{
     padding: 0;
     margin: 0;
-    font-family: 'Roboto', sans-serif;
     box-sizing: border-box  ;
 }
 
@@ -24,6 +25,7 @@ ul>li>a {
 
 body{
     width: 100%;
+    font-family: 'Open Sans',serif;
 }
 
 header{
@@ -323,14 +325,14 @@ header{
 /*product*/
 .product{
     width: 100%;
-    height: 1152px;
+    height: 100%;
     display: flex;
     justify-content: center;
 }
 
 .product-container{
     width: 80%;
-    height: 1070px;
+    height: 100%;
     padding: 112px 0;
 }
 
@@ -355,11 +357,12 @@ header{
 
 .main-container-items{
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .product-container-item{
     height: 602px;
-    width: 24%;
+    width: 238px;
     margin-top: 90px;
 }
 
@@ -368,7 +371,6 @@ header{
 }
 
 .product-container-item-img{
-    position: absolute;
     width: 238px;
     height: 300px;
     background-color: #d9ff00;
@@ -413,10 +415,9 @@ header{
 }
 
 .product-container-item-content{
-    position: relative;
     top: 300px;
     width: 238px;
-    padding: 25px 25px 35px 25px;
+    padding: 25px 15px 35px 15px;
 }
 
 
@@ -514,12 +515,12 @@ header{
 .layout-popular{
     width: 100%;
     height: 928px;
-    position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 .layout-popular-container{
-    position: absolute;
-    width: 100%;
+    width: 80%;
     height: 928px;
     padding: 160px 0;
     left: 195px;
@@ -548,9 +549,15 @@ header{
     color: var(--color-second-text);
 }
 
+.center-popular{
+    display: flex;
+    justify-content: center;
+}
+
 .layout-popular-container-main-content{
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .layout-popular-container-main-content-card{
@@ -640,7 +647,7 @@ header{
 }
 
 .news-layout-container-send-email input{
-    width: 688px;
+    width: 70%;
     height: 58px;
     padding: 10px;
     border: solid 1px #E6E6E6;
@@ -683,6 +690,7 @@ footer{
 .footer-columns{
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .column ul li {
@@ -708,6 +716,7 @@ footer{
     display: flex;
     justify-content: space-between;
     margin-top: 50px;
+    flex-wrap: wrap;
 }
 
 .footer-info h6{
@@ -727,6 +736,6 @@ footer{
     height: 24px;
 }
 
-.social-icons a{
+.social-icons a+ .social-icons a{
     margin-left: 20px;
 }
