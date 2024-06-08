@@ -91,9 +91,11 @@ header{
 
 .nav-header-right-button ul:last-child li a {
     color: #fff;
-    padding: 10px;
     background-color: var(--color-primary);
     border-radius: 5px;
+    width: 137px;
+    height: 52px;
+    padding: 15px 25px;
 }
 
 .fa-arrow-right{
@@ -176,6 +178,7 @@ header{
     font-weight: 600;
     margin-top: 30px;
     cursor: pointer;
+    margin-left: 10px;
 }
 
 .header-content-card{
@@ -237,13 +240,15 @@ header{
 
 .item-ads-content{
     width: 381px;
+    margin-left: 35px;
+    gap: 35px;
 }
 
 .item-ads-content>h2{
     font-weight: 700;
     font-size: 40px;
     line-height: 50px;
-    margin-top: 40px;
+    margin-top: 35px;
 }
 
 .item-ads-content>p{
@@ -251,14 +256,14 @@ header{
     font-size: 14px;
     line-height: 20px;
     color: var(--color-second-text);
-    margin-top: 40px;
+    margin-top: 35px;
 }
 
 .item-ads-content>a{
     gap: 10px;
     display: flex;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 35px;
 }
 
 .item-ads-content>a{
@@ -284,7 +289,7 @@ header{
     font-weight: 700;
     font-size: 40px;
     line-height: 50px;
-    margin-top: 40px;
+    margin-top: 35px;
 }
 
 .item-ads-content2>p{
@@ -292,14 +297,14 @@ header{
     font-size: 14px;
     line-height: 20px;
     color: var(--color-second-text);
-    margin-top: 40px;
+    margin-top: 35px;
 }
 
 .item-ads-content2>a{
     gap: 10px;
     display: flex;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 35px;
 }
 
 .item-ads-content2>a{
@@ -340,23 +345,26 @@ header{
     color: var(--color-primary);
     font-weight: 700;
     font-size: 14px;
-    line-height: 24px;
+    line-height: 24px;  
 }
 
 .main-container>h2{
     font-weight: 700;
     font-size: 40px;
     line-height: 50px;
+    margin-top: 10px;
 }
 
 .main-container>p{
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
+    margin-top: 10px;
 }
 
 .main-container-items{
     flex-wrap: wrap;
+    margin-top: 30px;
     justify-content: space-between;
 }
 
@@ -373,11 +381,11 @@ header{
 .product-container-item-img{
     width: 238px;
     height: 300px;
-    background-color: #d9ff00;
+    position: relative;
 }
 
 .product-container-item-img>p{
-    position: relative;
+    position: absolute;
     font-weight: 700;
     font-size: 14px;
     line-height: 24px;
@@ -392,10 +400,10 @@ header{
 }
 
 .product-container-item-option{
-    position: relative;
+    position: absolute;
     width: 140px;
     height: 40px;
-    top: 220px;
+    top: 236px;
     left: 49px;
 }
 
@@ -415,14 +423,14 @@ header{
 }
 
 .product-container-item-content{
-    top: 300px;
-    width: 238px;
-    padding: 25px 15px 35px 15px;
+    width: 242px;
+    padding: 25px 25px 35px 25px;
 }
 
 
 .product-container-item-content>span{
     display: flex;
+    align-items: center;
 }
 
 .product-container-item-content>span>p{
@@ -514,14 +522,14 @@ header{
 /* layout-popular */
 .layout-popular{
     width: 100%;
-    height: 928px;
+    height: 100%;
     display: flex;
     justify-content: center;
 }
 
 .layout-popular-container{
     width: 80%;
-    height: 928px;
+    height: 100%;
     padding: 160px 0;
     left: 195px;
     display: flex;
@@ -632,6 +640,7 @@ header{
     font-size: 24px;
     line-height: 32px;
     text-align: center;
+    margin-top: 10px;
 }
 
 .news-layout-container-about>p{
@@ -639,11 +648,15 @@ header{
     font-size: 14px;
     line-height: 20px;
     text-align: center;
+    margin-top: 10px;
 }
 
 .news-layout-container-send-email form{
     border-radius: 5px;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .news-layout-container-send-email input{
@@ -660,7 +673,7 @@ header{
 }
 
 .news-layout-container-send-email button{
-    height: 58px;
+    height: 58.2px;
     padding: 10px 20px;
     margin-left: -5px;
     border: solid 1px #E6E6E6;
@@ -694,7 +707,8 @@ footer{
 }
 
 .column ul li {
-    padding-top: 10px;
+    /* padding-top: 10px; */
+    margin-top: 30px;
     color: var(--color-second-text);
 }
 
@@ -716,6 +730,7 @@ footer{
     display: flex;
     justify-content: space-between;
     margin-top: 50px;
+    padding-bottom: 10px;
     flex-wrap: wrap;
 }
 
