@@ -24,7 +24,7 @@ ul>li>a {
 }
 
 body{
-    width: 100%;
+    max-width: 100%;
     font-family: 'Open Sans',serif;
 }
 
@@ -39,7 +39,7 @@ header{
 .header-content{
     /* width: 1440px; */
     max-width: 100%;
-    /* position: absolute; */
+    /* position: absolute; */   
 }
 
 .header-content-left{
@@ -48,6 +48,10 @@ header{
 
 .header-content-right{
     width: 50%;
+}
+
+.nav-header-left2{
+    display: none;
 }
 
 .nav-header-left, .nav-header-right{
@@ -118,7 +122,6 @@ header{
 .header-content-about{
     position: absolute;
     height: 937px;
-    width: 1046px;
     top: 104px;
     left: 197px;
     padding: 80px 0 80px 0 ;
@@ -189,9 +192,12 @@ header{
 
 .about-card{
     display: flex;
-    justify-content: space-between;
-    margin-top: -100px;
-    width: 70%;
+    justify-content: center;
+    align-items: center;
+    margin: -100px 30px 0 30px;
+    width: 1140px;
+    flex-wrap: wrap ;
+    gap: 30px;
 }
 
 .about-card-item{
@@ -200,6 +206,7 @@ header{
     background-color: #fff;
     padding: 35px 40px;
     gap: 20px;
+    z-index: 1;
 }
 
 .about-card-item>h3{
@@ -226,9 +233,16 @@ header{
 .item-ads{
     max-width: 100%;
     height: 794px;
+    display: flex;
+    justify-content: center;
+}
+
+.item-ads-container{
+    width: 80%;
     padding: 160px 0px;
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .item-ads-content-line{
@@ -281,7 +295,8 @@ header{
 }
 /* content2 */
 .item-ads-content2{
-    width: 507px;
+    width: 381px;
+    margin-left: 35px;
 }
 
 
@@ -565,7 +580,7 @@ header{
 .layout-popular-container-main-content{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .layout-popular-container-main-content-card{
@@ -705,6 +720,10 @@ footer{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+}
+
+.column{
+    padding: 10px;
 }
 
 .column ul li {
