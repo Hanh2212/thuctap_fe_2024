@@ -1,0 +1,625 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box  ;
+}
+
+:root{
+    --color-primary:#ff6551;
+    --color-second-text:#737373;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+ul>li{
+    list-style: none;
+}
+
+ul>li>a {
+    text-decoration: none;
+}
+
+body{
+    max-width: 100%;
+    font-family: 'Open Sans',serif;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+}
+
+@media (min-width: 1400px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 1060px;
+    }
+}
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    --bs-gutter-x: .625rem;
+}
+
+/* Header */
+/* header{
+    margin-left: 5%;
+} */
+
+.nav_content{
+    background-color: #fff;
+}
+
+header>nav{
+    height: 91px;
+    background-color: transparent;
+}
+
+.header_main_about {
+    gap: 80px;
+}
+
+.header_nav_item_join{
+    line-height: 41px;
+    background-color: var(--color-primary);
+}
+
+.header_nav_item_join>a{
+    color: #fff;
+    padding: 15px 25px !important;
+}
+
+.header_main_about{
+    padding: 80px 0;
+}
+
+.header-about{
+    width: 600px;
+}
+
+.header-about>.header-about-h5{
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.header-about>.header-about-h1{
+    font-size: 58px;
+    font-weight: 800;
+    line-height: 80px;
+    margin-top: 30px;
+}
+
+
+.header-about>.header-about-h4{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+    color: var(--color-second-text);
+    margin-top: 40px;
+}
+
+
+.about-btn-get{
+    background-color: var(--color-primary);
+    color: #fff;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 40px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.about-btn-learn{
+    color: var(--color-primary);
+    background-color: #fff;
+    outline: none;
+    border: solid 1px var(--color-primary);
+    border-radius: 5px;
+    padding: 15px 40px;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 30px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+
+.about-card{
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    /* flex-wrap: wrap ; */
+    gap: 20px;
+}
+
+.about-card-item{
+    max-width: 100%;
+    height: 296px;
+    background-color: #fff;
+    padding: 35px 40px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.about-card-item>img{
+    height: 76px;
+    width: 70px;
+}
+
+.about-card-item>h3{
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.about-card-item>p{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.about-card-item-line{
+    height: 2px;
+    width: 50px;
+    background-color: #E74040;
+}
+
+/* About */
+.item-ads-content-line{
+    height: 7px;
+    width: 94px;
+    background-color: #E74040;
+    margin-top: 50px;
+}
+
+.item-ads-content{
+    width: 381px;
+    margin-left: 35px;
+    gap: 35px;
+}
+
+.item-ads-content>h2{
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 50px;
+    margin-top: 35px;
+}
+
+.item-ads-content>p{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--color-second-text);
+    margin-top: 35px;
+}
+
+.item-ads-content>a{
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    margin-top: 35px;
+}
+
+.item-ads-content>a{
+    text-decoration: none;
+    color: var(--color-primary);
+}
+
+.item-ads-content>a>h6{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+}
+.item-ads-content>a>i{
+    line-height: 16px;
+} 
+
+/* Courses */
+
+.section_courses{
+    background-color: #26335d;
+    padding: 160px 0;
+}
+
+.main-container>h6{
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;  
+}
+
+.main-container>h2{
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 50px;
+    margin-top: 10px;
+    color: #fff;
+}
+
+.main-container>p{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 10px;
+    color: #fff;
+}
+
+.main-container-items{
+    display: flex;
+    gap: 10px;
+}
+
+.product-container-item{
+    height: 622px;
+    width: 348px;
+    margin-top: 90px;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+/* .product-container-item+.product-container-item{
+    margin-left: 10px;
+} */
+
+.product-container-item-img{
+    width: 348px;
+    height: 300px;
+    position: relative;
+}
+
+.product-container-item-img>p{
+    position: absolute;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    padding: 0 10px;
+    color: #fff;
+    top: 20px;
+    left: 20px;
+    width: 51px;
+    height: 24px;
+    border-radius: 3px;
+    background-color: #E74040;
+}
+
+.product-container-item-option{
+    position: absolute;
+    width: 140px;
+    height: 40px;
+    top: 236px;
+    left: 104px;
+}
+
+.product-container-item-option>i{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 44.79px;
+    background-color: #fff;
+    text-align: center;
+    transition: all .2s ease-in-out;
+}
+
+.product-container-item-option>i:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.product-container-item-content{
+    width: 348px;
+    padding: 25px 25px 35px 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.product-container-item-content>div:first-child{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product-container-item-content>div:first-child>p{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    color: var(--color-primary);
+    margin: 0;
+}
+
+.product-container-item-content>div:first-child>div{
+    background-color: #161616;
+    border-radius: 20px;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+.product-container-item-content>div:first-child>div>i{
+    color: #FFCC00;
+}
+
+.product-container-item-content>div:first-child>div>span{
+    color: #fff;
+    font-weight: 700;
+}
+
+.product-container-item-content>h5{
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0;
+}
+
+.product-container-item-content>p{
+    font-weight: 400;
+    font-size: 14px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    margin: 0;
+}
+
+.product-container-item-content-sales{
+    display: flex;
+    align-items: center;
+    height: 24px;
+    color: var(--color-second-text);
+}
+
+.product-container-item-content-sales>h6{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    margin-left: 5px;
+}
+
+.product-container-item-content-price{
+    display: flex;
+    align-items: center;
+}
+
+.product-container-item-content-price-old{
+    height: 24px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--color-second-text);
+}
+
+.product-container-item-content-price-sales{
+    height: 24px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFAB71;
+    margin-left: 5px;
+}
+.product-container-item-content>button{
+    color: var(--color-primary);
+    height: 44px;
+    width: 141px;
+    border-radius: 37px;
+    border: 1px solid var(--color-primary);
+    background-color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+/* Pratice advice course */
+
+.main_course>h6{
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;  
+}
+
+.main_course>h2{
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 50px;
+    margin-top: 10px;
+}
+
+.main_course>p{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 10px;
+}
+
+.main_course-items{
+    flex-wrap: wrap;
+    margin-top: 30px;
+    justify-content: space-between;
+}
+
+.section_advice_course>.container{
+    padding: 160px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+.practice_courses_items .card-item{
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    padding: 50px 40px;
+    position: relative;
+}
+
+.practice_courses_items .card-item .fa-heart{
+    font-size: 40px;
+    background-color: var(--color-primary);
+    width: 96px;
+    height: 96px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    border-radius: 200px;
+}
+
+.practice_courses_items .card-item h3{
+    font-weight: 700;
+    font-size: 24px;    
+    line-height: 32px;
+}
+
+.practice_courses_items .card-item h6{
+    font-weight: 700;
+    font-size: 14px;    
+    line-height: 24px;
+}
+
+.practice_courses_items .card-item .price h2{
+    font-weight: 700;
+    font-size: 40px;
+    color: var(--color-primary);
+}
+
+.practice_courses_items .card-item .price h6{
+    font-weight: 700;
+    font-size: 14px;    
+    color: #8EC2F2  ;
+}
+
+.practice_courses_items .card-item p{
+    font-weight: 400;
+    font-size: 14px;    
+    color: var(--color-second-text)  ;
+}
+
+.practice_courses_items .card-item button{
+    width: 243px;
+    height: 52px;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    background-color: var(--color-primary);
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.feature_list{
+    display: flex;
+    flex-direction: column;
+}
+
+.feature_list>div{
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.feature_list .fa-check{
+    height: 32px;
+    width: 32px;
+    background-color: #737373;
+    padding: 10px;
+    color: #fff;
+    border-radius: 200px;
+    margin-right: 10px;
+}
+
+.active_facheck{
+    background-color: #2DC071 !important;
+}
+
+.feature_list h6{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    margin: 0;
+}
+
+.practice_courses_items .card-item .new{
+    height: 90px;
+    width: 89px;
+    padding: 29px 16px;
+    border-radius: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 24px;    
+    background-color: #E77C40;
+    position: absolute;
+    left: 279px;
+    top: 0;
+}
+
+/*  Practice Advice Packages*/
+.advice_packages .container{
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    min-height: 885px;
+    max-height: 100%;
+}
+
+.practice_packages_item{
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.practice_packages_item .list_star{
+    text-align: center;
+}
+
+.practice_packages_item p{
+    font-weight: 400;
+    font-size: 14px;
+    text-align: center;
+    width: 159px;
+    color: var(--color-second-text);
+}
+
+.character{
+    display: flex;
+    gap: 15px;
+}
+
+.character img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.character a{
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    color: var(--color-primary);
+}
+
+.character h6{
+    font-weight: 400;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.fa-star{
+    color: #F3CD03;
+}
+
+.active_star{
+    background-color: #F3CD03;
+}
+
