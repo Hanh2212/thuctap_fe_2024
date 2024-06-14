@@ -46,9 +46,6 @@ body{
     margin-left: 5%;
 } */
 
-.nav_content{
-    background-color: #fff;
-}
 
 header>nav{
     height: 91px;
@@ -566,8 +563,8 @@ header>nav{
     display: flex;
     flex-direction: column;
     gap: 80px;
-    min-height: 885px;
     max-height: 100%;
+    padding: 160px 0;
 }
 
 .practice_packages_item{
@@ -623,3 +620,80 @@ header>nav{
     background-color: #F3CD03;
 }
 
+/* Newsletter */
+.newsletter .container{
+    padding: 160px 0;
+}
+
+.newsletter_titles>h6{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    color: var(--color-primary);
+}
+
+.newsletter_titles>h3{
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.newsletter_titles>p{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.newsletter_sub form{
+    height: 58px;
+}
+
+.newsletter_sub button{
+    background-color: var(--color-primary);
+    color: #fff;
+    border: none;
+    width: 117px;
+    height: 58px;
+}
+
+.newsletter_sub button:hover{
+    background-color: #fff;
+    color: var(--color-primary);
+    border: 1px solid #ececec;
+}
+/* footer */
+footer .row {
+    padding: 10px 0;
+}
+footer .align-middle {
+    display: flex;
+    align-items: center;
+}
+
+.footer_container_top{
+    padding: 50px 0;
+}
+
+.footer_container_bottom{
+    padding: 25px 0;
+    height: 74px;
+}
+
+footer i {
+    color: var(--color-primary);
+    font-size: 24px;
+    height: 24px;
+    width: 24px;
+    margin-right: 10px;
+}
+
+.header_block{
+    background-image: url('/assets/img/background\ sec-.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
