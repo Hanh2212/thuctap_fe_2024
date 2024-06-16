@@ -634,6 +634,60 @@ header>nav{
     background-color: #F3CD03;
 }
 
+/* Team */
+.team_section .container{
+    padding: 112px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 112px;
+}
+
+.team-items .card{
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border: none;
+}
+
+.team-items .card .card-body{
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.team-items .card h5{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0;
+}
+
+.team-items .card p{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    margin: 0;
+}
+
+.team-items .card .card-body .social_network{
+    width: 112px;
+    height: 24px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.team-items .card .card-body .social_network i{
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+    color: var(--color-primary);
+}
+
 /* Newsletter */
 .newsletter .container{
     padding: 160px 0;
@@ -662,6 +716,10 @@ header>nav{
     text-align: center;
     margin-top: 10px;
     color: var(--color-second-text);
+}
+
+.newsletter_sub{
+    margin-top: 80px;
 }
 
 .newsletter_sub form{
