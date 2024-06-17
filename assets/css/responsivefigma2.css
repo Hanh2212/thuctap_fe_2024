@@ -11,7 +11,7 @@
         }
     }
 
-    .main-container-items {
+    .courses_items {
         flex-wrap: wrap;
     }
 }

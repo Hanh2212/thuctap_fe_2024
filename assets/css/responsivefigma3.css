@@ -1,0 +1,25 @@
+@media only screen and (max-width: 996px) {
+    .main-container-items {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .product-container-item {
+        width: 33.3% !important;
+    }
+}
+
+@media only screen and (max-width: 996px) {
+
+    .product-container-item {
+        width: 50% !important;
+}
+}
+
+
+@media only screen and (max-width: 508px) {
+
+    .product-container-item {
+        width: 348px !important;
+}
+}
