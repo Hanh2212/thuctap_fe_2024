@@ -18,183 +18,154 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-            rel="stylesheet"
-        />
     </head>
-    <body class="p-0 m-0 border-0 border-0">
+    <body>
         <!-- Header -->
         <div class="container-fluid p-0 header_block">
-            <div class="row">
-                <div class="col-md-12 p-0">
-                    <header>
-                        <nav class="navbar navbar-expand-lg">
-                            <div
-                                class="container align-items-center nav_content p-0"
+            <header>
+                <nav class="navbar navbar-expand-lg">
+                    <div class="container align-items-center nav_content p-0">
+                        <a
+                            class="navbar-brand col-lg-3 fw-bold fs-3 p-0"
+                            href="#"
+                            >Publist</a
+                        >
+
+                        <button
+                            class="navbar-toggler col-lg-0"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#navbarTogglerDemo02"
+                            aria-controls="navbarTogglerDemo02"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation"
+                        >
+                            <img src="/assets/img/bars-sort (1).png" alt="" />
+                        </button>
+
+                        <div
+                            class="collapse container navbar-collapse justify-content-evenly"
+                            id="navbarTogglerDemo02"
+                        >
+                            <ul
+                                class="navbar-nav mb-2 mb-lg-0 col-lg-5 col-xl-5"
                             >
-                                <a
-                                    class="navbar-brand col-lg-3 fw-bold fs-3 p-0"
-                                    href="#"
-                                    >Publist</a
-                                >
-
-                                <button
-                                    class="navbar-toggler col-lg-0"
-                                    type="button"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#navbarTogglerDemo02"
-                                    aria-controls="navbarTogglerDemo02"
-                                    aria-expanded="false"
-                                    aria-label="Toggle navigation"
-                                >
-                                    <img
-                                        src="/assets/img/bars-sort (1).png"
-                                        alt=""
-                                    />
-                                </button>
-
-                                <div
-                                    class="collapse navbar-collapse col-lg-10 justify-content-evenly"
-                                    id="navbarTogglerDemo02"
-                                >
-                                    <ul
-                                        class="navbar-nav mb-2 mb-lg-0 col-lg-5 col-xl-5"
+                                <li class="nav-item">
+                                    <a class="nav-link fw-bold" href="#"
+                                        >Home</a
                                     >
-                                        <li class="nav-item">
-                                            <a class="nav-link fw-bold" href="#"
-                                                >Home</a
-                                            >
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link fw-bold" href="#"
-                                                >Product</a
-                                            >
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link fw-bold" href="#"
-                                                >Pricing</a
-                                            >
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link fw-bold" href="#"
-                                                >Contact</a
-                                            >
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="" class="nav-link fw-bold">
-                                                <i
-                                                    class="fa-solid fa-magnifying-glass"
-                                                ></i
-                                            ></a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="" class="nav-link fw-bold">
-                                                <i
-                                                    class="fa-solid fa-cart-shopping"
-                                                ></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link fw-bold" href="#"
+                                        >Product</a
+                                    >
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link fw-bold" href="#"
+                                        >Pricing</a
+                                    >
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link fw-bold" href="#"
+                                        >Contact</a
+                                    >
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link fw-bold">
+                                        <i
+                                            class="fa-solid fa-magnifying-glass"
+                                        ></i
+                                    ></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link fw-bold">
+                                        <i
+                                            class="fa-solid fa-cart-shopping"
+                                        ></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
 
-                                <img
-                                    width="24"
-                                    height="13.71"
-                                    class="toggle_item"
-                                    src="/assets/img/bars-sort (1).png"
-                                    alt=""
+                        <img
+                            width="24"
+                            height="13.71"
+                            class="toggle_item"
+                            src="/assets/img/bars-sort (1).png"
+                            alt=""
+                        />
+                    </div>
+                </nav>
+                <div class="header_main_about container">
+                    <div class="main_about_left">
+                        <h1>Finance and Consultancy Solution</h1>
+                        <h4>
+                            We know how large objects will act,<br />
+                            but things on a small scale.
+                        </h4>
+                        <button class="about-btn-get">Get Quote Now</button>
+                        <button class="about-btn-learn">Learn More</button>
+                    </div>
+                    <div class="main_about_right">
+                        <h3>Book Appointment</h3>
+                        <form>
+                            <div class="mb-3">
+                                <label
+                                    for="formGroupExampleInput"
+                                    class="form-label fw-bold"
+                                    >Name</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="formGroupExampleInput"
+                                    placeholder="Full Name"
+                                    required
                                 />
                             </div>
-                        </nav>
-                        <div class="header_main_about d-flex container">
-                            <div class="main_about_left">
-                                <h1>Finance and Consultancy Solution</h1>
-                                <h4>
-                                    We know how large objects will act,<br />
-                                    but things on a small scale.
-                                </h4>
-                                <button class="about-btn-get">
-                                    Get Quote Now
-                                </button>
-                                <button class="about-btn-learn">
-                                    Learn More
-                                </button>
+                            <div class="mb-3">
+                                <label
+                                    for="formGroupExampleInput"
+                                    class="form-label fw-bold"
+                                    >Email</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="formGroupExampleInput"
+                                    placeholder="example@gmail.com"
+                                    required
+                                />
                             </div>
-                            <div class="main_about_right">
-                                <h3>Book Appointment</h3>
-                                <form>
-                                    <div class="mb-3">
-                                        <label
-                                            for="formGroupExampleInput"
-                                            class="form-label fw-bold"
-                                            >Name</label
-                                        >
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="formGroupExampleInput"
-                                            placeholder="Full Name"
-                                            required
-                                        />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label
-                                            for="formGroupExampleInput"
-                                            class="form-label fw-bold"
-                                            >Email</label
-                                        >
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="formGroupExampleInput"
-                                            placeholder="example@gmail.com"
-                                            required
-                                        />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label
-                                            for="inputState"
-                                            class="form-label fw-bold"
-                                            >Department</label
-                                        >
-                                        <select
-                                            id="inputState"
-                                            class="form-select"
-                                        >
-                                            <option selected>
-                                                Please Select
-                                            </option>
-                                            <option>...</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label
-                                            for="inputState"
-                                            class="form-label fw-bold"
-                                            >Time</label
-                                        >
-                                        <select
-                                            id="inputState"
-                                            class="form-select"
-                                        >
-                                            <option selected>
-                                                4:00 Available
-                                            </option>
-                                            <option>...</option>
-                                        </select>
-                                    </div>
-                                </form>
-                                <button class="appointment_btn">
-                                    Book Appointment
-                                </button>
+                            <div class="mb-3">
+                                <label
+                                    for="inputState"
+                                    class="form-label fw-bold"
+                                    >Department</label
+                                >
+                                <select id="inputState" class="form-select">
+                                    <option selected>Please Select</option>
+                                    <option>...</option>
+                                </select>
                             </div>
-                        </div>
-                    </header>
+                            <div class="mb-3">
+                                <label
+                                    for="inputState"
+                                    class="form-label fw-bold"
+                                    >Time</label
+                                >
+                                <select id="inputState" class="form-select">
+                                    <option selected>4:00 Available</option>
+                                    <option>...</option>
+                                </select>
+                            </div>
+                        </form>
+                        <button class="appointment_btn">
+                            Book Appointment
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </header>
         </div>
 
         <!-- Client Matter -->
@@ -202,7 +173,7 @@
         <section class="client_matter_section">
             <div class="container">
                 <div class="row client_matter_content">
-                    <div class="client_matter_content_top col-lg-12">
+                    <div class="client_matter_content_top col">
                         <h2 class="text-center">Every Client Matters</h2>
                         <p class="text-center">
                             Problems trying to resolve the conflict between
@@ -211,8 +182,8 @@
                             mechanics
                         </p>
                     </div>
-                    <div class="client_matter_content_bottom col-lg-12 row">
-                        <div class="col-md-4">
+                    <div class="client_matter_content_bottom col-lg-12">
+                        <div class="bottom_content">
                             <div class="item-top">
                                 <img
                                     width="72"
@@ -231,7 +202,7 @@
                                 <a href="#">Learn More</a>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="bottom_content">
                             <div class="item-top">
                                 <img
                                     width="72"
@@ -250,7 +221,7 @@
                                 <a href="#">Learn More</a>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="bottom_content">
                             <div class="item-top">
                                 <img
                                     width="72"
@@ -274,96 +245,383 @@
             </div>
         </section>
 
-        <!-- Footer -->
-        <!-- <footer>
+        <!-- about -->
+        <section class="about_section">
             <div class="container">
-                <div class="footer_container_top row">
-                    <div class="col_item col-lg-2 col-md-4 col-sm-6">
-                        <h5>Company Info</h5>
-                        <div>
-                            <ul>
-                                <li><a href="">About Us</a></li>
-                                <li><a href="">Carrier</a></li>
-                                <li><a href="">We are hiring</a></li>
-                                <li><a href="">Blog</a></li>
-                            </ul>
-                        </div>
+                <div class="row">
+                    <div class="col-md-12 about_top">
+                        <h2 class="text-center">Who We Are</h2>
+                        <p class="text-center">
+                            Problems trying to resolve the conflict between
+                            <br />
+                            the two major realms of Classical physics: Newtonian
+                            mechanics
+                        </p>
                     </div>
-                    <div class="col_item col-lg-2 col-md-4 col-sm-6">
-                        <h5>Legal</h5>
-                        <div>
-                            <ul>
-                                <li><a href="">About Us</a></li>
-                                <li><a href="">Carrier</a></li>
-                                <li><a href="">We are hiring</a></li>
-                                <li><a href="">Blog</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col_item col-lg-2 col-md-4 col-sm-6">
-                        <h5>Features</h5>
-                        <div>
-                            <ul>
-                                <li><a href="">Business Marketing</a></li>
-                                <li><a href="">User Analytic</a></li>
-                                <li><a href="">Live Chat</a></li>
-                                <li><a href="">Unlimited Support</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col_item col-lg-2 col-md-6 col-sm-6">
-                        <h5>Resources</h5>
-                        <div>
-                            <ul>
-                                <li><a href="">IOS & Android</a></li>
-                                <li><a href="">Watch a Demo</a></li>
-                                <li><a href="">Customers</a></li>
-                                <li><a href="">API</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col_item col-lg-4 col-md-6 col-sm-12">
-                        <h5>Get In Touch</h5>
-                        <div>
-                            <ul>
-                                <li>
-                                    <a href=""
-                                        ><i
-                                            class="fa-solid fa-phone-volume"
-                                        ></i>
-                                        (480) 555-0103</a
-                                    >
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <i class="fa-solid fa-location-dot"></i>
-                                        4517 Washington Ave. Manchester,
-                                        Kentucky 39495</a
-                                    >
-                                </li>
-                                <li>
-                                    <a href=""
-                                        ><i class="fa-solid fa-envelope"></i>
-                                        debra.holt@example.com</a
-                                    >
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row footer_container_bottom">
-                    <div class="col-md-10">
-                        Made With Love By Figmaland All Right Reserved
-                    </div>
-                    <div class="col-md-2 float-end">
-                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <div class="col-md-12 text-center about_bottom">
+                        <iframe
+                            width="877"
+                            height="442"
+                            class="client_say_bottom_video"
+                            src="https://www.youtube.com/embed/xTb2j2c81UI?si=HqeIWuNddNExrvdS"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen
+                        ></iframe>
                     </div>
                 </div>
             </div>
-        </footer> -->
+        </section>
+
+        <!-- client say -->
+        <section class="client_say_section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 client_say_top">
+                        <h2 class="text-center">What Clients Say</h2>
+                        <p class="text-center">
+                            Problems trying to resolve the conflict between
+                            <br />
+                            the two major realms of Classical physics: Newtonian
+                            mechanics
+                        </p>
+                    </div>
+                    <div class="col-md-12 text-center client_say_bottom">
+                        <div class="client_say_bottom_items">
+                            <div class="client_say_bottom_item">
+                                <div class="list_star text-start">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+                                <h6 class="text-start">
+                                    Slate helps you see how many more days you
+                                    need to work to reach your financial goal.
+                                </h6>
+                                <div class="character text-start">
+                                    <img
+                                        src="/assets/img/Ellipse 2.png"
+                                        alt=""
+                                    />
+                                    <div>
+                                        <a href="#">Regina Miles</a>
+                                        <h6>Designer</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="client_say_bottom_item">
+                                <div class="list_star text-start">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+                                <h6 class="text-start">
+                                    Slate helps you see how many more days you
+                                    need to work to reach your financial goal.
+                                </h6>
+                                <div class="character text-start">
+                                    <img
+                                        src="/assets/img/Ellipse 2 (1).png"
+                                        alt=""
+                                    />
+                                    <div>
+                                        <a href="#">Regina Miles</a>
+                                        <h6>Designer</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="client_say_bottom_item">
+                                <div class="list_star text-start">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+                                <h6 class="text-start">
+                                    Slate helps you see how many more days you
+                                    need to work to reach your financial goal.
+                                </h6>
+                                <div class="character text-start">
+                                    <img
+                                        src="/assets/img/Ellipse 2 (3).png"
+                                        alt=""
+                                    />
+                                    <div>
+                                        <a href="#">Regina Miles</a>
+                                        <h6>Designer</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- team say -->
+        <section class="team_section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 client_say_top">
+                        <h2 class="text-center">Meet Our Team</h2>
+                        <p class="text-center">
+                            Problems trying to resolve the conflict between
+                            <br />
+                            the two major realms of Classical physics: Newtonian
+                            mechanics
+                        </p>
+                    </div>
+                    <div class="col-md-12 text-center team_bottom_items">
+                        <div class="team_bottom_item">
+                            <img
+                                width="328"
+                                height="231"
+                                src="/assets/img/media.png"
+                                alt="image"
+                            />
+                            <div class="team_bottom_item_info">
+                                <h5>Avie Beaton</h5>
+                                <h6>CO Founder</h6>
+                                <div class="list_network">
+                                    <a href="#"
+                                        ><i class="fa-brands fa-facebook"></i
+                                    ></a>
+                                    <a href="#"
+                                        ><i class="fa-brands fa-instagram"></i
+                                    ></a>
+                                    <a href="#"
+                                        ><i class="fa-brands fa-twitter"></i
+                                    ></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team_bottom_item">
+                            <img
+                                width="328"
+                                height="231"
+                                src="/assets/img/cover.png"
+                                alt="image"
+                            />
+                            <div class="team_bottom_item_info">
+                                <h5>Avie Beaton</h5>
+                                <h6>CO Founder</h6>
+                                <div class="list_network">
+                                    <a href="#"
+                                        ><i class="fa-brands fa-facebook"></i
+                                    ></a>
+                                    <a href="#"
+                                        ><i class="fa-brands fa-instagram"></i
+                                    ></a>
+                                    <a href="#"
+                                        ><i class="fa-brands fa-twitter"></i
+                                    ></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team_bottom_item">
+                            <img
+                                width="328"
+                                height="231"
+                                src="/assets/img/media (1).png"
+                                alt="image"
+                            />
+                            <div class="team_bottom_item_info">
+                                <h5>Avie Beaton</h5>
+                                <h6>CO Founder</h6>
+                                <div class="list_network">
+                                    <a href="#"
+                                        ><i class="fa-brands fa-facebook"></i
+                                    ></a>
+                                    <a href="#"
+                                        ><i class="fa-brands fa-instagram"></i
+                                    ></a>
+                                    <a href="#"
+                                        ><i class="fa-brands fa-twitter"></i
+                                    ></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- contact -->
+        <section>
+            <div class="contact_top">
+                <div class="container">
+                    <div class="contact_top_content">
+                        <div>
+                            <h5>Contact Us</h5>
+                            <h2>Make an Appointment</h2>
+                        </div>
+                        <form>
+                            <div class="row">
+                                <div class="mb-3 col-md-6">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="formGroupExampleInput"
+                                        placeholder="Full Name"
+                                        required
+                                    />
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="formGroupExampleInput"
+                                        placeholder="example@gmail.com"
+                                        required
+                                    />
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <select id="inputState" class="form-select">
+                                        <option selected>Please Select</option>
+                                        <option>...</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <select id="inputState" class="form-select">
+                                        <option selected>4:00 Available</option>
+                                        <option>...</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3 col-md-12">
+                                    <textarea
+                                        class="form-control"
+                                        id="exampleFormControlTextarea1"
+                                        rows="5"
+                                        placeholder="Message"
+                                    ></textarea>
+                                </div>
+                            </div>
+                        </form>
+                        <button class="contact_appointment_btn">
+                            Book Appointment
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="contact_bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 contact_bottom_title">
+                            <h3>Consulting Agency For Your Business</h3>
+                            <p>the quick fox jumps over the lazy dog</p>
+                        </div>
+                        <div class="col contact_btn">
+                            <button>Contact Us</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer_top">
+                    <h3>Publist</h3>
+                    <div class="social_network">
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer_container_top">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col_item col-lg-2 col-md-4 col-sm-6">
+                                <h5>Company Info</h5>
+                                <div>
+                                    <ul>
+                                        <li><a href="">About Us</a></li>
+                                        <li><a href="">Carrier</a></li>
+                                        <li><a href="">We are hiring</a></li>
+                                        <li><a href="">Blog</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col_item col-lg-2 col-md-4 col-sm-6">
+                                <h5>Legal</h5>
+                                <div>
+                                    <ul>
+                                        <li><a href="">About Us</a></li>
+                                        <li><a href="">Carrier</a></li>
+                                        <li><a href="">We are hiring</a></li>
+                                        <li><a href="">Blog</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col_item col-lg-2 col-md-4 col-sm-6">
+                                <h5>Features</h5>
+                                <div>
+                                    <ul>
+                                        <li>
+                                            <a href="">Business Marketing</a>
+                                        </li>
+                                        <li><a href="">User Analytic</a></li>
+                                        <li><a href="">Live Chat</a></li>
+                                        <li>
+                                            <a href="">Unlimited Support</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col_item col-lg-2 col-md-6 col-sm-6">
+                                <h5>Resources</h5>
+                                <div>
+                                    <ul>
+                                        <li><a href="">IOS & Android</a></li>
+                                        <li><a href="">Watch a Demo</a></li>
+                                        <li><a href="">Customers</a></li>
+                                        <li><a href="">API</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col_item col-lg-4 col-md-6 col-sm-12">
+                                <h5>Get In Touch</h5>
+                                <div class="get_in_touch_content">
+                                    <div
+                                        class="input-group mb-3 get_in_touch_input"
+                                    >
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Your Email"
+                                            aria-label="Recipient's username"
+                                            aria-describedby="button-addon2"
+                                        />
+                                        <button
+                                            class="btn btn-outline-secondary"
+                                            type="button"
+                                            id="button-addon2"
+                                        >
+                                            Subcribe
+                                        </button>
+                                    </div>
+                                    <p>Lorem impsum dolor amit</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <section class="footer_container_bottom">
+            <div class="container">
+                <p>Made With Love By Figmaland All Right Reserved</p>
+            </div>
+        </section>
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
