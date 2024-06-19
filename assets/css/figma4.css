@@ -29,6 +29,7 @@ body{
     font-family: 'Montserrat', sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
+    overflow-x: hidden;
 }
 
 @media (min-width: 1400px) {
@@ -49,7 +50,17 @@ body{
 }
 
 header{
-    min-height: 823px;
+    min-height: 104px;
+}
+
+.content_header>a>i{
+    display: none;
+}
+
+.content_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header>nav{
@@ -92,7 +103,7 @@ header>nav{
 }
 
 .header_main_about{
-    padding: 50px 5;
+    padding: 50px 5px;
     gap: 120px;
     display: flex;
     align-items: center;
@@ -115,7 +126,7 @@ header>nav{
 .main_about_left h4{
     font-weight: 500;
     font-size: 20px;
-    height: 60px;
+    min-height: 60px;
     line-height: 30px;
     margin: 0;
     color: #fff;
@@ -133,6 +144,7 @@ header>nav{
     font-weight: 600;
     margin-top: 30px;
     cursor: pointer;
+    width: 195px;
 }
 
 .about-btn-learn{
@@ -148,6 +160,8 @@ header>nav{
     margin-top: 30px;
     cursor: pointer;
     margin-left: 10px;
+    width: 154px;
+    white-space: nowrap;
 }
 
 .main_about_right{
@@ -394,7 +408,7 @@ header>nav{
 .client_say_top h2{
     font-weight: 700;
     font-size: 40px;
-    height: 57px;
+    min-height: 57px;
     line-height: 57px;
     margin: 0;
     color: #fff;
@@ -545,7 +559,7 @@ header>nav{
     margin: 0;
     font-weight: 700;
     font-size: 40px;
-    height: 57px;
+    min-height: 57px;
     line-height: 57px;
     color:#fff;
 }
@@ -597,7 +611,7 @@ header>nav{
 
 
 .contact_bottom>.container{
-    padding: 40px 0;
+    padding: 40px 5px;
     background-color: #fff;
 }
 
@@ -611,21 +625,26 @@ header>nav{
     justify-content: space-between;
     flex-wrap: nowrap;
 }
-
+/* 
 .contact_btn{
     width: 160px;
+} */
+
+.contact_bottom>.container{
+    display: flex;
+    justify-content: space-between;
 }
 
-.contact_bottom>.container>.row h3{
+.contact_bottom h3{
     margin: 0;
     font-weight: 700;
     font-size: 24px;
-    height: 32px;
+    min-height: 32px;
     line-height: 32px;
     white-space: nowrap;
 }
 
-.contact_bottom>.container>.row p{
+.contact_bottom p{
     margin: 0;
     font-weight: 500;
     font-size: 14px;
@@ -635,7 +654,7 @@ header>nav{
     color: var(--color-second-text);
 }
 
-.contact_bottom>.container>.row button{
+.contact_bottom button{
     padding: 15px 40px;
     color: #fff;
     border-radius: 5px;
@@ -723,22 +742,17 @@ footer .align-middle {
 }
 
 .footer_container_top .col_item{
-    padding: 50px 0;
+    padding: 50px 12px;
 }
 
 .footer_container_bottom{
     padding: 25px 0;
-    height: 74px;
 }
 
 .footer_container_bottom div{
     color: var(--color-second-text);
     font-weight: 700;
     font-size: 14px;    
-}
-
-.footer_container_bottom>div:first-child{
-    padding: 0;
 }
 
 footer i {
@@ -758,6 +772,7 @@ footer i {
     font-weight: 600;
     margin: 0;
     font-size: 14px;
+    min-height: 24px;
 }
 
 .get_in_touch_input{

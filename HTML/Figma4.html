@@ -25,23 +25,35 @@
             <header>
                 <nav class="navbar navbar-expand-lg">
                     <div class="container align-items-center nav_content p-0">
-                        <a
-                            class="navbar-brand col-lg-3 fw-bold fs-3 p-0"
-                            href="#"
-                            >Publist</a
-                        >
+                        <div class="container content_header">
+                            <a
+                                class="navbar-brand col-lg-3 fw-bold fs-3 p-0"
+                                href="#"
+                                >Publist</a
+                            >
 
-                        <button
-                            class="navbar-toggler col-lg-0"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#navbarTogglerDemo02"
-                            aria-controls="navbarTogglerDemo02"
-                            aria-expanded="false"
-                            aria-label="Toggle navigation"
-                        >
-                            <img src="/assets/img/bars-sort (1).png" alt="" />
-                        </button>
+                            <a href="" class="nav-link fw-bold">
+                                <i class="fa-solid fa-magnifying-glass"></i
+                            ></a>
+                            <a href="" class="nav-link fw-bold">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </a>
+
+                            <button
+                                class="navbar-toggler col-lg-0"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#navbarTogglerDemo02"
+                                aria-controls="navbarTogglerDemo02"
+                                aria-expanded="false"
+                                aria-label="Toggle navigation"
+                            >
+                                <img
+                                    src="/assets/img/bars-sort (1).png"
+                                    alt=""
+                                />
+                            </button>
+                        </div>
 
                         <div
                             class="collapse container navbar-collapse justify-content-evenly"
@@ -96,76 +108,72 @@
                         />
                     </div>
                 </nav>
-                <div class="header_main_about container">
-                    <div class="main_about_left">
-                        <h1>Finance and Consultancy Solution</h1>
-                        <h4>
-                            We know how large objects will act,<br />
-                            but things on a small scale.
-                        </h4>
+            </header>
+            <div class="header_main_about container">
+                <div class="main_about_left">
+                    <h1>Finance and Consultancy Solution</h1>
+                    <h4>
+                        We know how large objects will act, <br />
+                        but things on a small scale just do not act that way.
+                    </h4>
+                    <span>
                         <button class="about-btn-get">Get Quote Now</button>
                         <button class="about-btn-learn">Learn More</button>
-                    </div>
-                    <div class="main_about_right">
-                        <h3>Book Appointment</h3>
-                        <form>
-                            <div class="mb-3">
-                                <label
-                                    for="formGroupExampleInput"
-                                    class="form-label fw-bold"
-                                    >Name</label
-                                >
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="formGroupExampleInput"
-                                    placeholder="Full Name"
-                                    required
-                                />
-                            </div>
-                            <div class="mb-3">
-                                <label
-                                    for="formGroupExampleInput"
-                                    class="form-label fw-bold"
-                                    >Email</label
-                                >
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="formGroupExampleInput"
-                                    placeholder="example@gmail.com"
-                                    required
-                                />
-                            </div>
-                            <div class="mb-3">
-                                <label
-                                    for="inputState"
-                                    class="form-label fw-bold"
-                                    >Department</label
-                                >
-                                <select id="inputState" class="form-select">
-                                    <option selected>Please Select</option>
-                                    <option>...</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label
-                                    for="inputState"
-                                    class="form-label fw-bold"
-                                    >Time</label
-                                >
-                                <select id="inputState" class="form-select">
-                                    <option selected>4:00 Available</option>
-                                    <option>...</option>
-                                </select>
-                            </div>
-                        </form>
-                        <button class="appointment_btn">
-                            Book Appointment
-                        </button>
-                    </div>
+                    </span>
                 </div>
-            </header>
+                <div class="main_about_right">
+                    <h3>Book Appointment</h3>
+                    <form>
+                        <div class="mb-3">
+                            <label
+                                for="formGroupExampleInput"
+                                class="form-label fw-bold"
+                                >Name</label
+                            >
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="formGroupExampleInput"
+                                placeholder="Full Name"
+                                required
+                            />
+                        </div>
+                        <div class="mb-3">
+                            <label
+                                for="formGroupExampleInput"
+                                class="form-label fw-bold"
+                                >Email</label
+                            >
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="formGroupExampleInput"
+                                placeholder="example@gmail.com"
+                                required
+                            />
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputState" class="form-label fw-bold"
+                                >Department</label
+                            >
+                            <select id="inputState" class="form-select">
+                                <option selected>Please Select</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputState" class="form-label fw-bold"
+                                >Time</label
+                            >
+                            <select id="inputState" class="form-select">
+                                <option selected>4:00 Available</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                    </form>
+                    <button class="appointment_btn">Book Appointment</button>
+                </div>
+            </div>
         </div>
 
         <!-- Client Matter -->
@@ -512,14 +520,12 @@
             </div>
             <div class="contact_bottom">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-md-9 contact_bottom_title">
-                            <h3>Consulting Agency For Your Business</h3>
-                            <p>the quick fox jumps over the lazy dog</p>
-                        </div>
-                        <div class="col contact_btn">
-                            <button>Contact Us</button>
-                        </div>
+                    <div class="contact_bottom_title">
+                        <h3>Consulting Agency For Your Business</h3>
+                        <p>the quick fox jumps over the lazy dog</p>
+                    </div>
+                    <div class="contact_btn">
+                        <button>Contact Us</button>
                     </div>
                 </div>
             </div>
@@ -538,79 +544,77 @@
                     </div>
                 </div>
                 <div class="footer_container_top">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col_item col-lg-2 col-md-4 col-sm-6">
-                                <h5>Company Info</h5>
-                                <div>
-                                    <ul>
-                                        <li><a href="">About Us</a></li>
-                                        <li><a href="">Carrier</a></li>
-                                        <li><a href="">We are hiring</a></li>
-                                        <li><a href="">Blog</a></li>
-                                    </ul>
-                                </div>
+                    <div class="row">
+                        <div class="col_item col-lg-2 col-md-4 col-sm-6">
+                            <h5>Company Info</h5>
+                            <div>
+                                <ul>
+                                    <li><a href="">About Us</a></li>
+                                    <li><a href="">Carrier</a></li>
+                                    <li><a href="">We are hiring</a></li>
+                                    <li><a href="">Blog</a></li>
+                                </ul>
                             </div>
-                            <div class="col_item col-lg-2 col-md-4 col-sm-6">
-                                <h5>Legal</h5>
-                                <div>
-                                    <ul>
-                                        <li><a href="">About Us</a></li>
-                                        <li><a href="">Carrier</a></li>
-                                        <li><a href="">We are hiring</a></li>
-                                        <li><a href="">Blog</a></li>
-                                    </ul>
-                                </div>
+                        </div>
+                        <div class="col_item col-lg-2 col-md-4 col-sm-6">
+                            <h5>Legal</h5>
+                            <div>
+                                <ul>
+                                    <li><a href="">About Us</a></li>
+                                    <li><a href="">Carrier</a></li>
+                                    <li><a href="">We are hiring</a></li>
+                                    <li><a href="">Blog</a></li>
+                                </ul>
                             </div>
-                            <div class="col_item col-lg-2 col-md-4 col-sm-6">
-                                <h5>Features</h5>
-                                <div>
-                                    <ul>
-                                        <li>
-                                            <a href="">Business Marketing</a>
-                                        </li>
-                                        <li><a href="">User Analytic</a></li>
-                                        <li><a href="">Live Chat</a></li>
-                                        <li>
-                                            <a href="">Unlimited Support</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                        </div>
+                        <div class="col_item col-lg-2 col-md-4 col-sm-6">
+                            <h5>Features</h5>
+                            <div>
+                                <ul>
+                                    <li>
+                                        <a href="">Business Marketing</a>
+                                    </li>
+                                    <li><a href="">User Analytic</a></li>
+                                    <li><a href="">Live Chat</a></li>
+                                    <li>
+                                        <a href="">Unlimited Support</a>
+                                    </li>
+                                </ul>
                             </div>
-                            <div class="col_item col-lg-2 col-md-6 col-sm-6">
-                                <h5>Resources</h5>
-                                <div>
-                                    <ul>
-                                        <li><a href="">IOS & Android</a></li>
-                                        <li><a href="">Watch a Demo</a></li>
-                                        <li><a href="">Customers</a></li>
-                                        <li><a href="">API</a></li>
-                                    </ul>
-                                </div>
+                        </div>
+                        <div class="col_item col-lg-2 col-md-6 col-sm-6">
+                            <h5>Resources</h5>
+                            <div>
+                                <ul>
+                                    <li><a href="">IOS & Android</a></li>
+                                    <li><a href="">Watch a Demo</a></li>
+                                    <li><a href="">Customers</a></li>
+                                    <li><a href="">API</a></li>
+                                </ul>
                             </div>
-                            <div class="col_item col-lg-4 col-md-6 col-sm-12">
-                                <h5>Get In Touch</h5>
-                                <div class="get_in_touch_content">
-                                    <div
-                                        class="input-group mb-3 get_in_touch_input"
+                        </div>
+                        <div class="col_item col-lg-4 col-md-6 col-sm-12">
+                            <h5>Get In Touch</h5>
+                            <div class="get_in_touch_content">
+                                <div
+                                    class="input-group mb-3 get_in_touch_input"
+                                >
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Your Email"
+                                        aria-label="Recipient's username"
+                                        aria-describedby="button-addon2"
+                                    />
+                                    <button
+                                        class="btn btn-outline-secondary"
+                                        type="button"
+                                        id="button-addon2"
                                     >
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            placeholder="Your Email"
-                                            aria-label="Recipient's username"
-                                            aria-describedby="button-addon2"
-                                        />
-                                        <button
-                                            class="btn btn-outline-secondary"
-                                            type="button"
-                                            id="button-addon2"
-                                        >
-                                            Subcribe
-                                        </button>
-                                    </div>
-                                    <p>Lorem impsum dolor amit</p>
+                                        Subcribe
+                                    </button>
                                 </div>
+                                <p>Lorem impsum dolor amit</p>
                             </div>
                         </div>
                     </div>
