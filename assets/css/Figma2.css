@@ -42,6 +42,26 @@ body{
     --bs-gutter-x: .625rem;
 }
 
+
+.scroll-top{
+    position: fixed;
+    padding: 10px 20px;
+    bottom: 20px;
+    right: 50px;
+    z-index: 999;
+    background-color: #fa6000;
+    color: #fff;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;  
+    transition: all .2s ease-in-out;
+    display: none;
+}
+
+.scroll-top:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+
 /* Header */
 /* header{
     margin-left: 5%;
@@ -109,8 +129,8 @@ header>nav{
 }
 
 
-.about-btn-get{
-    background-color: var(--color-primary);
+.about-btn-get {
+    position: relative; 
     color: #fff;
     outline: none;
     border: none;
@@ -120,11 +140,44 @@ header>nav{
     font-weight: 600;
     margin-top: 35px;
     cursor: pointer;
+    border: 1px solid var(--color-primary);
+    background: var(--color-primary);
+    transition: all 0.5s cubic-bezier(0.420, 0.000, 0.580, 1.000);
+    overflow: hidden;
 }
 
-.about-btn-learn{
+.about-btn-get:after {
+    content: '';
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    mix-blend-mode: lighten;
+    background: #fff;
+    transition: all 0.5s cubic-bezier(0.420, 0.000, 0.580, 1.000);
+    z-index: 1;
+}
+
+.about-btn-get:hover {
+    background: transparent;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary); 
+}
+
+.about-btn-get:hover:after {
+    width: 100%;
+    height: 100%;
+}
+
+.about-btn-get span {
+    position: relative;
+    z-index: 2; 
+}
+
+
+/* .about-btn-learn {
     color: var(--color-primary);
-    background-color: #fff;
     outline: none;
     border: solid 1px var(--color-primary);
     border-radius: 5px;
@@ -135,7 +188,58 @@ header>nav{
     margin-top: 35px;
     cursor: pointer;
     margin-left: 10px;
+    position: relative;
+    background-color: #fff;
+    transition: all 0.5s cubic-bezier(0.420, 0.000, 0.580, 1.000);
+    overflow: hidden; 
+} */
+
+.about-btn-learn {
+    position: relative; 
+    color: var(--color-primary);
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 40px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 35px;
+    cursor: pointer;
+    border: 1px solid var(--color-primary);
+    background: #fff;
+    transition: all 0.5s cubic-bezier(0.420, 0.000, 0.580, 1.000);
+    overflow: hidden;
 }
+
+.about-btn-learn:after {
+    content: '';
+    position: absolute; 
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    background: var(--color-primary);
+    transition: all 0.5s cubic-bezier(0.420, 0.000, 0.580, 1.000);
+    z-index: 1;
+}
+
+.about-btn-learn:hover {
+    background: var(--color-primary);
+    color: #fff; 
+}
+
+.about-btn-learn:hover:after {
+    width: 100%;
+    height: 100%;
+}
+
+.about-btn-learn span {
+    position: relative;
+    z-index: 2; 
+}
+
+
+
 
 
 .about-card{
@@ -306,6 +410,16 @@ header>nav{
     width: 348px;
     height: 300px;
     position: relative;
+    overflow: hidden;
+}
+
+.product-container-item-img img{
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+}
+
+.product-container-item-img img:hover{
+    transform: scale(1.1);
 }
 
 .product-container-item-img>p{
@@ -553,11 +667,17 @@ header>nav{
     width: 243px;
     height: 52px;
     border-radius: 5px;
-    border: none;
+    border: 1px solid var(--color-primary);
     color: #fff;
     background-color: var(--color-primary);
     font-weight: 700;
     font-size: 14px;
+    transition: all .3s ease-in-out;
+}
+
+.practice_courses_items .card-item button:hover{
+    color: var(--color-primary);
+    background-color: #fff;
 }
 
 .feature_list{

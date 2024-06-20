@@ -42,6 +42,26 @@ body{
     --bs-gutter-x: .625rem;
 }
 
+
+.scroll-top{
+    position: fixed;
+    padding: 10px 20px;
+    bottom: 20px;
+    right: 50px;
+    z-index: 999;
+    background-color: #fa6000;
+    color: #fff;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;  
+    transition: all .2s ease-in-out;
+    display: none;
+}
+
+.scroll-top:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+
 /* Header */
 .header_block{
     background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0)), url('/assets/img/hero-3-cover sec-.png');

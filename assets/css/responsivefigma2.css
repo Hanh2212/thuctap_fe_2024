@@ -21,7 +21,12 @@
         background-color: #fff;
         padding: 10px;
         border-radius: 5px;
+        height: 320px;
         box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    }
+
+    .nav_content #navbarTogglerDemo02 ul:first-child{
+        padding:0  22px;
     }
 
     .nav_content #navbarTogglerDemo02 ul li{
