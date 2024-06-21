@@ -13,7 +13,37 @@
 
     .product-container-item {
         width: 50% !important;
-}
+    }
+    .nav_content #navbarTogglerDemo02{
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        height: 320px;
+        box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    }
+
+    .nav_content #navbarTogglerDemo02 ul li a{
+        m
+    }
+
+    .nav_content #navbarTogglerDemo02 ul:first-child{
+        padding:0  22px;
+    }
+
+    .nav_content #navbarTogglerDemo02 ul li{
+        transition: all .3s ease-in-out;
+    }
+
+    .nav_content #navbarTogglerDemo02 ul li:hover{
+        background-color: #8f8b8b;
+        border-radius: 10px;
+        padding-left: 10px;
+        color: #fff;
+    }
+
+    .nav_content #navbarTogglerDemo02 ul li a:hover{
+        color: #fff;
+    }
 }
 
 

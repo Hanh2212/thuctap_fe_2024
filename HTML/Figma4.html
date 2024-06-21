@@ -64,22 +64,22 @@
                                 class="navbar-nav mb-2 mb-lg-0 col-lg-5 col-xl-5"
                             >
                                 <li class="nav-item">
-                                    <a class="nav-link fw-bold" href="#"
+                                    <a class="nav-link fw-bold activeNav" href="#home"
                                         >Home</a
                                     >
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link fw-bold" href="#"
+                                    <a class="nav-link fw-bold" href="#product"
                                         >Product</a
                                     >
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link fw-bold" href="#"
+                                    <a class="nav-link fw-bold" href="#pricing"
                                         >Pricing</a
                                     >
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link fw-bold" href="#"
+                                    <a class="nav-link fw-bold" href="#contact"
                                         >Contact</a
                                     >
                                 </li>
@@ -110,7 +110,7 @@
                     </div>
                 </nav>
             </header>
-            <div class="header_main_about container">
+            <section class="header_main_about container" id="home">
                 <div class="main_about_left">
                     <h1>Finance and Consultancy Solution</h1>
                     <h4>
@@ -174,12 +174,12 @@
                     </form>
                     <button class="appointment_btn">Book Appointment</button>
                 </div>
-            </div>
+            </section>
         </div>
 
         <!-- Client Matter -->
 
-        <section class="client_matter_section">
+        <section class="client_matter_section" id="product">
             <div class="container">
                 <div class="row client_matter_content">
                     <div class="client_matter_content_top col">
@@ -285,7 +285,7 @@
         </section>
 
         <!-- client say -->
-        <section class="client_say_section">
+        <section class="client_say_section" id="pricing">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 client_say_top">
@@ -299,7 +299,7 @@
                     </div>
                     <div class="col-md-12 text-center client_say_bottom">
                         <div class="client_say_bottom_items">
-                            <div class="client_say_bottom_item">
+                            <!-- <div class="client_say_bottom_item">
                                 <div class="list_star text-start">
                                     <i class="fa-solid fa-star"></i>
                                     <i class="fa-solid fa-star"></i>
@@ -321,8 +321,8 @@
                                         <h6>Designer</h6>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="client_say_bottom_item">
+                            </div> -->
+                            <!-- <div class="client_say_bottom_item">
                                 <div class="list_star text-start">
                                     <i class="fa-solid fa-star"></i>
                                     <i class="fa-solid fa-star"></i>
@@ -367,7 +367,7 @@
                                         <h6>Designer</h6>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -463,7 +463,7 @@
         </section>
 
         <!-- contact -->
-        <section>
+        <section id="contact">
             <div class="contact_top">
                 <div class="container">
                     <div class="contact_top_content">
@@ -471,51 +471,66 @@
                             <h5>Contact Us</h5>
                             <h2>Make an Appointment</h2>
                         </div>
-                        <form>
+                        <form id="myForm">
                             <div class="row">
                                 <div class="mb-3 col-md-6">
                                     <input
                                         type="text"
                                         class="form-control"
-                                        id="formGroupExampleInput"
+                                        id="fullName"
                                         placeholder="Full Name"
                                         required
                                     />
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <input
-                                        type="text"
+                                        type="email"
                                         class="form-control"
-                                        id="formGroupExampleInput"
+                                        id="email"
                                         placeholder="example@gmail.com"
                                         required
                                     />
                                 </div>
                                 <div class="mb-3 col-md-6">
-                                    <select id="inputState" class="form-select">
-                                        <option selected>Please Select</option>
-                                        <option>...</option>
+                                    <select
+                                        id="selectOption1"
+                                        class="form-select"
+                                        required
+                                    >
+                                        <option value="" selected>
+                                            Please Select
+                                        </option>
+                                        <option value="1">Option 1</option>
+                                        <option value="2">Option 2</option>
                                     </select>
                                 </div>
                                 <div class="mb-3 col-md-6">
-                                    <select id="inputState" class="form-select">
-                                        <option selected>4:00 Available</option>
-                                        <option>...</option>
+                                    <select
+                                        id="selectOption2"
+                                        class="form-select"
+                                        required
+                                    >
+                                        <option value="" selected>
+                                            4:00 Available
+                                        </option>
+                                        <option value="1">Option 1</option>
+                                        <option value="2">Option 2</option>
                                     </select>
                                 </div>
                                 <div class="mb-3 col-md-12">
                                     <textarea
                                         class="form-control"
-                                        id="exampleFormControlTextarea1"
+                                        id="message"
                                         rows="5"
                                         placeholder="Message"
+                                        required
                                     ></textarea>
                                 </div>
                             </div>
+                            <button type="submit" class="contact_appointment_btn">
+                                Book Appointment
+                            </button>
                         </form>
-                        <button class="contact_appointment_btn">
-                            Book Appointment
-                        </button>
                     </div>
                 </div>
             </div>

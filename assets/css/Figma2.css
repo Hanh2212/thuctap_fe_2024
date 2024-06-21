@@ -80,6 +80,14 @@ header>nav{
 .header_nav_item_login>a{
     color: var(--color-primary);
     padding: 15px 25px !important;
+    border-radius: .375rem;
+    transition: all .3s ease-in-out;
+}
+
+.header_nav_item_login>a:hover{
+    color: #26335d;
+    background-color: #fff;
+    border-radius: .375rem;
 }
 
 .header_nav_items{
@@ -90,11 +98,21 @@ header>nav{
     line-height: 52px;
     background-color: var(--color-primary);
     height: 52px;
+    transition: all .3s ease-in-out;
 }
 
 .header_nav_item_join>a{
     color: #fff;
     padding: 15px 25px !important;
+    transition: all .3s ease-in-out;
+}
+
+.header_nav_item_join:hover{
+    background-color: #fff;
+}
+
+.header_nav_item_join:hover a{
+    color: var(--color-primary);
 }
 
 .header_main_about{
@@ -559,7 +577,15 @@ header>nav{
     background-color: #fff;
     cursor: pointer;
     font-weight: 700;
+    transition: all .3s ease-in-out;
 }
+
+.product-container-item-content>button:hover{
+    background-color: #26335d;
+    color: #fff;
+    border: 1px solid #fff;
+}
+
 
 /* Pratice advice course */
 

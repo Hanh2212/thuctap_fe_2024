@@ -104,6 +104,21 @@ header>nav{
     margin-left: -20px;
 }
 
+
+.navbar{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    right: 0;
+    z-index: 999;
+    transition: all .3s ease-in-out;
+}
+
+.activeNav{
+    border-bottom: 1px solid var(--color-primary);
+}
+
+
 .toggle_item{
     cursor: pointer;
     filter: invert(100%);
@@ -165,6 +180,14 @@ header>nav{
     margin-top: 30px;
     cursor: pointer;
     width: 195px;
+    border: 1px solid var(--color-primary);
+    transition: all .3s ease-in-out;
+}
+
+.about-btn-get:hover{
+    background-color: transparent;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
 }
 
 .about-btn-learn{
@@ -182,6 +205,11 @@ header>nav{
     margin-left: 10px;
     width: 154px;
     white-space: nowrap;
+    transition: all .3s ease-in-out;
+}
+
+.about-btn-learn:hover{ 
+    color: var(--color-primary);
 }
 
 .main_about_right{
@@ -249,6 +277,10 @@ header>nav{
     height: 58px;
     line-height: 28px;  
     cursor: pointer;
+}
+
+.appointment_btn:hover{
+    opacity: .9;
 }
 
 /* client_matter_content */
@@ -418,6 +450,11 @@ header>nav{
     font-weight: 600;
     height: 72px;
     line-height: 24px;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
 }
 
 .client_say_section>.container>.row{
@@ -471,6 +508,11 @@ header>nav{
     height: 24px;
     line-height: 24px;
     color: var(--color-primary);
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
 }
 
 .character h6{
@@ -481,6 +523,11 @@ header>nav{
     text-decoration: none;
     color: #252B42 !important;
     margin: 0;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
 }
 
 /* team section */
@@ -507,6 +554,17 @@ header>nav{
     background-color: #fff;
     width: 328px;
     height: 373px;
+    overflow: hidden;
+}
+
+.team_bottom_item img{
+    overflow: hidden;
+    transition: all .3s ease-in-out;
+}
+
+.team_bottom_item img:hover{
+    transform: scale(1.1);
+    cursor: pointer;
 }
 
 .team_bottom_item_info{
@@ -603,6 +661,10 @@ header>nav{
     width: 218px;
 }
 
+.contact_appointment_btn:hover{
+    opacity: .8;
+}
+
 .contact_top_content select{
     color: #BDBDBD;
     font-size: 14px;
@@ -650,6 +712,18 @@ header>nav{
     width: 160px;
 } */
 
+.contact_btn button{
+    transition: all .3s ease-in-out;
+    border: 1px solid var(--color-primary);
+
+}
+
+.contact_btn button:hover{
+    background-color: transparent;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+}
+
 .contact_bottom>.container{
     display: flex;
     justify-content: space-between;
@@ -678,7 +752,6 @@ header>nav{
     padding: 15px 40px;
     color: #fff;
     border-radius: 5px;
-    border: none;
     font-weight: 700;
     font-size: 14px;
     width: 160px;
@@ -735,6 +808,9 @@ footer .align-middle {
     color: #e42f08;
 }
 
+.social_network a:hover{
+    opacity: .8;
+}
 
 .footer_container_top h5,.footer_container_top ul{
     margin: 0;

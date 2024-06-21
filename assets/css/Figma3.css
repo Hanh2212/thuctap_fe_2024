@@ -5,6 +5,7 @@
     margin: 0;
     box-sizing: border-box  ;
     font-family: sans-serif;
+    scroll-behavior: smooth;
 }
 
 :root{
@@ -74,6 +75,10 @@ header>nav{
     background-color: transparent;
 }
 
+.activeNav{
+    border-bottom: 1px solid var(--color-primary);
+}
+
 .nav_login{
     color: var(--color-primary);
 }
@@ -96,11 +101,22 @@ header>nav{
     line-height: 52px;
     height: 52px;
     background-color: var(--color-primary);
+    transition: all .3s ease-in-out;
+    border: 1px solid var(--color-primary);
 }
 
 .header_nav_item_join>a{
     color: #fff;
     padding: 15px 25px !important;
+    transition: all .3s ease-in-out;
+}
+
+.header_nav_item_join:hover{
+    background-color: #fff;
+}
+
+.header_nav_item_join:hover a{
+    color: var(--color-primary);
 }
 
 .header_main_about{
@@ -136,8 +152,17 @@ header>nav{
 }
 
 
-.about-btn-get{
-    background-color: var(--color-primary);
+.navbar{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    right: 0;
+    z-index: 999;
+}
+
+.about-btn-get {
+    position: relative;
+    background: var(--color-primary);
     color: #fff;
     outline: none;
     border: none;
@@ -147,21 +172,81 @@ header>nav{
     font-weight: 600;
     margin-top: 30px;
     cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    overflow: hidden; 
 }
 
-.about-btn-learn{
+.about-btn-get::after {
+    content: '';
+    position: absolute; 
+    top: 0;
+    left: 100%;
+    width: 0;
+    height: 100%;
+    mix-blend-mode: lighten;
+    background: #fff;
+    transition: all 0.5s ease-in-out;
+    z-index: 1;
+}
+
+.about-btn-get:hover {
+    background: transparent;
+    color: var(--color-primary);
+}
+
+.about-btn-get:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.about-btn-get span {
+    position: relative;
+    z-index: 2;
+}
+
+.about-btn-learn { 
+    position: relative;
     color: var(--color-primary);
     background-color: #fff;
     outline: none;
     border: solid 1px var(--color-primary);
     border-radius: 5px;
     padding: 15px 40px;
-    gap: 10px;
     font-size: 13px;
     font-weight: 600;
     margin-top: 30px;
     cursor: pointer;
     margin-left: 10px;
+    overflow: hidden; 
+    transition: all 0.5s ease-in-out;
+}
+
+.about-btn-learn::before, .about-btn-learn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    border-radius: 50%;
+    background: var(--color-primary);
+    transition: all 0.5s ease-in-out;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 0;
+}
+
+.about-btn-learn:hover::before, .about-btn-learn:hover::after {
+    border-radius: 0;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.about-btn-learn span {
+    position: relative;
+    z-index: 1; 
+}
+
+.about-btn-learn:hover span{
+    color: #fff;
 }
 
 /* Impression */
@@ -191,6 +276,13 @@ header>nav{
     height: 288px;
     width: 246px;
     max-width: 100%;
+    overflow: hidden;
+    transition: all .2s ease-in-out;
+}
+
+.impression_item:hover{
+    cursor: pointer;
+    transform: scale(1.2);
 }
 
 .impression_item h5{
@@ -205,6 +297,12 @@ header>nav{
     color: var(--color-second-text);
     margin: 0;
     width: 136px;
+    margin-top: 120px;
+    transition: all .2s ease-in-out;
+}
+
+.impression_item:hover p{
+    margin-top: 0;
 }
 
 .impression_item_active{
@@ -320,6 +418,16 @@ header>nav{
     overflow: hidden;
 }
 
+
+.product-container-item button{
+    transition: all .3s ease-in-out;
+}
+
+.product-container-item button:hover{
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
 /* .product-container-item+.product-container-item{
     margin-left: 10px;
 } */
@@ -349,8 +457,27 @@ header>nav{
     position: absolute;
     width: 140px;
     height: 40px;
-    top: 236px;
+    top: 300px;
     left: 49px;
+    transition: all .2s ease-in-out;
+}
+
+.product-container-item-img{
+    overflow: hidden;
+    transition: all .2s ease-in-out;
+}
+
+.product-container-item-img img{
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+}
+
+.product-container-item-img img:hover{
+    transform: scale(1.2);
+}
+
+.product-container-item-img:hover .product-container-item-option{
+    top: 236px;
 }
 
 .product-container-item-option>i{
