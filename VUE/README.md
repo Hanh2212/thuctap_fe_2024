@@ -756,15 +756,904 @@ export default {
 </script>
 ```
 
-14. Các truyền dữ liệu từ component con lên component cha (emit). Ví dụ.
+14. Cách truyền dữ liệu từ component con lên component cha (emit). Ví dụ.
+
+-   Emit data mục đích là "phát ra" tín hiệu. Tín hiệu từ một component con để thông báo cho một coponent cha rằng một sự kiện đã diễn ra (ví dụ: một sự kiện nhấp chuột). Thông thường, component cha sau đó sẽ thực hiện một số loại hành động, chẳng hạn như thực thi một chức năng.
+
+#### Ví dụ
+
+```html
+<!-- Shop-Item.vue -->
+
+<template>
+    <div class="Item">
+        <img :src="item.imageSrc" :alt="item.name" class="ItemImage" />
+        <div class="ItemDetails">
+            <p><strong>{{item.name}}</strong></p>
+            <p>Price: <strong>${{item.price}}</strong></p>
+        </div>
+        <button class="Button" @click="addToCart(item)">Add To Cart</button>
+    </div>
+</template>
+<script>
+    export default {
+        name: "Shop-Item",
+        props: ["item"],
+        data() {
+            return {};
+        },
+        methods: {
+            addToCart(item) {
+                this.$emit("update-cart", item);
+            },
+        },
+    };
+</script>
+<style></style>
+```
+
+```html
+<!-- App-Item.vue -->
+
+<template>
+    <div id="app">
+        <section class="Header">
+            <h1 id="Fruiticious!">Fruiticious!</h1>
+            <!-- Cart component -->
+            <shop-cart
+                :cart="this.cart"
+                :total="this.total"
+                @empty-cart="emptyCart"
+            >
+            </shop-cart>
+        </section>
+        <!-- Item component -->
+        <shop-item
+            v-for="item in this.items"
+            :item="item"
+            :key="item.id"
+            @update-cart="updateCart"
+        >
+        </shop-item>
+    </div>
+</template>
+<script>
+    export default {
+        name: "app",
+        data() {
+            return {
+                items: [
+                    { id: 205, name: "Banana", price: 1, imageSrc: Banana },
+                    { id: 148, name: "Orange", price: 2, imageSrc: Orange },
+                    { id: 248, name: "Apple", price: 1, imageSrc: Apple },
+                ],
+                cart: [],
+                total: 0,
+            };
+        },
+        methods: {
+            updateCart(e) {
+                this.cart.push(e);
+                this.total = this.shoppingCartTotal;
+            },
+            emptyCart() {
+                this.cart = [];
+                this.total = 0;
+            },
+        },
+    };
+</script>
+```
+
 15. Tìm hiểu cách render một list dữ liệu lên template (v-for), tại sao cần key khi sử dụng v-for? Ví dụ.
+
+-   `v-for` là 1 directive mạnh mẽ cho phép chúng ta lặp qua các phần tử trong mảng và render chúng ra UI và gần như trong mọi ứng dụng ta viết sẽ đều cần dùng tới nó.
+
+-   Khi sử dụng v-for trong VueJS, thuộc tính key rất quan trọng để giúp Vue xác định và theo dõi các phần tử một cách hiệu quả. Thuộc tính key cần có giá trị duy nhất cho mỗi phần tử trong danh sách. Điều này giúp Vue tối ưu hóa quá trình render lại các phần tử khi có thay đổi trong danh sách.
+
+-   Ví dụ
+
+```html
+<template>
+    <div>
+        <ul>
+            <li v-for="(item, index) in items" :key="index">{{ item }}</li>
+        </ul>
+    </div>
+</template>
+
+<script setup>
+    import { ref } from "vue";
+
+    const items = ref(["Apple", "Banana", "Cherry"]);
+</script>
+```
+
 16. Tìm hiểu cách binding style, class vào component trên template theo điều kiện, có những cách binding nào ? Ví dụ.
+
+#### Binding Class
+
+```html
+<template>
+    <div>
+        <div :class="{ active: isActive, 'text-danger': hasError }">
+            Content
+        </div>
+        <div :class="[isActive ? 'active' : '', hasError ? 'text-danger' : '']">
+            Content
+        </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        data() {
+            return {
+                isActive: true,
+                hasError: false,
+            };
+        },
+    };
+</script>
+```
+
+#### Binding Style
+
+```html
+<template>
+    <div>
+        <div :style="{ color: activeColor, fontSize: fontSize + 'px' }">
+            Content
+        </div>
+        <div :style="[styleObject1, styleObject2]">Content</div>
+    </div>
+</template>
+
+<script>
+    export default {
+        data() {
+            return {
+                activeColor: "red",
+                fontSize: 14,
+                styleObject1: {
+                    color: "blue",
+                    fontSize: "16px",
+                },
+                styleObject2: {
+                    backgroundColor: "yellow",
+                },
+            };
+        },
+    };
+</script>
+```
+
 17. Tìm hiểu router trong Vuejs, cách setup, khai báo routers. Ví dụ. router-view, router-outlet là gì ?
+
+#### Vue Router là thư viện quản lý routing chính thức cho Vue.js, giúp bạn dễ dàng xây dựng các ứng dụng SPA (Single Page Applications) với việc định tuyến linh hoạt và mạnh mẽ. Dưới đây là hướng dẫn cách setup, khai báo routers, và một vài khái niệm cơ bản như `router-view` và `router-link`.
+
+#### Cần cài đặt Vue Router thông qua npm:
+
+```sh
+npm install vue-router
+```
+
+#### Khai báo router
+
+```js
+import { createRouter, createWebHistory } from "vue-router";
+import Home from "../views/Home.vue";
+import About from "../views/About.vue";
+
+const routes = [
+    {
+        path: "/",
+        name: "Home",
+        component: Home,
+    },
+    {
+        path: "/about",
+        name: "About",
+        component: About,
+    },
+];
+
+const router = createRouter({
+    history: createWebHistory(process.env.BASE_URL),
+    routes,
+});
+
+export default router;
+```
+
+```js
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "./router";
+
+createApp(App).use(router).mount("#app");
+```
+
+```js
+<template>
+  <div id="app">
+    <nav>
+      <router-link to="/">Home</router-link>
+      <router-link to="/about">About</router-link>
+    </nav>
+    <router-view></router-view>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'App'
+};
+</script>
+
+<style>
+nav {
+  padding: 10px;
+}
+
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+}
+</style>
+```
+
+-   router-view(`router-outlet`): Là một component đặc biệt trong Vue Router. Nó hoạt động như một vùng chứa và sẽ hiển thị component tương ứng với route hiện tại. Khi người dùng điều hướng đến một route khác, component mới sẽ được hiển thị trong router-view.
+
+-   router-link: Là một component được sử dụng để tạo các liên kết điều hướng trong ứng dụng Vue. Thay vì sử dụng thẻ `<a>` thông thường, bạn sử dụng `<router-link>` để điều hướng mà không cần tải lại trang.
+
 18. Tìm hiểu các điều hướng (routing) trong vuejs sử dụng router (router link, router push, router go, router replace…). Ví dụ.
+
+-   `router-link` là cách đơn giản nhất để tạo các liên kết điều hướng trong Vue.js. Nó hoạt động tương tự như thẻ `<a>`, nhưng sử dụng các thuộc tính của Vue Router để điều hướng mà không làm tải lại trang.
+
+-   Ví dụ:
+
+```html
+<template>
+    <div>
+        <nav>
+            <router-link to="/">Home</router-link>
+            <router-link to="/about">About</router-link>
+        </nav>
+        <router-view></router-view>
+    </div>
+</template>
+```
+
+-   `router.push()` được sử dụng để điều hướng đến một route mới thông qua JavaScript. Nó thêm một mục mới vào lịch sử của trình duyệt, nghĩa là khi người dùng bấm nút "back", họ sẽ quay lại trang trước.
+
+Ví dụ:
+
+```html
+<template>
+    <div>
+        <button @click="navigateToAbout">Go to About</button>
+    </div>
+</template>
+
+<script>
+    export default {
+        methods: {
+            navigateToAbout() {
+                this.$router.push("/about");
+            },
+        },
+    };
+</script>
+```
+
+-   `router.replace()` hoạt động tương tự như router.push(), nhưng nó thay thế route hiện tại trong lịch sử trình duyệt thay vì thêm một mục mới. Điều này có nghĩa là người dùng sẽ không quay lại trang trước khi bấm nút "back".
+
+-   Ví dụ:
+
+```html
+<template>
+    <div>
+        <button @click="replaceWithAbout">Replace with About</button>
+    </div>
+</template>
+
+<script>
+    export default {
+        methods: {
+            replaceWithAbout() {
+                this.$router.replace("/about");
+            },
+        },
+    };
+</script>
+```
+
+-   `router.go()` được sử dụng để điều hướng tới một vị trí cụ thể trong lịch sử của trình duyệt. Bạn có thể chuyển một số nguyên để chỉ định số bước cần đi (tiến hoặc lùi) trong lịch sử.
+
+-   Ví dụ:
+
+```html
+<template>
+    <div>
+        <button @click="goBack">Go Back</button>
+        <button @click="goForward">Go Forward</button>
+    </div>
+</template>
+
+<script>
+    export default {
+        methods: {
+            goBack() {
+                this.$router.go(-1);
+            },
+            goForward() {
+                this.$router.go(1);
+            },
+        },
+    };
+</script>
+```
+
 19. Tìm hiểu cách lấy các tham số của router trong Vuejs (ví dụ params, query, meta data…). Ví dụ.
+
+-   Lấy params từ router,
+    params thường được sử dụng để truyền dữ liệu động qua URL, chẳng hạn như /user/:id.
+
+```js
+const routes = [
+  {
+    path: '/user/:id',
+    name: 'User',
+    component: User
+  }
+];
+
+
+<template>
+  <div>
+    <h1>User ID: {{ userId }}</h1>
+  </div>
+</template>
+
+<script>
+export default {
+  computed: {
+    userId() {
+      return this.$route.params.id;
+    }
+  }
+};
+</script>
+```
+
+-   Lấy query từ router, query được sử dụng để truyền dữ liệu qua URL bằng cách sử dụng chuỗi truy vấn, chẳng hạn như /search?q=vue.
+
+```js
+const routes = [
+  {
+    path: '/search',
+    name: 'Search',
+    component: Search
+  }
+];
+
+<template>
+  <div>
+    <h1>Search Query: {{ query }}</h1>
+  </div>
+</template>
+
+<script>
+export default {
+  computed: {
+    query() {
+      return this.$route.query.q;
+    }
+  }
+};
+</script>
+```
+
+-   Lấy meta data từ router, meta data có thể được gán cho các route để lưu trữ thông tin bổ sung, chẳng hạn như yêu cầu xác thực.
+
+```js
+const routes = [
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: Admin,
+    meta: { requiresAuth: true }
+  }
+];
+
+<template>
+  <div>
+    <h1>Admin Page</h1>
+    <p v-if="requiresAuth">This page requires authentication.</p>
+  </div>
+</template>
+
+<script>
+export default {
+  computed: {
+    requiresAuth() {
+      return this.$route.meta.requiresAuth;
+    }
+  }
+};
+</script>
+```
+
 20. Tìm hiểu Quản lý trạng thái (store) với Vuex: Vuex là gì ? Vuex gồm các thành phần gì ?
+
+-   Vuex là một thư viện quản lý trạng thái cho các ứng dụng Vue.js. Nó hoạt động như một kho lưu trữ tập trung (store) cho tất cả các thành phần trong ứng dụng của bạn, cho phép bạn quản lý và duy trì trạng thái của ứng dụng một cách nhất quán và có tổ chức. Vuex được thiết kế để làm việc với Vue.js và cung cấp một mô hình dữ liệu phản ứng, giúp bạn dễ dàng theo dõi và quản lý trạng thái của ứng dụng.
+
+### Các thành phần của Vuex:
+
+-   State: Chứa trạng thái của ứng dụng. Đây là nguồn dữ liệu duy nhất (single source of truth).
+-   Getters: Giống như các thuộc tính tính toán (computed properties) trong Vue, dùng để lấy dữ liệu từ state.
+-   Mutations: Được sử dụng để thay đổi trạng thái. Các mutations phải đồng bộ.
+-   Actions: Giống như mutations, nhưng thay vì thay đổi trạng thái trực tiếp, chúng có thể chứa các thao tác bất đồng bộ. Actions commit mutations.
+
+### Ví dụ sử dụng Vuex
+
+Cài đặt Vuex
+
+```sh
+npm install vuex@next
+```
+
+Tạo một file store.js trong thư mục src của bạn:
+
+```js
+import { createStore } from "vuex";
+
+const store = createStore({
+    state() {
+        return {
+            count: 0,
+        };
+    },
+    getters: {
+        doubleCount(state) {
+            return state.count * 2;
+        },
+    },
+    mutations: {
+        increment(state) {
+            state.count++;
+        },
+        setCount(state, payload) {
+            state.count = payload;
+        },
+    },
+    actions: {
+        incrementAsync({ commit }) {
+            setTimeout(() => {
+                commit("increment");
+            }, 1000);
+        },
+    },
+});
+
+export default store;
+```
+
+Import và sử dụng store trong file main.js của bạn:
+
+```js
+import { createApp } from "vue";
+import App from "./App.vue";
+import store from "./store";
+
+createApp(App).use(store).mount("#app");
+```
+
+Truy cập state và thực hiện actions trong component
+
+```html
+<template>
+    <div>
+        <p>Count: {{ count }}</p>
+        <p>Double Count: {{ doubleCount }}</p>
+        <button @click="increment">Increment</button>
+        <button @click="incrementAsync">Increment Async</button>
+    </div>
+</template>
+
+<script>
+    import { mapState, mapGetters, mapActions } from "vuex";
+
+    export default {
+        computed: {
+            ...mapState(["count"]),
+            ...mapGetters(["doubleCount"]),
+        },
+        methods: {
+            ...mapActions(["incrementAsync"]),
+            increment() {
+                this.$store.commit("increment");
+            },
+        },
+    };
+</script>
+```
+
 21. Tìm hiểu state, getter, action, mutation của Vuex. Ví dụ.
+
+-   State là nơi lưu trữ trạng thái của ứng dụng. Đây là nguồn dữ liệu duy nhất (single source of truth) mà các component của bạn có thể truy cập.
+-   Ví dụ:
+
+```js
+const store = createStore({
+    state() {
+        return {
+            count: 0,
+        };
+    },
+});
+```
+
+Truy cập state trong component:
+
+```js
+<template>
+  <div>
+    <p>Count: {{ count }}</p>
+  </div>
+</template>
+
+<script>
+import { mapState } from 'vuex';
+
+export default {
+  computed: {
+    ...mapState(['count'])
+  }
+};
+</script>
+```
+
+-   Getters giống như các thuộc tính tính toán (computed properties) trong Vue, được sử dụng để lấy và tính toán dữ liệu từ state.
+
+-   Ví dụ:
+
+```js
+const store = createStore({
+    state() {
+        return {
+            count: 0,
+        };
+    },
+    getters: {
+        doubleCount(state) {
+            return state.count * 2;
+        },
+    },
+});
+```
+
+Truy cập getters trong component:
+
+```js
+<template>
+  <div>
+    <p>Double Count: {{ doubleCount }}</p>
+  </div>
+</template>
+
+<script>
+import { mapGetters } from 'vuex';
+
+export default {
+  computed: {
+    ...mapGetters(['doubleCount'])
+  }
+};
+</script>
+```
+
+-   Mutations được sử dụng để thay đổi state của ứng dụng. Các mutations phải đồng bộ.
+
+-   Ví dụ:
+
+```js
+const store = createStore({
+    state() {
+        return {
+            count: 0,
+        };
+    },
+    mutations: {
+        increment(state) {
+            state.count++;
+        },
+        setCount(state, payload) {
+            state.count = payload;
+        },
+    },
+});
+```
+
+Commit mutations trong component:
+
+```html
+<template>
+    <div>
+        <p>Count: {{ count }}</p>
+        <button @click="increment">Increment</button>
+    </div>
+</template>
+
+<script>
+    import { mapState, mapMutations } from "vuex";
+
+    export default {
+        computed: {
+            ...mapState(["count"]),
+        },
+        methods: {
+            ...mapMutations(["increment"]),
+            setCount() {
+                this.$store.commit("setCount", 10);
+            },
+        },
+    };
+</script>
+```
+
+Actions giống như mutations, nhưng chúng có thể chứa các thao tác bất đồng bộ. Thay vì thay đổi state trực tiếp, actions commit mutations.
+
+Ví dụ:
+
+```js
+const store = createStore({
+    state() {
+        return {
+            count: 0,
+        };
+    },
+    mutations: {
+        increment(state) {
+            state.count++;
+        },
+    },
+    actions: {
+        incrementAsync({ commit }) {
+            setTimeout(() => {
+                commit("increment");
+            }, 1000);
+        },
+    },
+});
+```
+
+Dispatch actions trong component:
+
+```html
+<template>
+    <div>
+        <p>Count: {{ count }}</p>
+        <button @click="incrementAsync">Increment Async</button>
+    </div>
+</template>
+
+<script>
+    import { mapState, mapActions } from "vuex";
+
+    export default {
+        computed: {
+            ...mapState(["count"]),
+        },
+        methods: {
+            ...mapActions(["incrementAsync"]),
+        },
+    };
+</script>
+```
+
 22. Tìm hiểu Slot component trong Vuejs. Ví dụ.
+
+-   Slots trong Vue.js cho phép bạn xây dựng các component có khả năng tái sử dụng cao bằng cách cho phép truyền nội dung từ cha vào component con. Nó giúp tách biệt giữa cấu trúc và nội dung của component.
+
+#### Các loại Slot
+
+-   Default Slot: Cho phép truyền nội dung mặc định vào component.
+-   Named Slot: Cho phép truyền nhiều nội dung khác nhau vào các vị trí khác nhau trong component bằng cách sử dụng tên.
+-   Scoped Slot: Cho phép truyền dữ liệu từ component con tới component cha thông qua slot.
+
+### Default Slot
+
+```js
+// ParentComponent.vue
+<template>
+  <div>
+    <ChildComponent>
+      <p>This is passed from the parent.</p>
+    </ChildComponent>
+  </div>
+</template>
+
+<script>
+import ChildComponent from './ChildComponent.vue';
+
+export default {
+  components: {
+    ChildComponent
+  }
+};
+</script>
+
+// ChildComponent.vue
+<template>
+  <div>
+    <slot></slot>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'ChildComponent'
+};
+</script>
+```
+
+### Named Slot
+
+```js
+// ParentComponent.vue
+<template>
+  <div>
+    <ChildComponent>
+      <template v-slot:header>
+        <h1>This is the header</h1>
+      </template>
+      <template v-slot:footer>
+        <p>This is the footer</p>
+      </template>
+    </ChildComponent>
+  </div>
+</template>
+
+<script>
+import ChildComponent from './ChildComponent.vue';
+
+export default {
+  components: {
+    ChildComponent
+  }
+};
+</script>
+
+// ChildComponent.vue
+
+<template>
+  <div>
+    <header>
+      <slot name="header"></slot>
+    </header>
+    <main>
+      <slot></slot>
+    </main>
+    <footer>
+      <slot name="footer"></slot>
+    </footer>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'ChildComponent'
+};
+</script>
+```
+
+Scoped Slot
+
+```js
+// ParentComponent.vue
+<template>
+  <div>
+    <ChildComponent>
+      <template v-slot:default="slotProps">
+        <p>{{ slotProps.msg }}</p>
+      </template>
+    </ChildComponent>
+  </div>
+</template>
+
+<script>
+import ChildComponent from './ChildComponent.vue';
+
+export default {
+  components: {
+    ChildComponent
+  }
+};
+</script>
+
+// ChildComponent.vue
+<template>
+  <div>
+    <slot :msg="message"></slot>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'ChildComponent',
+  data() {
+    return {
+      message: 'This is a message from the child component.'
+    };
+  }
+};
+</script>
+```
+
+-   Default Slot: Truyền nội dung mặc định từ component cha vào component con.
+-   Named Slot: Truyền nhiều nội dung khác nhau vào các vị trí khác nhau trong component con.
+-   Scoped Slot: Truyền dữ liệu từ component con tới component cha thông qua slot.
+
 23. Tìm hiểu Mixin trong Vuejs và ứng dụng. Ví dụ.
+
+#### Mixins là một tính năng trong Vue.js cho phép bạn chia sẻ các hành vi hoặc logic giữa nhiều component. Mixins chứa các phương thức, dữ liệu, hooks và các thuộc tính khác mà có thể được tái sử dụng trong các component khác nhau. Khi một component sử dụng một mixin, tất cả các thuộc tính và phương thức của mixin đó sẽ được trộn lẫn vào component.
+
+#### Ứng dụng của Mixin
+
+-   Chia sẻ logic chung: Nếu nhiều component có chung một phần logic, bạn có thể đặt logic đó vào mixin và tái sử dụng nó.
+-   Tách biệt trách nhiệm: Giúp giữ code của component sạch sẽ và dễ bảo trì hơn bằng cách tách biệt các phần logic thành các mixin riêng biệt.
+
+<!-- loggingMixin.js -->
+
+```js
+export const loggingMixin = {
+    data() {
+        return {
+            message: "Hello from mixin!",
+        };
+    },
+    created() {
+        console.log("Mixin hook called");
+    },
+    methods: {
+        logMessage() {
+            console.log(this.message);
+        },
+    },
+};
+```
+
+Sử dụng Mixin trong Component.
+Bạn có thể import và sử dụng mixin trong component như sau:
+
+<!-- MyComponent.vue -->
+
+```html
+<template>
+    <div>
+        <p>{{ message }}</p>
+        <button @click="logMessage">Log Message</button>
+    </div>
+</template>
+
+<script>
+    import { loggingMixin } from "./loggingMixin";
+
+    export default {
+        mixins: [loggingMixin],
+        created() {
+            console.log("Component hook called");
+        },
+    };
+</script>
+```
+
+-   Mixins giúp chia sẻ logic và hành vi chung giữa các component trong Vue.js.
+-   Mixins có thể chứa dữ liệu, phương thức, hooks, và các thuộc tính khác.
+-   Khi sử dụng mixin, các thuộc tính và phương thức của mixin sẽ được trộn lẫn vào component.
+-   Mixins giúp tách biệt logic và giữ code của component sạch sẽ và dễ bảo trì.
+
 24. Tìm hiểu cách cài đặt, sử dụng các thư viện js thông qua NPM, Yarn…
 25. Tìm hiểu cách sử dụng thư viện UI cho Vuejs (Boostrap-Vue hoặc Vuetify hoặc Element-UI…) và ứng dụng.
