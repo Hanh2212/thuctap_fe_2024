@@ -1,5 +1,4 @@
 <template>
-    <p>Vue app</p>
     <router-view />
 </template>
 

@@ -10,9 +10,9 @@
     --color-second-text:#737373;
 }
 
-html{
+/* html{
     scroll-behavior: smooth;
-}
+} */
 
 ul>li{
     list-style: none;

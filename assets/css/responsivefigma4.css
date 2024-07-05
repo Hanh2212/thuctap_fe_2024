@@ -1,3 +1,18 @@
+@media only screen and (max-width: 1400px) {
+    .client_say_bottom_items,.team_bottom_items{
+        justify-content: space-between;
+    }
+
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .team_bottom_items{
+        justify-content: center;
+    }
+}
+
+
 @media only screen and (max-width: 992px) {
     .toggle_item{
         display: none;

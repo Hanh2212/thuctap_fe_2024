@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import DefaultLayout from '../layouts/DefaultLayout.vue'
-import OnlyChildren from '../layouts/OnlyChildren.vue'
+import DefaultLayout from '@/layouts/DefaultLayout.vue'
+import OnlyChildren from '@/layouts/OnlyChildren.vue'
 
-import Home from '../components/Home.vue'
-import Product from '../components/Product.vue'
+import Home from '@/views/Home.vue'
+import Product from '@/views/Product.vue'
 
 const routes = [
   {
@@ -17,7 +17,7 @@ const routes = [
         component: Home
       },
       {
-        path: '1',
+        path: '',
         name: 'product',
         component: Product
       }

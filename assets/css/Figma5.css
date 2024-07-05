@@ -76,6 +76,10 @@ body{
     flex-grow: 0;
 }
 
+.nav_content{
+    padding: 0;
+}
+
 .navbar-nav li a{
     color: var(--color-primary);
     font-weight: 500;

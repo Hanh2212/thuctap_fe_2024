@@ -726,7 +726,7 @@ Component Con (ChildComponent.vue)
 export default {
     props: {
         message: String,
-    },
+    },  
 };
 </script>
 ```
