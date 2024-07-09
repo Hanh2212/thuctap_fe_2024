@@ -16,6 +16,7 @@
                 :row-selection="rowSelection"
                 :columns="columns"
                 :data-source="data"
+                :pagination="false"
             >
                 <template v-slot:bodyCell="{ column, record }">
                     <template v-if="column.dataIndex === 'tenSanPham'">
@@ -59,16 +60,22 @@
             </a-table>
         </div>
         <ProductModal
+            pagination="false"
             :isModal="openModalState"
             :closeModal="IsCloseModal"
             :recordItem="recordItem"
             :fetchData="fetchProducts"
         />
+        <a-pagination
+            v-model:current="currentPage"
+            :total="totalItemPage"
+            show-less-items
+        />
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onBeforeMount } from "vue";
+import { ref, computed, onMounted, watch } from "vue";
 import { useStore } from "vuex";
 import type { TableProps, TableColumnType } from "ant-design-vue";
 import { apiImage } from "@/constant/api";
@@ -97,6 +104,15 @@ const user = computed(() => store.state.user);
 
 const userToken = user.value?.token;
 
+const currentPage = ref<number>(1);
+const totalItemPage = ref(0);
+
+watch(currentPage, (newPage: number, oldPage: number) => {
+    if (newPage !== oldPage) {
+        fetchProducts();
+    }
+});
+
 const data = ref<DataType[]>([]);
 const recordItem = ref<DataType[]>([]);
 const openModalState = ref<boolean>(false);
@@ -107,9 +123,10 @@ const fetchProducts = async () => {
             throw new Error("User token is not available");
         }
         const response = await searchProduct(userToken, {
-            page: 1,
+            page: currentPage.value,
             pageSize: 10,
         });
+        totalItemPage.value = response.totalItems;
         data.value = response.data;
     } catch (error) {
         console.error("Error fetching products:", error);
@@ -120,22 +137,22 @@ onMounted(() => {
     fetchProducts();
 });
 
-const dataSet = computed(() => {
-    return data.value.map((value: any, index: number) => ({
-        key: index + 1,
-        maSanPham: value.maSanPham,
-        tenSanPham: value.tenSanPham,
-        anhDaiDien: apiImage + value.anhDaiDien,
-        giaGiam: value.giaGiam,
-        soLuong: value.soLuong,
-        luotBan: value.luotBan,
-        danhGia: value.danhGia,
-        trongLuong: value.trongLuong,
-        tenDanhMuc: value.tenDanhMuc,
-        tendanhmucuudai: value.tendanhmucuudai,
-        trangThai: value.trangThai,
-    }));
-});
+// const dataSet = computed(() => {
+//     return data.value.map((value: any, index: number) => ({
+//         key: index + 1,
+//         maSanPham: value.maSanPham,
+//         tenSanPham: value.tenSanPham,
+//         anhDaiDien: apiImage + value.anhDaiDien,
+//         giaGiam: value.giaGiam,
+//         soLuong: value.soLuong,
+//         luotBan: value.luotBan,
+//         danhGia: value.danhGia,
+//         trongLuong: value.trongLuong,
+//         tenDanhMuc: value.tenDanhMuc,
+//         tendanhmucuudai: value.tendanhmucuudai,
+//         trangThai: value.trangThai,
+//     }));
+// });
 
 const handleEdit = (item: DataType) => {
     recordItem.value = item;
@@ -243,16 +260,5 @@ const rowSelection: TableProps["rowSelection"] = {
 
 .table_res {
     margin-top: 15px;
-}
-
-.btn_add {
-    background-color: #00cc00 !important;
-    border-color: #00cc00 !important;
-}
-
-.btn_add:hover,
-.btn_add:focus {
-    background-color: #339900 !important;
-    border-color: #339900 !important;
 }
 </style>

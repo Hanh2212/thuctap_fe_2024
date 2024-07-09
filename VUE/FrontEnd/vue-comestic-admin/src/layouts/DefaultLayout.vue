@@ -93,4 +93,20 @@ button {
 .fa-pen-to-square{
     cursor: pointer;
 }
+
+.btn_add {
+    background-color: #00cc00 !important;
+    border-color: #00cc00 !important;
+}
+
+.btn_add:hover,
+.btn_add:focus {
+    background-color: #339900 !important;
+    border-color: #339900 !important;
+}
+
+:where(.css-dev-only-do-not-override-19iuou).ant-pagination{
+    text-align: center;
+    margin-top: 10px;
+}
 </style>

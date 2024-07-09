@@ -37,7 +37,7 @@
                         v-model:value="formState.maDanhMuc"
                         show-search
                         placeholder="Vui lòng chọn danh mục"
-                        :options="options"
+                        :options="optionsCategory"
                         :filter-option="filterOption"
                     ></a-select>
                 </a-form-item>
@@ -56,7 +56,7 @@
                         v-model:value="formState.madanhmucuudai"
                         show-search
                         placeholder="Vui lòng chọn danh mục ưu đãi"
-                        :options="options"
+                        :options="optionsCategoryOffer"
                         :filter-option="filterOption"
                     ></a-select>
                 </a-form-item>
@@ -85,10 +85,10 @@
                     ]"
                 >
                     <a-upload
-                        action="/upload.do"
+                        :custom-request="handleCustomRequestImg"
                         list-type="picture-card"
                         :max-count="1"
-                        v-model:fileList="fileList"
+                        v-model:fileList="formState.anhDaiDien"
                     >
                         <div>
                             <PlusOutlined />
@@ -108,9 +108,9 @@
                     ]"
                 >
                     <a-upload
-                        action="/upload.doa"
+                        :custom-request="handleCustomRequestImgs"
                         list-type="picture-card"
-                        v-model:fileList="fileLists"
+                        v-model:fileList="formState.anhChiTiet"
                         multiple
                     >
                         <div>
@@ -201,7 +201,7 @@
                         v-model:value="formState.maNhaSanXuat"
                         show-search
                         placeholder="Vui lòng chọn nhà sản xuất"
-                        :options="options"
+                        :options="optionsCategoryManufactor"
                         :filter-option="filterOption"
                     ></a-select>
                 </a-form-item>
@@ -220,7 +220,7 @@
                         v-model:value="formState.maNhaPhanPhoi"
                         show-search
                         placeholder="Vui lòng chọn nhà phân phối"
-                        :options="options"
+                        :options="optionsCategoryDistributor"
                         :filter-option="filterOption"
                     ></a-select>
                 </a-form-item>
@@ -265,7 +265,6 @@
                         <ckeditor
                             :editor="editor"
                             v-model="formState.chiTiet"
-                            :config="editorConfig"
                         />
                     </a-form-item>
                 </a-form>
@@ -275,11 +274,19 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, defineProps, defineEmits, reactive, onMounted } from "vue";
+import { ref, defineProps, reactive, onMounted, computed } from "vue";
 import type { SelectProps } from "ant-design-vue";
 import { PlusOutlined } from "@ant-design/icons-vue";
-import { CKEditor } from "@ckeditor/ckeditor5-vue";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import {
+    getCategory,
+    getCategoryOffer,
+    getManufactor,
+    getDistributor,
+} from "@/services/product.service";
+import axios from "axios";
+import { apiImage } from "@/constant/api";
+import { useStore } from "vuex";
 
 interface Props {
     isModal: boolean;
@@ -323,6 +330,12 @@ const props = defineProps<Props>();
 
 const editor = ClassicEditor;
 
+const store = useStore();
+
+const user = computed(() => store.state.user);
+
+const userToken = user.value?.token;
+
 const handleOk = () => {
     // props.closeModal();
     console.log(formState);
@@ -332,41 +345,132 @@ const handleCancel = () => {
     props.closeModal();
 };
 
-const handleChangeCategory = (value: string) => {
-    console.log(`selected ${value}`);
-};
-
 const filterOption = (input: string, option: any) => {
     return option.value.toLowerCase().indexOf(input.toLowerCase()) >= 0;
 };
 
-const options = ref<SelectProps["options"]>([
-    { value: "jack", label: "Jack" },
-    { value: "lucy", label: "Lucy" },
-    { value: "tom", label: "Tom" },
-]);
+let optionsCategory = ref<SelectProps["options"]>([{}]);
 
-const handleChangeCategoryOffer = (value: string) => {
-    console.log(`selected ${value}`);
-};
+async function fetchCategory() {
+    const res = await getCategory();
+    optionsCategory.value = res.map(function (value: any) {
+        return {
+            value: value.maDanhMuc,
+            label: value.tenDanhMuc,
+        };
+    });
+}
 
-const fileList = ref([]);
+onMounted(() => {
+    fetchCategory();
+});
+
+let optionsCategoryOffer = ref<SelectProps["options"]>([{}]);
+
+async function fetchCategoryOffer() {
+    const res = await getCategoryOffer();
+    optionsCategoryOffer.value = res.map(function (value: any) {
+        return {
+            value: value.madanhmucuudai,
+            label: value.tendanhmucuudai,
+        };
+    });
+}
+
+onMounted(() => {
+    fetchCategoryOffer();
+});
+
 const fileLists = ref([]);
 
-const handleUploadImgChange = ({ fileList: newFileList }: any) => {
-    fileList.value = newFileList;
-    console.log(newFileList);
+const handleCustomRequestImg = async ({ file, onSuccess, onError }: any) => {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+        const response = await axios.post(
+            apiImage + "/api-admin/Image/upload",
+            formData,
+            {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    authorization: "Bearer " + userToken,
+                },
+            }
+        );
+
+        if (response.status === 200) {
+            onSuccess(response.data);
+            formState.anhDaiDien = response.data.filePath;
+            console.log(formState.anhDaiDien);
+        } else {
+            onError(new Error("Upload failed"));
+        }
+    } catch (error) {
+        onError(error);
+    }
 };
 
-const handleUploadImgDetailChange = ({ fileLists: newFileList }: any) => {
-    fileLists.value = newFileList;
-    console.log(newFileList);
+const handleCustomRequestImgs = async ({ file, onSuccess, onError }: any) => {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+        const response = await axios.post(
+            apiImage + "/api-admin/Image/upload",
+            formData,
+            {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    authorization: "Bearer " + userToken,
+                },
+            }
+        );
+
+        if (response.status === 200) {
+            onSuccess(response.data);
+            // formState.anhDaiDien = response.data.filePath;
+            console.log(response.data);
+        } else {
+            onError(new Error("Upload failed"));
+        }
+    } catch (error) {
+        onError(error);
+    }
 };
 
-const editorConfig = {
-    toolbar: ["heading", "|", "bold", "italic", "link"],
-    // any other configuration options
-};
+let optionsCategoryManufactor = ref<SelectProps["options"]>([{}]);
+
+async function fetchCategoryManufactor() {
+    const res = await getManufactor();
+    optionsCategoryManufactor.value = res.map(function (value: any) {
+        return {
+            value: value.maNhaSanXuat,
+            label: value.tenHang,
+        };
+    });
+}
+
+onMounted(() => {
+    fetchCategoryManufactor();
+});
+
+let optionsCategoryDistributor = ref<SelectProps["options"]>([{}]);
+
+async function fetchCategoryDistributor() {
+    const res = await getDistributor();
+    console.log(res);
+    optionsCategoryDistributor.value = res.map(function (value: any) {
+        return {
+            value: value.maNhaPhanPhoi,
+            label: value.tenNhaPhanPhoi,
+        };
+    });
+}
+
+onMounted(() => {
+    fetchCategoryDistributor();
+});
 
 onMounted(() => {
     editor

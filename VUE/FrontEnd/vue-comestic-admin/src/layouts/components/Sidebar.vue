@@ -19,18 +19,66 @@
         <div class="menu">
             <router-link to="/" class="button">
                 <i class="fa-solid fa-house"></i>
-                <span class="text">Home</span>
+                <span class="text">Trang chủ</span>
             </router-link>
             <router-link to="/product" class="button">
-                <i class="fa-brands fa-product-hunt"></i>
-                <span class="text">Product</span>
+                <i class="fa-solid fa-shop"></i>
+                <span class="text">Thông tin sản phẩm</span>
+            </router-link>
+            <router-link to="/billsell" class="button">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+                <span class="text">Hoá đơn bán</span>
+            </router-link>
+            <router-link to="/importbill" class="button">
+                <i class="fa-solid fa-file-lines"></i>
+                <span class="text">Hoá đơn nhập</span>
+            </router-link>
+            <router-link to="/news" class="button">
+                <i class="fa-solid fa-newspaper"></i>
+                <span class="text">Tin tức</span>
+            </router-link>
+            <router-link to="/rate" class="button">
+                <i class="fa-solid fa-comments"></i>
+                <span class="text">Đánh giá</span>
+            </router-link>
+            <router-link to="/category" class="button">
+                <i class="fa-solid fa-tag"></i>
+                <span class="text">Danh mục</span>
+            </router-link>
+            <router-link to="/categoryoffer" class="button">
+                <i class="fa-solid fa-tags"></i>
+                <span class="text">Danh mục ưu đãi</span>
+            </router-link>
+            <router-link to="/manufactor" class="button">
+                <i class="fa-solid fa-industry"></i>
+                <span class="text">Hãng sản xuất</span>
+            </router-link>
+            <router-link to="/distributor" class="button">
+                <i class="fa-solid fa-house-chimney-window"></i>
+                <span class="text">Nhà phân phối</span>
+            </router-link>
+            <router-link to="/advertisment" class="button">
+                <i class="fa-brands fa-adversal"></i>
+                <span class="text">Quảng cáo</span>
+            </router-link>
+            <router-link to="/bannerslide" class="button">
+                <i class="fa-solid fa-thumbtack"></i>
+                <span class="text">Banner Slide</span>
+            </router-link>
+            <router-link to="/typeaccount" class="button">
+                <i class="fa-solid fa-user-tag"></i>
+                <span class="text">Loại tài khoản</span>
+            </router-link>
+            <router-link to="/account" class="button">
+                <i class="fa-solid fa-user-gear"></i>
+                <span class="text">Tài khoản</span>
             </router-link>
         </div>
     </aside>
 </template>
 
 <script setup>
-import { ref,defineEmits  } from "vue";
+import { ref, defineEmits } from "vue";
 import logo from "@/assets/logo.jpg";
 
 const is_expanded = ref(localStorage.getItem("is_expanded") === "true");
@@ -45,16 +93,19 @@ const ToggleMenu = () => {
 
 <style lang="scss" scoped>
 aside {
+    overflow: hidden;
+    overflow-y: scroll;
     min-width: 64px;
     max-width: 264px;
     display: flex;
+
+    max-height: 100vh;
     flex-direction: column;
 
     background-color: var(--dark);
     color: var(--light);
 
     width: calc(2rem + 32px);
-    overflow: hidden;
     min-height: 100vh;
     padding: 0.9rem;
     padding-top: 14px;
@@ -117,6 +168,7 @@ aside {
     .button .text {
         opacity: 0;
         transition: opacity 0.3s ease-in-out;
+        white-space: nowrap;
     }
 
     h3 {
@@ -135,10 +187,10 @@ aside {
             text-decoration: none;
 
             transition: 0.2s ease-in-out;
-            padding: 0.5rem 1rem;
+            padding: 1rem 1rem;
 
             i {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
                 color: var(--light);
                 transition: 0.2s ease-in-out;
             }
