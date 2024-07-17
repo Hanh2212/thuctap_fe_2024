@@ -11,29 +11,29 @@ export const searchBillSell = async (
     return res?.data;
 };
 
-export const getAllProduct = async (): Promise<FormProduct> => {
+export const getAllProduct = async (): Promise<FormProduct[]> => {
     const res = await apiClient?.get(`/api-admin/SanPham/get-allsanpham`);
     return res?.data;
 };
 
-export const getDetailBillById = async (id: number): Promise<any> => {
+export const getDetailBillById = async (id: number): Promise<BillSell[]> => {
     const res = await apiClient?.get(
         `/api-admin/HoaDon/getbyid-mahoadon-chitiethoadon/${id}`
     );
     return res?.data;
 };
 
-export const createBillSell = async (data: object): Promise<any> => {
+export const createBillSell = async (data: object): Promise<BillSell> => {
     const res = await apiClient?.post(`/api-admin/HoaDon/create-hoadon`, data);
     return res?.data;
 };
 
-export const updateBillSell = async (data: object): Promise<any> => {
+export const updateBillSell = async (data: object): Promise<BillSell> => {
     const res = await apiClient?.put(`/api-admin/HoaDon/update-hoadon`, data);
     return res?.data;
 };
 
-export const deleteBillSell = async (data: object): Promise<any> => {
+export const deleteBillSell = async (data: object): Promise<BillSell> => {
     const res = await apiClient?.delete(`/api-admin/HoaDon/delete-hoadon`, {
         data: data,
     });

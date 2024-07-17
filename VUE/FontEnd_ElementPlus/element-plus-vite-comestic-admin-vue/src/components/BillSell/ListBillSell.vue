@@ -48,6 +48,7 @@
                 </template>
                 <template #default="scope">
                     <el-button
+                        v-if="scope.row.trangThai != 'Huỷ đơn'"
                         size="small"
                         @click="handleEdit(scope.$index, scope.row)"
                     >

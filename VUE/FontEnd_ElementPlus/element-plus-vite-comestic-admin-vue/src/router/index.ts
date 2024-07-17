@@ -13,6 +13,7 @@ import BillSell from "~/views/BillSell.vue";
 import ListBillSell from "~/components/BillSell/ListBillSell.vue";
 
 import ImportBill from "~/views/ImportBill.vue";
+import ListImportBill from "~/components/ImportBill/ListImportBill.vue";
 
 import News from "~/views/News.vue";
 import ListNews from "~/components/News/ListNews.vue";
@@ -48,6 +49,7 @@ import Login from "~/views/Login.vue";
 
 import AddorEditProduct from "~/components/Product/AddorEditProduct.vue";
 import AddorEditBillSell from "~/components/BillSell/AddorEditBillSell.vue";
+import AddorEditImportBill from "~/components/ImportBill/AddorEditImportBill.vue";
 import AddorEditNews from "~/components/News/AddorEditNews.vue";
 import AddorEditRate from "~/components/Rate/AddorEditRate.vue";
 import AddorEditCategory from "~/components/Category/AddorEditCategory.vue";
@@ -157,6 +159,35 @@ const routes = [
                     breadcrumbName: "Hoá đơn nhập",
                     requiresAuth: true,
                 },
+                children: [
+                    {
+                        path: "",
+                        name: "ListImportBill",
+                        component: ListImportBill,
+                        meta: {
+                            breadcrumbName: "Danh sách",
+                            requiresAuth: true,
+                        },
+                    },
+                    {
+                        path: "add",
+                        name: "AddImportBill",
+                        component: AddorEditImportBill,
+                        meta: {
+                            breadcrumbName: "Thêm hoá đơn nhập",
+                            requiresAuth: true,
+                        },
+                    },
+                    {
+                        path: "edit/:id",
+                        name: "EditImportBill",
+                        component: AddorEditImportBill,
+                        meta: {
+                            breadcrumbName: "Sửa hoá đơn nhập",
+                            requiresAuth: true,
+                        },
+                    },
+                ],
             },
             {
                 path: "news",

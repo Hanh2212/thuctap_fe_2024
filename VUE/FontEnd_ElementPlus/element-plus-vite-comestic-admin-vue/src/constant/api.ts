@@ -32,6 +32,7 @@ export interface Product {
 
 export interface FormProduct {
     maChiTietSanPham?: number;
+    maSanPham?: number;
     maDanhMuc: number;
     madanhmucuudai: number;
     tenSanPham: string;
@@ -60,16 +61,31 @@ export interface ImgDetail {
 }
 
 export interface BillSell {
-    maHoaDon: number;
-    tenTaiKhoan: string;
+    maHoaDon?: number;
+    tenTaiKhoan?: string;
     trangThai: string;
-    ngayTao: Date;
+    ngayTao?: Date;
     tongGia: number;
     tenKH: string;
-    diaChi: string;
+    diaChi?: string;
     email: string;
     sdt: string;
-    diaChiGiaoHang: string;
+    diaChiGiaoHang?: string;
+    maSanPham?: number;
+    soLuong?: number;
+    donGia?: number;
+    tongTien?: number;
+}
+
+export interface TableBillSell {
+    maChiTietHoaDon?: number;
+    stt?: number;
+    maSanPham: number;
+    hinhAnh?: string;
+    soLuong: number | string;
+    originalSoLuong?: number;
+    donGia: number;
+    tongTien: number;
 }
 
 export interface ImportBill {
@@ -182,4 +198,6 @@ export interface FormAccount {
 export interface OptionSelect {
     value: string | number;
     label: string;
+    gia?: number;
+    hinhAnh?: string;
 }
