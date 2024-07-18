@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Bài kiểm tra\\DO_AN_3+BTL_WEB_API_REACTJS_C#\\GATE_WAY_API\\GATEWAY\\GATEWAY.csproj": {}
+    "C:\\Users\\LUU DUC QUANG\\Desktop\\thuctap_fe_2024\\VUE\\BackEnd\\GATE_WAY_API\\GATEWAY\\GATEWAY.csproj": {}
   },
   "projects": {
-    "D:\\Bài kiểm tra\\DO_AN_3+BTL_WEB_API_REACTJS_C#\\GATE_WAY_API\\GATEWAY\\GATEWAY.csproj": {
+    "C:\\Users\\LUU DUC QUANG\\Desktop\\thuctap_fe_2024\\VUE\\BackEnd\\GATE_WAY_API\\GATEWAY\\GATEWAY.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Bài kiểm tra\\DO_AN_3+BTL_WEB_API_REACTJS_C#\\GATE_WAY_API\\GATEWAY\\GATEWAY.csproj",
+        "projectUniqueName": "C:\\Users\\LUU DUC QUANG\\Desktop\\thuctap_fe_2024\\VUE\\BackEnd\\GATE_WAY_API\\GATEWAY\\GATEWAY.csproj",
         "projectName": "GATEWAY",
-        "projectPath": "D:\\Bài kiểm tra\\DO_AN_3+BTL_WEB_API_REACTJS_C#\\GATE_WAY_API\\GATEWAY\\GATEWAY.csproj",
+        "projectPath": "C:\\Users\\LUU DUC QUANG\\Desktop\\thuctap_fe_2024\\VUE\\BackEnd\\GATE_WAY_API\\GATEWAY\\GATEWAY.csproj",
         "packagesPath": "C:\\Users\\LUU DUC QUANG\\.nuget\\packages\\",
-        "outputPath": "D:\\Bài kiểm tra\\DO_AN_3+BTL_WEB_API_REACTJS_C#\\GATE_WAY_API\\GATEWAY\\obj\\",
+        "outputPath": "C:\\Users\\LUU DUC QUANG\\Desktop\\thuctap_fe_2024\\VUE\\BackEnd\\GATE_WAY_API\\GATEWAY\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

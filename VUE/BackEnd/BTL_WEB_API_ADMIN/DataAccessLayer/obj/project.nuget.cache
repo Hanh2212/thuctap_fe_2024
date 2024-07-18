@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8RAZ2AI0W2dQWWJ4uOW9tES8TEFNF3F2aHSGVzz2YcBvhhmtaxPQ7rESnNGIF5x6VailGn+GcIyOuuOyumHVNQ==",
+  "dgSpecHash": "kxRgSVG/vkvga7qYOJ5C4tnW3WNw581eQMx/+J9RMe+6RVlZG7uKMKykMfwI+5ZWYLCHYaPicHkd4UvUbgabCg==",
   "success": true,
-  "projectFilePath": "D:\\Bài kiểm tra\\DO_AN_3+BTL_WEB_API_REACTJS_C#\\BTL_WEB_API_ADMIN\\DataAccessLayer\\DataAccessLayer.csproj",
+  "projectFilePath": "C:\\Users\\LUU DUC QUANG\\Desktop\\thuctap_fe_2024\\VUE\\BackEnd\\BTL_WEB_API_ADMIN\\DataAccessLayer\\DataAccessLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LUU DUC QUANG\\.nuget\\packages\\microsoft.extensions.configuration\\6.0.1\\microsoft.extensions.configuration.6.0.1.nupkg.sha512",
     "C:\\Users\\LUU DUC QUANG\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1FTLPLkkGNzLqALKkuBGnIL5wt735jioXEUYB+KR6MSp58FcEon7hypTVijND8qwVh8O7kbht9uKxDI/iZF1xw==",
+  "dgSpecHash": "g5z7YCAhXS3L8cNf8KDpFdHSBG0PruIaiXadPgxtnFhFZJiOHbosgsmumKzhoVJIUJdY4UgX4+UHS2qxAw2mjw==",
   "success": true,
-  "projectFilePath": "D:\\Bài kiểm tra\\DO_AN_3+BTL_WEB_API_REACTJS_C#\\BTL_WEB_API_ADMIN\\API_MYPHAM_ADMIN\\API_MYPHAM_ADMIN.csproj",
+  "projectFilePath": "C:\\Users\\LUU DUC QUANG\\Desktop\\thuctap_fe_2024\\VUE\\BackEnd\\BTL_WEB_API_ADMIN\\API_MYPHAM_ADMIN\\API_MYPHAM_ADMIN.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LUU DUC QUANG\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.0\\microsoft.aspnetcore.authentication.jwtbearer.6.0.0.nupkg.sha512",
     "C:\\Users\\LUU DUC QUANG\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

@@ -12,7 +12,20 @@
                 prop="tendanhmucuudai"
             />
             <el-table-column label="Nội dung" align="center" prop="noiDung" />
-            <el-table-column label="Trạng thái" align="center" prop="dacBiet" />
+            <el-table-column label="Trạng thái" align="center" prop="dacBiet">
+                <template #default="scope">
+                    <p
+                        :style="{
+                            color:
+                                scope.row.dacBiet === true
+                                    ? '#33CC33'
+                                    : '#CC3333',
+                        }"
+                    >
+                        {{ scope.row.dacBiet === true ? "Hoạt động" : "Tắt" }}
+                    </p>
+                </template>
+            </el-table-column>
             <el-table-column align="right">
                 <template #header>
                     <el-input

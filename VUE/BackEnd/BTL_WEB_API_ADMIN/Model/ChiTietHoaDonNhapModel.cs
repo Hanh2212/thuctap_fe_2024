@@ -23,6 +23,11 @@ namespace Model
     {
         public int Id { get; set; }
         public int MaHoaDon { get; set; }
+        public int? MaNhaPhanPhoi { get; set; }
+        public DateTime? NgayTao { get; set; }
+        public string? KieuThanhToan { get; set; }
+        public int? MaTaiKhoan { get; set; }
+        public Decimal? TongTien { get; set; }
         public string TenSanPham { get; set; }
         public string AnhDaiDien { get; set; }
         public int MaSanPham { get; set; }

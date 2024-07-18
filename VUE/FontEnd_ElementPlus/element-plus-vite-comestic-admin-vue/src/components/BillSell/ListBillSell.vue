@@ -33,11 +33,20 @@
             <el-table-column label="Số điện thoại" align="center" prop="sdt">
             </el-table-column>
             <el-table-column label="Ngày tạo" align="center" prop="ngayTao" />
-            <el-table-column
-                label="Trạng thái"
-                align="center"
-                prop="trangThai"
-            />
+            <el-table-column label="Trạng thái" align="center" prop="trangThai">
+                <template #default="scope">
+                    <p
+                        :style="{
+                            color:
+                                scope.row.trangThai === 'Huỷ đơn'
+                                    ? '#CC3333'
+                                    : '#33CC33',
+                        }"
+                    >
+                        {{ scope.row.trangThai }}
+                    </p>
+                </template>
+            </el-table-column>
             <el-table-column align="right">
                 <template #header>
                     <el-input

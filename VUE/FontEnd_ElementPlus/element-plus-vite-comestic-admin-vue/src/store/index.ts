@@ -11,7 +11,7 @@ export const useUserStore = defineStore("user", {
             mataikhoan: 22,
             sodienthoai: "09837817823",
             taikhoan: "admin",
-            token: "eyJhbGciOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIn0.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJyb2xlIjoiOCIsIm5iZiI6MTcyMDY3MDU1NSwiZXhwIjoxNzIxMjc1MzU1LCJpYXQiOjE3MjA2NzA1NTV9.Zu-vELrw1oUUZivlCw5Y_yc-6aabuNpNrYM79TpIcMQ",
+            token: "eyJhbGciOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIn0.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJyb2xlIjoiOCIsIm5iZiI6MTcyMTI4MTM2NCwiZXhwIjoxNzIxODg2MTY0LCJpYXQiOjE3MjEyODEzNjR9.cZIvgGriKLcRIQ2M9LtXFC7zDgA5HyfJVPwJtTjXNBc",
         },
     }),
     getters: {

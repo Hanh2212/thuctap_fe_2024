@@ -54,11 +54,11 @@
                 align="center"
                 prop="tendanhmucuudai"
             />
-            <el-table-column
-                label="Trạng thái"
-                align="center"
-                prop="trangThai"
-            />
+            <el-table-column label="Trạng thái" align="center" prop="trangThai">
+                <template #default="scope">
+                    <p :style="{color: scope.row.trangThai===true ? '#33CC33' : '#CC3333'}">{{ scope.row.trangThai===true ? "Hoạt động" : "Tắt" }}</p>    
+                </template
+            ></el-table-column>
             <el-table-column align="right">
                 <template #header>
                     <el-input

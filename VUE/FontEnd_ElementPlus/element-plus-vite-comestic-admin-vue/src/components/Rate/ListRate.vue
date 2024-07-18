@@ -48,11 +48,20 @@
                     /> </template
             ></el-table-column>
             <el-table-column label="Thời gian" align="center" prop="thoiGian" />
-            <el-table-column
-                label="Trạng thái"
-                align="center"
-                prop="trangThai"
-            />
+            <el-table-column label="Trạng thái" align="center" prop="trangThai">
+                <template #default="scope">
+                    <p
+                        :style="{
+                            color:
+                                scope.row.trangThai === true
+                                    ? '#33CC33'
+                                    : '#CC3333',
+                        }"
+                    >
+                        {{ scope.row.trangThai === true ? 'Đã mua hàng' : 'Chưa mua hàng' }}
+                    </p>
+                </template>
+            </el-table-column>
             <el-table-column label="Ghi chú" align="center" prop="ghiChu" />
             <el-table-column align="right">
                 <template #header>

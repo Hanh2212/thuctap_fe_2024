@@ -23,7 +23,22 @@
                     <a target="_blank" :href="scope.row.linkQuangCao"> Link </a>
                 </template>
             </el-table-column>
-            <el-table-column label="Trạng thái" align="center" prop="moTa" />
+            <el-table-column label="Trạng thái" align="center" prop="moTa">
+                <template #default="scope">
+                    <p
+                        :style="{
+                            color:
+                                scope.row.moTa === 'true'
+                                    ? '#33CC33'
+                                    : '#CC3333',
+                        }"
+                    >
+                        {{
+                            scope.row.moTa === "true" ? "Bên phải" : "Bên trái"
+                        }}
+                    </p>
+                </template>
+            </el-table-column>
 
             <el-table-column align="right">
                 <!-- <template #header>

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "sf5gvBOWJt8tH4f64+oFHcw4mjWIl1R/Wfm/GnLtTL4=",
+  "Hash": "mDCMY7ZTyRt228SNPKW9Gs/I1LRHOsTgpzSLXAW1aGA=",
   "Source": "API_MYPHAM_ADMIN",
   "BasePath": "_content/API_MYPHAM_ADMIN",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "API_MYPHAM_ADMIN\\wwwroot",
       "Source": "API_MYPHAM_ADMIN",
-      "ContentRoot": "D:\\Bài kiểm tra\\DO_AN_3+BTL_WEB_API_REACTJS_C#\\BTL_WEB_API_ADMIN\\API_MYPHAM_ADMIN\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\LUU DUC QUANG\\Desktop\\thuctap_fe_2024\\VUE\\BackEnd\\BTL_WEB_API_ADMIN\\API_MYPHAM_ADMIN\\wwwroot\\",
       "BasePath": "_content/API_MYPHAM_ADMIN",
       "Pattern": "**"
     }

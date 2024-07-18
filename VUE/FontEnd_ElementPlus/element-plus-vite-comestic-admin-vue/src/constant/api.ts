@@ -89,13 +89,30 @@ export interface TableBillSell {
 }
 
 export interface ImportBill {
-    maHoaDon: number;
-    maNhaPhanPhoi: number;
-    tenNhaPhanPhoi: string;
-    ngayTao: Date;
+    maHoaDon?: number;
+    maNhaPhanPhoi?: number;
+    tenNhaPhanPhoi?: string;
+    ngayTao?: Date;
     kieuThanhToan: string;
+    tongGia: number;
+    tenTaiKhoan?: string;
+    maSanPham?: number;
+    soLuong?: number;
+    donViTinh?: string;
+    donGia?: number;
+    tongTien?: number;
+}
+
+export interface TableImportBill {
+    maChiTietHoaDon?: number;
+    stt?: number;
+    maSanPham: number;
+    hinhAnh?: string;
+    soLuong: number | string;
+    originalSoLuong?: number;
+    donViTinh?: string;
+    donGia: number;
     tongTien: number;
-    tenTaiKhoan: string;
 }
 
 export interface News {

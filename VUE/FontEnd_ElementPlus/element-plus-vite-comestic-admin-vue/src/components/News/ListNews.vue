@@ -23,11 +23,20 @@
             </el-table-column>
             <el-table-column label="Người đăng" align="center" prop="hoTen" />
             <el-table-column label="Lượt xem" align="center" prop="luotXem" />
-            <el-table-column
-                label="Trạng thái"
-                align="center"
-                prop="trangThai"
-            />
+            <el-table-column label="Trạng thái" align="center" prop="trangThai">
+                <template #default="scope">
+                    <p
+                        :style="{
+                            color:
+                                scope.row.trangThai === 'Hiện'
+                                    ? '#33CC33'
+                                    : '#CC3333',
+                        }"
+                    >
+                        {{ scope.row.trangThai }}
+                    </p>
+                </template>
+            </el-table-column>
             <el-table-column align="right">
                 <template #header>
                     <el-input
