@@ -41,11 +41,7 @@
 
 <script setup lang="ts">
 import { reactive, ref, onMounted } from "vue";
-import type {
-    ComponentSize,
-    FormInstance,
-    FormRules,
-} from "element-plus";
+import type { ComponentSize, FormInstance, FormRules } from "element-plus";
 import { Plus } from "@element-plus/icons-vue";
 import { ElMessage } from "element-plus";
 import router from "~/router";
@@ -120,11 +116,11 @@ const rules = reactive<FormRules>({
 
 const fetchById = async (id: number) => {
     const resNewId = await getbyIdDistributor(id);
-    ruleForm.tenNhaPhanPhoi = resNewId.tenNhaPhanPhoi;
-    ruleForm.diaChi = resNewId.diaChi;
-    ruleForm.soDienThoai = resNewId.soDienThoai;
-    ruleForm.linkWeb = resNewId.linkWeb;
-    ruleForm.moTa = resNewId.moTa;
+    ruleForm.tenNhaPhanPhoi = resNewId?.tenNhaPhanPhoi;
+    ruleForm.diaChi = resNewId?.diaChi;
+    ruleForm.soDienThoai = resNewId?.soDienThoai;
+    ruleForm.linkWeb = resNewId?.linkWeb;
+    ruleForm.moTa = resNewId?.moTa;
 };
 
 onMounted(() => {
@@ -141,7 +137,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
         if (valid) {
             if (route.params.id) {
                 await updateDistributor({
-                    MaNhaPhanPhoi: route.params.id,
+                    MaNhaPhanPhoi: Number(route.params.id),
                     TenNhaPhanPhoi: ruleForm.tenNhaPhanPhoi,
                     DiaChi: ruleForm.diaChi,
                     SoDienThoai: ruleForm.soDienThoai,

@@ -329,7 +329,7 @@ const optionsCategory = ref<OptionSelect[]>();
 
 async function fetchCategory() {
     const res = await getCategory();
-    ruleForm.maDanhMuc = Number(res[0].maDanhMuc);
+    ruleForm.maDanhMuc = Number(res[0]?.maDanhMuc);
     optionsCategory.value = res.map(function (value: any) {
         return {
             value: value.maDanhMuc,
@@ -345,7 +345,7 @@ const optionsManufactor = ref<OptionSelect[]>();
 
 async function fetchManufactor() {
     const res = await getManufactor();
-    ruleForm.maNhaSanXuat = Number(res[0].maNhaSanXuat);
+    ruleForm.maNhaSanXuat = Number(res[0]?.maNhaSanXuat);
     optionsManufactor.value = res.map(function (value: any) {
         return {
             value: value.maNhaSanXuat,
@@ -361,7 +361,7 @@ const optionsDistributor = ref<OptionSelect[]>();
 
 async function fetchDistributor() {
     const res = await getDistributor();
-    ruleForm.maNhaPhanPhoi = Number(res[0].maNhaPhanPhoi);
+    ruleForm.maNhaPhanPhoi = Number(res[0]?.maNhaPhanPhoi);
     optionsDistributor.value = res.map(function (value: any) {
         return {
             value: value.maNhaPhanPhoi,
@@ -391,24 +391,24 @@ const fetchImgDetail = async (id: number) => {
 
 const getDetailProduct = async (id: number) => {
     const resDetaiProduct = await getbyIdProduct(id);
-    ruleForm.maChiTietSanPham = resDetaiProduct.maChiTietSanPham;
-    ruleForm.maDanhMuc = resDetaiProduct.maDanhMuc;
-    ruleForm.madanhmucuudai = resDetaiProduct.madanhmucuudai;
-    ruleForm.tenSanPham = resDetaiProduct.tenSanPham;
-    ruleForm.anhDaiDien = resDetaiProduct.anhDaiDien;
-    ruleForm.gianhap = resDetaiProduct.gianhap;
-    ruleForm.gia = resDetaiProduct.gia;
-    ruleForm.giaGiam = resDetaiProduct.giaGiam;
-    ruleForm.soLuong = resDetaiProduct.soLuong;
-    ruleForm.luotBan = resDetaiProduct.luotBan;
-    ruleForm.danhGia = resDetaiProduct.danhGia;
-    ruleForm.trongLuong = resDetaiProduct.trongLuong;
-    ruleForm.trangThai = resDetaiProduct.trangThai;
-    ruleForm.maNhaSanXuat = resDetaiProduct.maNhaSanXuat;
-    ruleForm.maNhaPhanPhoi = resDetaiProduct.maNhaPhanPhoi;
-    ruleForm.xuatXu = resDetaiProduct.xuatXu;
-    ruleForm.moTa = resDetaiProduct.moTa;
-    ruleForm.chiTiet = resDetaiProduct.chiTiet;
+    ruleForm.maChiTietSanPham = resDetaiProduct?.maChiTietSanPham;
+    ruleForm.maDanhMuc = resDetaiProduct?.maDanhMuc;
+    ruleForm.madanhmucuudai = resDetaiProduct?.madanhmucuudai;
+    ruleForm.tenSanPham = resDetaiProduct?.tenSanPham;
+    ruleForm.anhDaiDien = resDetaiProduct?.anhDaiDien;
+    ruleForm.gianhap = resDetaiProduct?.gianhap;
+    ruleForm.gia = resDetaiProduct?.gia;
+    ruleForm.giaGiam = resDetaiProduct?.giaGiam;
+    ruleForm.soLuong = resDetaiProduct?.soLuong;
+    ruleForm.luotBan = resDetaiProduct?.luotBan;
+    ruleForm.danhGia = resDetaiProduct?.danhGia;
+    ruleForm.trongLuong = resDetaiProduct?.trongLuong;
+    ruleForm.trangThai = resDetaiProduct?.trangThai;
+    ruleForm.maNhaSanXuat = resDetaiProduct?.maNhaSanXuat;
+    ruleForm.maNhaPhanPhoi = resDetaiProduct?.maNhaPhanPhoi;
+    ruleForm.xuatXu = resDetaiProduct?.xuatXu;
+    ruleForm.moTa = resDetaiProduct?.moTa;
+    ruleForm.chiTiet = resDetaiProduct?.chiTiet;
 
     fileListAvatar.value = [
         {
@@ -472,7 +472,7 @@ const handleUploadSuccess = async (
 ) => {
     if (route.params.id) {
         await updateProduct({
-            MaSanPham: route.params.id,
+            MaSanPham: Number(route.params.id),
             MaDanhMuc: ruleForm.maDanhMuc,
             Madanhmucuudai: ruleForm.madanhmucuudai,
             TenSanPham: ruleForm.tenSanPham,
@@ -520,7 +520,7 @@ const beforeRemoveImgDetail = async (
         return false;
     }
     await updateProduct({
-        MaSanPham: route.params.id,
+        MaSanPham: Number(route.params.id),
         MaDanhMuc: ruleForm.maDanhMuc,
         Madanhmucuudai: ruleForm.madanhmucuudai,
         TenSanPham: ruleForm.tenSanPham,
@@ -566,7 +566,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
         if (valid) {
             if (route.params.id) {
                 await updateProduct({
-                    MaSanPham: route.params.id,
+                    MaSanPham: Number(route.params.id),
                     MaDanhMuc: ruleForm.maDanhMuc,
                     Madanhmucuudai: ruleForm.madanhmucuudai,
                     TenSanPham: ruleForm.tenSanPham,

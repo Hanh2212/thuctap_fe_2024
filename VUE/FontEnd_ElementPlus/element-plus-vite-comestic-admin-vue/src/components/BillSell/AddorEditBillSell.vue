@@ -325,9 +325,9 @@ const optionsProduct = ref<OptionSelect[]>();
 
 async function fetchProduct() {
     const res = await getAllProduct();
-    ruleForm.maSanPham = Number(res[0].maSanPham);
-    ruleForm.donGia = Number(res[0].giaGiam);
-    ruleForm.tongTien = Number(res[0].giaGiam);
+    ruleForm.maSanPham = Number(res[0]?.maSanPham);
+    ruleForm.donGia = Number(res[0]?.giaGiam);
+    ruleForm.tongTien = Number(res[0]?.giaGiam);
     optionsProduct.value = res.map(function (value: any) {
         return {
             value: value.maSanPham,
@@ -359,12 +359,12 @@ const handleQuantityChange = (value: any) => {
 const fetchById = async (id: number) => {
     try {
         const resNewId = await getDetailBillById(id);
-        (ruleForm.tenKH = resNewId[0].tenKH),
-            (ruleForm.sdt = resNewId[0].sdt),
-            (ruleForm.email = resNewId[0].email),
-            (ruleForm.diaChiGiaoHang = resNewId[0].diaChiGiaoHang),
-            (ruleForm.tongGia = resNewId[0].tongGia),
-            (ruleForm.trangThai = resNewId[0].trangThai);
+        (ruleForm.tenKH = resNewId[0]?.tenKH),
+            (ruleForm.sdt = resNewId[0]?.sdt),
+            (ruleForm.email = resNewId[0]?.email),
+            (ruleForm.diaChiGiaoHang = resNewId[0]?.diaChiGiaoHang),
+            (ruleForm.tongGia = resNewId[0]?.tongGia),
+            (ruleForm.trangThai = resNewId[0]?.trangThai);
 
         const dataTempTable = resNewId.map((value: any, index: number) => {
             return {
@@ -392,14 +392,14 @@ const fetchById = async (id: number) => {
             };
         });
         await updateBillSell({
-            MaHoaDon: route.params.id,
+            MaHoaDon: Number(route.params.id),
             TrangThai: "Huỷ đơn",
             TongGia: String(ruleForm.tongTien).replace(/\./g, ""),
             TenKH: ruleForm.tenKH,
-            DiaChi: ruleForm.diaChiGiaoHang,
+            DiaChi: String(ruleForm.diaChiGiaoHang),
             Email: ruleForm.email,
             SDT: ruleForm.sdt,
-            DiaChiGiaoHang: ruleForm.diaChiGiaoHang,
+            DiaChiGiaoHang: String(ruleForm.diaChiGiaoHang),
             MaTaiKhoan: store.user.mataikhoan,
             list_json_chitiet_hoadon: listitemDeleted,
         });
@@ -420,16 +420,16 @@ const confirmEvent = async (index: number, row: TableBillSell) => {
     try {
         if (route.params.id) {
             await updateBillSell({
-                MaHoaDon: route.params.id,
+                MaHoaDon: Number(route.params.id),
                 TrangThai: ruleForm.trangThai,
                 TongGia:
                     Number(ruleForm.tongGia) -
                     Number(row.soLuong) * Number(row.donGia),
                 TenKH: ruleForm.tenKH,
-                DiaChi: ruleForm.diaChiGiaoHang,
+                DiaChi: String(ruleForm.diaChiGiaoHang),
                 Email: ruleForm.email,
                 SDT: ruleForm.sdt,
-                DiaChiGiaoHang: ruleForm.diaChiGiaoHang,
+                DiaChiGiaoHang: String(ruleForm.diaChiGiaoHang),
                 list_json_chitiet_hoadon: [
                     {
                         MaChiTietHoaDon: row.maChiTietHoaDon,
@@ -466,16 +466,16 @@ const handlerAddDetail = async () => {
             Notification("Sản phẩm đã có, vui lòng tăng số lượng", "warning");
         } else {
             await updateBillSell({
-                MaHoaDon: route.params.id,
+                MaHoaDon: Number(route.params.id),
                 TrangThai: ruleForm.trangThai,
                 TongGia:
                     Number(ruleForm.tongGia) +
                     Number(ruleForm.soLuong) * Number(ruleForm.donGia),
                 TenKH: ruleForm.tenKH,
-                DiaChi: ruleForm.diaChiGiaoHang,
+                DiaChi: String(ruleForm.diaChiGiaoHang),
                 Email: ruleForm.email,
                 SDT: ruleForm.sdt,
-                DiaChiGiaoHang: ruleForm.diaChiGiaoHang,
+                DiaChiGiaoHang: String(ruleForm.diaChiGiaoHang),
                 list_json_chitiet_hoadon: [
                     {
                         MaSanPham: ruleForm.maSanPham,
@@ -528,16 +528,16 @@ const updateTotalPrice = async (row: TableBillSell) => {
             Number(row.soLuong) - Number(previousQuantity);
 
         await updateBillSell({
-            MaHoaDon: route.params.id,
+            MaHoaDon: Number(route.params.id),
             TrangThai: ruleForm.trangThai,
             TongGia:
                 Number(ruleForm.tongGia) +
                 quantityDifference * Number(row.donGia),
             TenKH: ruleForm.tenKH,
-            DiaChi: ruleForm.diaChiGiaoHang,
+            DiaChi: String(ruleForm.diaChiGiaoHang),
             Email: ruleForm.email,
             SDT: ruleForm.sdt,
-            DiaChiGiaoHang: ruleForm.diaChiGiaoHang,
+            DiaChiGiaoHang: String(ruleForm.diaChiGiaoHang),
             list_json_chitiet_hoadon: [
                 {
                     MaChiTietHoaDon: row.maChiTietHoaDon,
@@ -587,28 +587,28 @@ const submitForm = async (formEl: FormInstance | undefined) => {
                         }
                     );
                     await updateBillSell({
-                        MaHoaDon: route.params.id,
+                        MaHoaDon: Number(route.params.id),
                         TrangThai: ruleForm.trangThai,
                         TongGia: String(ruleForm.tongTien).replace(/\./g, ""),
                         TenKH: ruleForm.tenKH,
-                        DiaChi: ruleForm.diaChiGiaoHang,
+                        DiaChi: String(ruleForm.diaChiGiaoHang),
                         Email: ruleForm.email,
                         SDT: ruleForm.sdt,
-                        DiaChiGiaoHang: ruleForm.diaChiGiaoHang,
+                        DiaChiGiaoHang: String(ruleForm.diaChiGiaoHang),
                         MaTaiKhoan: store.user.mataikhoan,
                         list_json_chitiet_hoadon: listitemDeleted,
                     });
                     Notification("Huỷ đơn thành công", "success");
                 } else {
                     await updateBillSell({
-                        MaHoaDon: route.params.id,
+                        MaHoaDon: Number(route.params.id),
                         TrangThai: ruleForm.trangThai,
                         TongGia: String(ruleForm.tongTien).replace(/\./g, ""),
                         TenKH: ruleForm.tenKH,
-                        DiaChi: ruleForm.diaChiGiaoHang,
+                        DiaChi: String(ruleForm.diaChiGiaoHang),
                         Email: ruleForm.email,
                         SDT: ruleForm.sdt,
-                        DiaChiGiaoHang: ruleForm.diaChiGiaoHang,
+                        DiaChiGiaoHang: String(ruleForm.diaChiGiaoHang),
                         MaTaiKhoan: store.user.mataikhoan,
                         list_json_chitiet_hoadon: [
                             {
@@ -639,10 +639,10 @@ const submitForm = async (formEl: FormInstance | undefined) => {
                         TrangThai: "Đang xử lý",
                         TongGia: ruleForm.tongGia,
                         TenKH: ruleForm.tenKH,
-                        DiaChi: ruleForm.diaChiGiaoHang,
+                        DiaChi: String(ruleForm.diaChiGiaoHang),
                         Email: ruleForm.email,
                         SDT: ruleForm.sdt,
-                        DiaChiGiaoHang: ruleForm.diaChiGiaoHang,
+                        DiaChiGiaoHang: String(ruleForm.diaChiGiaoHang),
                         MaTaiKhoan: store.user.mataikhoan,
                         list_json_chitiet_hoadon: listDataProduct,
                     });

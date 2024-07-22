@@ -45,19 +45,17 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
 import { useRouter } from "vue-router";
-import { ElNotification } from "element-plus";
+import { ElMessage } from "element-plus";
 import { login } from "~/services/login.service";
 import { useUserStore } from "~/store";
 
-const openNotificationWithIcon = (
-    type: "Success" | "Warning" | "Info" | "Error",
-    title: string,
-    message: string
+const Notification = (
+    message: string,
+    type: "success" | "warning" | "error"
 ) => {
-    ElNotification({
-        type: "",
-        title: "",
-        message: "",
+    ElMessage({
+        message: message,
+        type: type,
     });
 };
 
@@ -117,24 +115,21 @@ const handleSubmit = async () => {
                         loading.value = false;
                         userStore.setUser(res);
                         router.push("/");
-                        openNotificationWithIcon(
-                            "success",
-                            "Đăng nhập thành công",
-                            `Xin chào, ${res.hoten}`
+                        Notification(
+                            `Đăng nhập thành công. Xin chào, ${res.hoten}`,
+                            "success"
                         );
                     } else {
-                        openNotificationWithIcon(
-                            "warning",
+                        Notification(
                             "Tài khoản khách hàng không thể vào đây!",
-                            ""
+                            "warning"
                         );
                         loading.value = false;
                     }
                 } catch (error) {
-                    openNotificationWithIcon(
-                        "warning",
+                    Notification(
                         "Tài khoản hoặc mật khẩu không chính xác!",
-                        ""
+                        "warning"
                     );
                     loading.value = false;
                 }

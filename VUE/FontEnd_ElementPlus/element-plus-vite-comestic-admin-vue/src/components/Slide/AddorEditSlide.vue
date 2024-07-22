@@ -130,9 +130,9 @@ const handleRemoveImg: UploadProps["onRemove"] = (uploadFile, uploadFiles) => {
 
 const fetchById = async (id: number) => {
     const resNewId = await getbyIdSlide(id);
-    ruleForm.tieuDe = resNewId.tieuDe;
-    ruleForm.linkAnh = resNewId.linkAnh;
-    ruleForm.moTa = resNewId.moTa;
+    ruleForm.tieuDe = resNewId?.tieuDe;
+    ruleForm.linkAnh = resNewId?.linkAnh;
+    ruleForm.moTa = resNewId?.moTa;
 
     fileListImg.value = [
         {
@@ -156,7 +156,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
         if (valid) {
             if (route.params.id) {
                 await updateBannerSlide({
-                    MaAnh: route.params.id,
+                    MaAnh: Number(route.params.id),
                     LinkAnh: ruleForm.linkAnh,
                     TieuDe: ruleForm.tieuDe,
                     MoTa: ruleForm.moTa,

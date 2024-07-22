@@ -25,7 +25,7 @@
             <el-form-item label="Tên tài khoản" prop="tenTaiKhoan">
                 <el-input
                     v-model="ruleForm.tenTaiKhoan"
-                    :disabled="route.params.id"
+                    :disabled="Boolean(route.params.id)"
                 />
             </el-form-item>
 
@@ -191,19 +191,19 @@ const rules = reactive<FormRules>({
 
 const optionsTypeAccount = ref<OptionSelect[]>();
 
-async function fetchCategory() {
+async function fetchTypeAccount() {
     const res = await getAllTypeAccount();
     ruleForm.maLoaitaikhoan = Number(res[0].maLoaitaikhoan);
-    optionsTypeAccount.value = res.map(function (value: any) {
+    optionsTypeAccount.value = res?.map(function ({ maLoaitaikhoan, tenLoai }) {
         return {
-            value: value.maLoaitaikhoan,
-            label: value.tenLoai,
+            value: maLoaitaikhoan || 0,
+            label: tenLoai || "",
         };
     });
 }
 
 onMounted(() => {
-    fetchCategory();
+    fetchTypeAccount();
 });
 
 const uploadProps = {
@@ -227,15 +227,15 @@ const handleRemoveImg: UploadProps["onRemove"] = (uploadFile, uploadFiles) => {
 
 const fetchById = async (id: number) => {
     const resNewId = await getDetailAccount(id);
-    ruleForm.tenTaiKhoan = resNewId[0].tenTaiKhoan;
-    ruleForm.email = resNewId[0].email;
-    ruleForm.hoTen = resNewId[0].hoTen;
-    ruleForm.matKhau = resNewId[0].matKhau;
-    ruleForm.diaChi = resNewId[0].diaChi;
-    ruleForm.soDienThoai = resNewId[0].soDienThoai;
-    ruleForm.maLoaitaikhoan = Number(resNewId[0].maLoaitaikhoan);
-    ruleForm.anhDaiDien = resNewId[0].anhDaiDien;
-    ruleForm.maChitietTaiKhoan = resNewId[0].maChitietTaiKhoan;
+    ruleForm.tenTaiKhoan = resNewId[0]?.tenTaiKhoan || "";
+    ruleForm.email = resNewId[0]?.email || "";
+    ruleForm.hoTen = resNewId[0]?.hoTen || "";
+    ruleForm.matKhau = resNewId[0]?.matKhau || "";
+    ruleForm.diaChi = resNewId[0]?.diaChi || "";
+    ruleForm.soDienThoai = resNewId[0]?.soDienThoai || "";
+    ruleForm.maLoaitaikhoan = Number(resNewId[0]?.maLoaitaikhoan || 0);
+    ruleForm.anhDaiDien = resNewId[0]?.anhDaiDien || "";
+    ruleForm.maChitietTaiKhoan = resNewId[0]?.maChitietTaiKhoan || 0;
 
     fileListImg.value = [
         {
@@ -259,7 +259,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
         if (valid) {
             if (route.params.id) {
                 await updateAccount({
-                    MaTaiKhoan: route.params.id,
+                    MaTaiKhoan: Number(route.params.id),
                     MatKhau: ruleForm.matKhau,
                     Email: ruleForm.email,
                     list_json_chitiet_taikhoan: [

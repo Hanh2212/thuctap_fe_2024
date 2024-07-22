@@ -25,26 +25,18 @@ export interface Product {
     luotBan: number;
     danhGia: number;
     trongLuong: string;
-    tenDanhMuc: string;
-    tendanhmucuudai: string;
+    tenDanhMuc?: string;
+    tendanhmucuudai?: string;
     trangThai: boolean;
 }
 
-export interface FormProduct {
+export interface FormProduct extends Product {
     maChiTietSanPham?: number;
-    maSanPham?: number;
     maDanhMuc: number;
     madanhmucuudai: number;
-    tenSanPham: string;
-    anhDaiDien: string;
     anhChiTiet: ImgDetail[];
     gianhap: number;
     gia: number;
-    giaGiam: number;
-    soLuong: number;
-    luotBan: number;
-    danhGia: number;
-    trongLuong: string;
     trangThai: boolean;
     maNhaSanXuat: number;
     maNhaPhanPhoi: number;

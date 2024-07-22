@@ -1,53 +1,49 @@
 import { Account, FormAccount, ResponseData } from "~/constant/api";
+import { TypeAccountUrl, AccountUrl } from "~/constant/endpoints";
 import { apiClient } from "~/constant/request";
 
 export const getListTypeAccount = async (): Promise<FormAccount> => {
-    const res = await apiClient?.get(
-        `/api-admin/LoaiTaiKhoan/get_all_loaitaikhoan`
-    );
+    const res = await apiClient?.get(`${TypeAccountUrl}/get_all_loaitaikhoan`);
     return res?.data;
 };
 
 export const checkUserNameIsEmpty = async (): Promise<Account[]> => {
-    const res = await apiClient?.get("/api-admin/TaiKhoan/get-alltaikhoan");
+    const res = await apiClient?.get(`${AccountUrl}/get-alltaikhoan`);
     return res?.data;
 };
 
 export const getDetailAccount = async (id: number): Promise<FormAccount[]> => {
     const res = await apiClient?.get(
-        `/api-admin/TaiKhoan/getbyid-taikhoan-chitiettaikhoan/` + id
+        `${AccountUrl}/getbyid-taikhoan-chitiettaikhoan/` + id
     );
     return res?.data;
 };
 
 export const searchAccount = async (
-    data: object
+    data: Record<string, string | number>
 ): Promise<ResponseData<Account>> => {
-    const res = await apiClient?.post(
-        "/api-admin/TaiKhoan/search-taikhoan",
-        data
-    );
+    const res = await apiClient?.post(`${AccountUrl}/search-taikhoan`, data);
     return res?.data;
 };
 
-export const createAccount = async (data: object): Promise<FormAccount> => {
-    const res = await apiClient?.post(
-        `/api-admin/TaiKhoan/create-taikhoan`,
-        data
-    );
+export const createAccount = async (
+    data: Record<string | number, string | number | Array<object>>
+): Promise<FormAccount> => {
+    const res = await apiClient?.post(`${AccountUrl}/create-taikhoan`, data);
     return res?.data;
 };
 
-export const updateAccount = async (data: object): Promise<FormAccount> => {
-    const res = await apiClient?.put(
-        `/api-admin/TaiKhoan/update-taikhoan`,
-        data
-    );
+export const updateAccount = async (
+    data: Record<string | number, string | number | Array<object>>
+): Promise<FormAccount> => {
+    const res = await apiClient?.put(`${AccountUrl}/update-taikhoan`, data);
     return res?.data;
 };
 
-export const deleteAccount = async (data: object): Promise<FormAccount> => {
-    const res = await apiClient?.delete(`/api-admin/TaiKhoan/delete-taikhoan`, {
+export const deleteAccount = async (
+    data: Array<number>
+): Promise<FormAccount> => {
+    const res = await apiClient?.delete(`${AccountUrl}/delete-taikhoan`, {
         data: data,
     });
     return res?.data;

@@ -1,5 +1,5 @@
 <template>
-    <el-card class="card_content">
+    <el-card class="card_content" v-loading="loading">
         <div class="button_add">
             <el-button @click="handlerAdd" type="primary"
                 ><el-icon><CirclePlus /></el-icon
@@ -55,14 +55,7 @@
                 </template>
             </el-table-column>
         </el-table>
-        <div
-            style="
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                padding: 10px 0;
-            "
-        >
+        <div class="pagination_wrapper">
             <el-pagination
                 background
                 layout="prev, pager, next"
@@ -86,11 +79,12 @@ import {
 import router from "~/router";
 import { ElMessage } from "element-plus";
 
-const search = ref<string>("");
+const search = ref("");
+const loading = ref(false);
 
 const tableData = ref<Distributor[]>([]);
 
-const currentPage = ref<number>(1);
+const currentPage = ref(1);
 const totalItemPage = ref(0);
 
 const Notification = (
@@ -124,27 +118,22 @@ const confirmEvent = async (Id: number) => {
     }
 };
 
-const fetchData = async (searchTerm: string = "") => {
+const fetchData = async (searchTerm = "") => {
+    loading.value = true;
     try {
-        const res = await searchDistributor({
+        const payLoad = {
             page: currentPage.value,
             pageSize: 10,
             TenNhaPhanPhoi: searchTerm,
-        });
+        };
+        const res = await searchDistributor(payLoad);
         totalItemPage.value = res.totalItems;
-        tableData.value = res.data.map(function (value: Distributor) {
-            return {
-                maNhaPhanPhoi: value.maNhaPhanPhoi,
-                tenNhaPhanPhoi: value.tenNhaPhanPhoi,
-                diaChi: value.diaChi,
-                soDienThoai: value.soDienThoai,
-                linkWeb: value.linkWeb,
-                moTa: value.moTa,
-            };
-        });
+        tableData.value = res.data;
     } catch (error) {
         console.error("Error fetching:", error);
         tableData.value = [];
+    } finally {
+        loading.value = false;
     }
 };
 
@@ -200,5 +189,12 @@ const handlerAdd = () => {
 .rate_product_star {
     color: #ffcc00;
     font-size: 20px;
+}
+
+.pagination_wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
 }
 </style>

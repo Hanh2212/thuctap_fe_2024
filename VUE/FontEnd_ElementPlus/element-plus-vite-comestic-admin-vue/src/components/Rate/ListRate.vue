@@ -1,5 +1,5 @@
 <template>
-    <el-card class="card_content">
+    <el-card class="card_content" v-loading="loading">
         <el-table :data="tableData" class="table_content">
             <el-table-column label="Người dùng" align="center" prop="hoTen" />
             <el-table-column
@@ -58,7 +58,11 @@
                                     : '#CC3333',
                         }"
                     >
-                        {{ scope.row.trangThai === true ? 'Đã mua hàng' : 'Chưa mua hàng' }}
+                        {{
+                            scope.row.trangThai === true
+                                ? "Đã mua hàng"
+                                : "Chưa mua hàng"
+                        }}
                     </p>
                 </template>
             </el-table-column>
@@ -94,14 +98,7 @@
                 </template>
             </el-table-column>
         </el-table>
-        <div
-            style="
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                padding: 10px 0;
-            "
-        >
+        <div class="pagination_wrapper">
             <el-pagination
                 background
                 layout="prev, pager, next"
@@ -122,11 +119,12 @@ import { deleteRate, searchRate } from "~/services/rate.service";
 import router from "~/router";
 import { ElMessage } from "element-plus";
 
-const search = ref<string>("");
+const search = ref("");
+const loading = ref(false);
 
 const tableData = ref<Rate[]>([]);
 
-const currentPage = ref<number>(1);
+const currentPage = ref(1);
 const totalItemPage = ref(0);
 
 const Notification = (
@@ -149,45 +147,22 @@ const handleEdit = (index: number, row: Rate) => {
     router.push(`/rate/edit/${row.maDanhGia}`);
 };
 
-const confirmEvent = async (Id: number) => {
+const fetchData = async (searchTerm = "") => {
+    loading.value = true;
     try {
-        await deleteRate([Id]);
-        Notification("Xoá thành công", "success");
-        fetchData(search.value);
-    } catch (error) {
-        console.error("Error deleting =:", error);
-        Notification("Lỗi khi xoá =", "error");
-    }
-};
-
-const fetchData = async (searchTerm: string = "") => {
-    try {
-        const res = await searchRate({
+        const payLoad = {
             page: currentPage.value,
             pageSize: 10,
             NoiDung: searchTerm,
-        });
+        };
+        const res = await searchRate(payLoad);
         totalItemPage.value = res.totalItems;
-        tableData.value = res.data.map(function (value: Rate) {
-            return {
-                maDanhGia: value.maDanhGia,
-                maSanPham: value.maSanPham,
-                maTaiKhoan: value.maTaiKhoan,
-                anhDanhGia: value.anhDanhGia,
-                chatLuong: value.chatLuong,
-                noiDung: value.noiDung,
-                trangThai: value.trangThai,
-                thoiGian: value.thoiGian,
-                ghiChu: value.ghiChu,
-                tenSanPham: value.tenSanPham,
-                hoTen: value.hoTen,
-                tenTaiKhoan: value.tenTaiKhoan,
-                soDienThoai: value.soDienThoai,
-            };
-        });
+        tableData.value = res.data;
     } catch (error) {
         console.error("Error fetching:", error);
         tableData.value = [];
+    } finally {
+        loading.value = false;
     }
 };
 
@@ -239,5 +214,12 @@ onMounted(() => {
 .rate_product_star {
     color: #ffcc00;
     font-size: 20px;
+}
+
+.pagination_wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
 }
 </style>

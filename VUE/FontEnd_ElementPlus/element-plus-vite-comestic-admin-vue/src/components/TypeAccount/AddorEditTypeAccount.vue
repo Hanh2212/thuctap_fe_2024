@@ -85,8 +85,8 @@ const rules = reactive<FormRules>({
 
 const fetchById = async (id: number) => {
     const resNewId = await getbyIdTypeAccount(id);
-    ruleForm.tenLoai = resNewId.tenLoai;
-    ruleForm.moTa = resNewId.moTa;
+    ruleForm.tenLoai = resNewId?.tenLoai;
+    ruleForm.moTa = resNewId?.moTa;
 };
 
 onMounted(() => {
@@ -103,7 +103,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
         if (valid) {
             if (route.params.id) {
                 await updateTypeAccount({
-                    MaLoaitaikhoan: route.params.id,
+                    MaLoaitaikhoan: Number(route.params.id),
                     TenLoai: ruleForm.tenLoai,
                     MoTa: ruleForm.moTa,
                 });

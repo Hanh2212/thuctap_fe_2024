@@ -33,7 +33,7 @@ const breadcrumbs = computed(() => {
 });
 </script>
 
-<style>
+<style lang="scss">
 #app {
     text-align: center;
     color: var(--ep-text-color-primary);

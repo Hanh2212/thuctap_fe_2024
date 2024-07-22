@@ -1,0 +1,14 @@
+export const UserUrl = "/api-admin/User";
+export const TypeAccountUrl = "/api-admin/LoaiTaiKhoan";
+export const AccountUrl = "/api-admin/TaiKhoan";
+export const AdvertisementUrl = "/api-admin/QuangCao";
+export const BillSellUrl = "/api-admin/HoaDon";
+export const ProductUrl = "/api-admin/SanPham";
+export const CategoryUrl = "/api-admin/DanhMuc";
+export const CategoryOfferUrl = "/api-admin/DanhMucUuDai";
+export const DistributorUrl = "/api-admin/NhaPhanPhoi";
+export const ManufactorUrl = "/api-admin/HangSanXuat";
+export const ImportBillUrl = "/api-admin/HoaDonNhap";
+export const NewUrl = "/api-admin/TinTuc";
+export const RateUrl = "/api-admin/DanhGia";
+export const SlideUrl = "/api-admin/SlideDetail";

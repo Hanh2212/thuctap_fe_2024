@@ -1,5 +1,5 @@
 <template>
-    <el-card class="card_content">
+    <el-card class="card_content" v-loading="loading">
         <div class="button_add">
             <el-button @click="handlerAdd" type="primary"
                 ><el-icon><CirclePlus /></el-icon>
@@ -56,9 +56,18 @@
             />
             <el-table-column label="Trạng thái" align="center" prop="trangThai">
                 <template #default="scope">
-                    <p :style="{color: scope.row.trangThai===true ? '#33CC33' : '#CC3333'}">{{ scope.row.trangThai===true ? "Hoạt động" : "Tắt" }}</p>    
-                </template
-            ></el-table-column>
+                    <p
+                        :style="{
+                            color:
+                                scope.row.trangThai === true
+                                    ? '#33CC33'
+                                    : '#CC3333',
+                        }"
+                    >
+                        {{ scope.row.trangThai === true ? "Hoạt động" : "Tắt" }}
+                    </p>
+                </template></el-table-column
+            >
             <el-table-column align="right">
                 <template #header>
                     <el-input
@@ -91,14 +100,7 @@
                 </template>
             </el-table-column>
         </el-table>
-        <div
-            style="
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                padding: 10px 0;
-            "
-        >
+        <div class="pagination_wrapper">
             <el-pagination
                 background
                 layout="prev, pager, next"
@@ -130,11 +132,12 @@ const Notification = (
     });
 };
 
-const search = ref<string>("");
+const search = ref("");
+const loading = ref(false);
 
 const tableData = ref<Product[]>([]);
 
-const currentPage = ref<number>(1);
+const currentPage = ref(1);
 const totalItemPage = ref(0);
 
 watch(currentPage, (newPage: number, oldPage: number) => {
@@ -158,32 +161,22 @@ const confirmEvent = async (Id: number) => {
     }
 };
 
-const fetchData = async (searchTerm: string = "") => {
+const fetchData = async (searchTerm = "") => {
+    loading.value = true;
     try {
-        const res = await searchProduct({
+        const payLoad = {
             page: currentPage.value,
             pageSize: 10,
             TenSanPham: searchTerm,
-        });
+        };
+        const res = await searchProduct(payLoad);
         totalItemPage.value = res.totalItems;
-        tableData.value = res.data.map(function (value: Product) {
-            return {
-                maSanPham: value.maSanPham,
-                tenSanPham: value.tenSanPham,
-                anhDaiDien: value.anhDaiDien,
-                giaGiam: value.giaGiam,
-                soLuong: value.soLuong,
-                luotBan: value.luotBan,
-                danhGia: value.danhGia,
-                trongLuong: value.trongLuong,
-                tenDanhMuc: value.tenDanhMuc,
-                tendanhmucuudai: value.tendanhmucuudai,
-                trangThai: value.trangThai,
-            };
-        });
+        tableData.value = res.data;
     } catch (error) {
         console.error("Error fetching:", error);
         tableData.value = [];
+    } finally {
+        loading.value = false;
     }
 };
 
@@ -239,5 +232,12 @@ const handlerAdd = () => {
 .rate_product_star {
     color: #ffcc00;
     font-size: 20px;
+}
+
+.pagination_wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
 }
 </style>

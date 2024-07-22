@@ -4,62 +4,9 @@ import { useUserStore } from "~/store";
 import DefaultLayout from "~/layouts/DefaultLayout.vue";
 import OnlyChildren from "~/layouts/OnlyChildren.vue";
 
-import Home from "~/views/Home.vue";
-
-import Product from "~/views/Product.vue";
-import ListProduct from "~/components/Product/ListProduct.vue";
-
-import BillSell from "~/views/BillSell.vue";
-import ListBillSell from "~/components/BillSell/ListBillSell.vue";
-
-import ImportBill from "~/views/ImportBill.vue";
-import ListImportBill from "~/components/ImportBill/ListImportBill.vue";
-
-import News from "~/views/News.vue";
-import ListNews from "~/components/News/ListNews.vue";
-
-import Rate from "~/views/Rate.vue";
-import ListRate from "~/components/Rate/ListRate.vue";
-
-import Category from "~/views/Category.vue";
-import ListCategory from "~/components/Category/ListCategory.vue";
-
-import CategoryOffer from "~/views/CategoryOffer.vue";
-import ListCategoryOffer from "~/components/CategoryOffer/ListCategoryOffer.vue";
-
-import Manufactor from "~/views/Manufactor.vue";
-import ListManufactor from "~/components/Manufactor/ListManufactor.vue";
-
-import Distributor from "~/views/Distributor.vue";
-import ListDistributor from "~/components/Distributor/ListDistributor.vue";
-
-import Advertisement from "~/views/Advertisement.vue";
-import ListAdvertisement from "~/components/Advertisement/ListAdvertisement.vue";
-
-import Slide from "~/views/Slide.vue";
-import ListSlide from "~/components/Slide/ListSlide.vue";
-
-import TypeAccount from "~/views/TypeAccount.vue";
-import ListTypeAccount from "~/components/TypeAccount/ListTypeAccount.vue";
-
-import Account from "~/views/Account.vue";
-import ListAccount from "~/components/Account/ListAccount.vue";
+import LayoutView from "~/views/LayoutView.vue";
 
 import Login from "~/views/Login.vue";
-
-import AddorEditProduct from "~/components/Product/AddorEditProduct.vue";
-import AddorEditBillSell from "~/components/BillSell/AddorEditBillSell.vue";
-import AddorEditImportBill from "~/components/ImportBill/AddorEditImportBill.vue";
-import AddorEditNews from "~/components/News/AddorEditNews.vue";
-import AddorEditRate from "~/components/Rate/AddorEditRate.vue";
-import AddorEditCategory from "~/components/Category/AddorEditCategory.vue";
-import AddorEditCategoryOffer from "~/components/CategoryOffer/AddorEditCategoryOffer.vue";
-import AddorEditManufactor from "~/components/Manufactor/AddorEditManufactor.vue";
-import AddorEditDistributor from "~/components/Distributor/AddorEditDistributor.vue";
-import AddorEditAdvertisement from "~/components/Advertisement/AddorEditAdvertisement.vue";
-import AddorEditSlide from "~/components/Slide/AddorEditSlide.vue";
-import AddorEditTypeAccount from "~/components/TypeAccount/AddorEditTypeAccount.vue";
-import AddorEditAccount from "~/components/Account/AddorEditAccount.vue";
 
 const routes = [
     {
@@ -69,7 +16,7 @@ const routes = [
             {
                 path: "",
                 name: "Home",
-                component: Home,
+                component: () => import("~/views/Home.vue"),
                 meta: {
                     breadcrumbName: "Tổng quan",
                     requiresAuth: true,
@@ -78,7 +25,7 @@ const routes = [
             {
                 path: "product",
                 name: "Product",
-                component: Product,
+                component: LayoutView,
                 meta: {
                     breadcrumbName: "Thông tin sản phẩm",
                     requiresAuth: true,
@@ -87,7 +34,8 @@ const routes = [
                     {
                         path: "",
                         name: "ListProduct",
-                        component: ListProduct,
+                        component: () =>
+                            import("~/components/Product/ListProduct.vue"),
                         meta: {
                             breadcrumbName: "Danh sách",
                             requiresAuth: true,
@@ -96,7 +44,8 @@ const routes = [
                     {
                         path: "add",
                         name: "AddProduct",
-                        component: AddorEditProduct,
+                        component: () =>
+                            import("~/components/Product/AddorEditProduct.vue"),
                         meta: {
                             breadcrumbName: "Thêm sản phẩm",
                             requiresAuth: true,
@@ -105,7 +54,8 @@ const routes = [
                     {
                         path: "edit/:id",
                         name: "EditProduct",
-                        component: AddorEditProduct,
+                        component: () =>
+                            import("~/components/Product/AddorEditProduct.vue"),
                         meta: {
                             breadcrumbName: "Sửa sản phẩm",
                             requiresAuth: true,
@@ -116,7 +66,7 @@ const routes = [
             {
                 path: "billsell",
                 name: "BillSell",
-                component: BillSell,
+                component: LayoutView,
                 meta: {
                     breadcrumbName: "Hoá đơn bán",
                     requiresAuth: true,
@@ -125,7 +75,8 @@ const routes = [
                     {
                         path: "",
                         name: "ListBillSell",
-                        component: ListBillSell,
+                        component: () =>
+                            import("~/components/BillSell/ListBillSell.vue"),
                         meta: {
                             breadcrumbName: "Danh sách",
                             requiresAuth: true,
@@ -134,7 +85,10 @@ const routes = [
                     {
                         path: "add",
                         name: "AddBillSell",
-                        component: AddorEditBillSell,
+                        component: () =>
+                            import(
+                                "~/components/BillSell/AddorEditBillSell.vue"
+                            ),
                         meta: {
                             breadcrumbName: "Thêm hoá đơn bán",
                             requiresAuth: true,
@@ -143,7 +97,10 @@ const routes = [
                     {
                         path: "edit/:id",
                         name: "EditBillSell",
-                        component: AddorEditBillSell,
+                        component: () =>
+                            import(
+                                "~/components/BillSell/AddorEditBillSell.vue"
+                            ),
                         meta: {
                             breadcrumbName: "Sửa hoá đơn bán",
                             requiresAuth: true,
@@ -154,7 +111,7 @@ const routes = [
             {
                 path: "importbill",
                 name: "ImportBill",
-                component: ImportBill,
+                component: LayoutView,
                 meta: {
                     breadcrumbName: "Hoá đơn nhập",
                     requiresAuth: true,
@@ -163,7 +120,10 @@ const routes = [
                     {
                         path: "",
                         name: "ListImportBill",
-                        component: ListImportBill,
+                        component: () =>
+                            import(
+                                "~/components/ImportBill/ListImportBill.vue"
+                            ),
                         meta: {
                             breadcrumbName: "Danh sách",
                             requiresAuth: true,
@@ -172,7 +132,10 @@ const routes = [
                     {
                         path: "add",
                         name: "AddImportBill",
-                        component: AddorEditImportBill,
+                        component: () =>
+                            import(
+                                "~/components/ImportBill/AddorEditImportBill.vue"
+                            ),
                         meta: {
                             breadcrumbName: "Thêm hoá đơn nhập",
                             requiresAuth: true,
@@ -181,7 +144,10 @@ const routes = [
                     {
                         path: "edit/:id",
                         name: "EditImportBill",
-                        component: AddorEditImportBill,
+                        component: () =>
+                            import(
+                                "~/components/ImportBill/AddorEditImportBill.vue"
+                            ),
                         meta: {
                             breadcrumbName: "Sửa hoá đơn nhập",
                             requiresAuth: true,
@@ -192,7 +158,7 @@ const routes = [
             {
                 path: "news",
                 name: "News",
-                component: News,
+                component: LayoutView,
                 meta: {
                     breadcrumbName: "Tin tức",
                     requiresAuth: true,
@@ -201,7 +167,8 @@ const routes = [
                     {
                         path: "",
                         name: "ListNews",
-                        component: ListNews,
+                        component: () =>
+                            import("~/components/News/ListNews.vue"),
                         meta: {
                             breadcrumbName: "Danh sách",
                             requiresAuth: true,
@@ -210,7 +177,8 @@ const routes = [
                     {
                         path: "add",
                         name: "AddNews",
-                        component: AddorEditNews,
+                        component: () =>
+                            import("~/components/News/AddorEditNews.vue"),
                         meta: {
                             breadcrumbName: "Thêm tin tức",
                             requiresAuth: true,
@@ -219,7 +187,8 @@ const routes = [
                     {
                         path: "edit/:id",
                         name: "EditNews",
-                        component: AddorEditNews,
+                        component: () =>
+                            import("~/components/News/AddorEditNews.vue"),
                         meta: {
                             breadcrumbName: "Sửa tin tức",
                             requiresAuth: true,
@@ -230,7 +199,7 @@ const routes = [
             {
                 path: "rate",
                 name: "Rate",
-                component: Rate,
+                component: LayoutView,
                 meta: {
                     breadcrumbName: "Đánh giá",
                     requiresAuth: true,
@@ -239,7 +208,8 @@ const routes = [
                     {
                         path: "",
                         name: "ListRate",
-                        component: ListRate,
+                        component: () =>
+                            import("~/components/Rate/ListRate.vue"),
                         meta: {
                             breadcrumbName: "Danh sách",
                             requiresAuth: true,
@@ -248,7 +218,8 @@ const routes = [
                     {
                         path: "edit/:id",
                         name: "EditRate",
-                        component: AddorEditRate,
+                        component: () =>
+                            import("~/components/Rate/AddorEditRate.vue"),
                         meta: {
                             breadcrumbName: "Sửa đánh giá",
                             requiresAuth: true,
@@ -259,7 +230,7 @@ const routes = [
             {
                 path: "category",
                 name: "Category",
-                component: Category,
+                component: LayoutView,
                 meta: {
                     breadcrumbName: "Danh mục",
                     requiresAuth: true,
@@ -268,7 +239,8 @@ const routes = [
                     {
                         path: "",
                         name: "ListCategory",
-                        component: ListCategory,
+                        component: () =>
+                            import("~/components/Category/ListCategory.vue"),
                         meta: {
                             breadcrumbName: "Danh sách",
                             requiresAuth: true,
@@ -277,7 +249,10 @@ const routes = [
                     {
                         path: "add",
                         name: "AddCategory",
-                        component: AddorEditCategory,
+                        component: () =>
+                            import(
+                                "~/components/Category/AddorEditCategory.vue"
+                            ),
                         meta: {
                             breadcrumbName: "Thêm danh mục",
                             requiresAuth: true,
@@ -286,7 +261,10 @@ const routes = [
                     {
                         path: "edit/:id",
                         name: "EditCategory",
-                        component: AddorEditCategory,
+                        component: () =>
+                            import(
+                                "~/components/Category/AddorEditCategory.vue"
+                            ),
                         meta: {
                             breadcrumbName: "Sửa danh mục",
                             requiresAuth: true,
@@ -297,7 +275,7 @@ const routes = [
             {
                 path: "categoryoffer",
                 name: "CategoryOffer",
-                component: CategoryOffer,
+                component: LayoutView,
                 meta: {
                     breadcrumbName: "Danh mục ưu đãi",
                     requiresAuth: true,
@@ -306,7 +284,10 @@ const routes = [
                     {
                         path: "",
                         name: "ListCategoryOffer",
-                        component: ListCategoryOffer,
+                        component: () =>
+                            import(
+                                "~/components/CategoryOffer/ListCategoryOffer.vue"
+                            ),
                         meta: {
                             breadcrumbName: "Danh sách",
                             requiresAuth: true,
@@ -315,7 +296,10 @@ const routes = [
                     {
                         path: "add",
                         name: "AddCategoryOffer",
-                        component: AddorEditCategoryOffer,
+                        component: () =>
+                            import(
+                                "~/components/CategoryOffer/AddorEditCategoryOffer.vue"
+                            ),
                         meta: {
                             breadcrumbName: "Thêm danh mục ưu đãi",
                             requiresAuth: true,
@@ -324,7 +308,10 @@ const routes = [
                     {
                         path: "edit/:id",
                         name: "EditCategoryOffer",
-                        component: AddorEditCategoryOffer,
+                        component: () =>
+                            import(
+                                "~/components/CategoryOffer/AddorEditCategoryOffer.vue"
+                            ),
                         meta: {
                             breadcrumbName: "Sửa danh mục ưu đãi",
                             requiresAuth: true,
@@ -335,7 +322,7 @@ const routes = [
             {
                 path: "manufactor",
                 name: "Manufactor",
-                component: Manufactor,
+                component: LayoutView,
                 meta: {
                     breadcrumbName: "Hãng sản xuất",
                     requiresAuth: true,
@@ -344,7 +331,10 @@ const routes = [
                     {
                         path: "",
                         name: "ListManufactor",
-                        component: ListManufactor,
+                        component: () =>
+                            import(
+                                "~/components/Manufactor/ListManufactor.vue"
+                            ),
                         meta: {
                             breadcrumbName: "Danh sách",
                             requiresAuth: true,
@@ -353,7 +343,10 @@ const routes = [
                     {
                         path: "add",
                         name: "AddManufactor",
-                        component: AddorEditManufactor,
+                        component: () =>
+                            import(
+                                "~/components/Manufactor/AddorEditManufactor.vue"
+                            ),
                         meta: {
                             breadcrumbName: "Thêm hãng sản xuất",
                             requiresAuth: true,
@@ -362,7 +355,10 @@ const routes = [
                     {
                         path: "edit/:id",
                         name: "EditManufactor",
-                        component: AddorEditManufactor,
+                        component: () =>
+                            import(
+                                "~/components/Manufactor/AddorEditManufactor.vue"
+                            ),
                         meta: {
                             breadcrumbName: "Sửa hãng sản xuất",
                             requiresAuth: true,
@@ -373,7 +369,7 @@ const routes = [
             {
                 path: "distributor",
                 name: "Distributor",
-                component: Distributor,
+                component: LayoutView,
                 meta: {
                     breadcrumbName: "Nhà phân phối",
                     requiresAuth: true,
@@ -382,7 +378,10 @@ const routes = [
                     {
                         path: "",
                         name: "ListDistributor",
-                        component: ListDistributor,
+                        component: () =>
+                            import(
+                                "~/components/Distributor/ListDistributor.vue"
+                            ),
                         meta: {
                             breadcrumbName: "Danh sách",
                             requiresAuth: true,
@@ -391,7 +390,10 @@ const routes = [
                     {
                         path: "add",
                         name: "AddDistributor",
-                        component: AddorEditDistributor,
+                        component: () =>
+                            import(
+                                "~/components/Distributor/AddorEditDistributor.vue"
+                            ),
                         meta: {
                             breadcrumbName: "Thêm nhà phân phối",
                             requiresAuth: true,
@@ -400,7 +402,10 @@ const routes = [
                     {
                         path: "edit/:id",
                         name: "EditDistributor",
-                        component: AddorEditDistributor,
+                        component: () =>
+                            import(
+                                "~/components/Distributor/AddorEditDistributor.vue"
+                            ),
                         meta: {
                             breadcrumbName: "Sửa nhà phân phối",
                             requiresAuth: true,
@@ -411,7 +416,7 @@ const routes = [
             {
                 path: "advertisement",
                 name: "Advertisement",
-                component: Advertisement,
+                component: LayoutView,
                 meta: {
                     breadcrumbName: "Quảng cáo",
                     requiresAuth: true,
@@ -420,7 +425,10 @@ const routes = [
                     {
                         path: "",
                         name: "ListAdvertisement",
-                        component: ListAdvertisement,
+                        component: () =>
+                            import(
+                                "~/components/Advertisement/ListAdvertisement.vue"
+                            ),
                         meta: {
                             breadcrumbName: "Danh sách",
                             requiresAuth: true,
@@ -429,7 +437,10 @@ const routes = [
                     {
                         path: "add",
                         name: "AddAdvertisement",
-                        component: AddorEditAdvertisement,
+                        component: () =>
+                            import(
+                                "~/components/Advertisement/AddorEditAdvertisement.vue"
+                            ),
                         meta: {
                             breadcrumbName: "Thêm quảng cáo",
                             requiresAuth: true,
@@ -438,7 +449,10 @@ const routes = [
                     {
                         path: "edit/:id",
                         name: "EditAdvertisement",
-                        component: AddorEditAdvertisement,
+                        component: () =>
+                            import(
+                                "~/components/Advertisement/AddorEditAdvertisement.vue"
+                            ),
                         meta: {
                             breadcrumbName: "Sửa quảng cáo",
                             requiresAuth: true,
@@ -449,7 +463,7 @@ const routes = [
             {
                 path: "slide",
                 name: "Slide",
-                component: Slide,
+                component: LayoutView,
                 meta: {
                     breadcrumbName: "Slide",
                     requiresAuth: true,
@@ -458,7 +472,8 @@ const routes = [
                     {
                         path: "",
                         name: "ListSlide",
-                        component: ListSlide,
+                        component: () =>
+                            import("~/components/Slide/ListSlide.vue"),
                         meta: {
                             breadcrumbName: "Danh sách",
                             requiresAuth: true,
@@ -467,7 +482,8 @@ const routes = [
                     {
                         path: "add",
                         name: "AddSlide",
-                        component: AddorEditSlide,
+                        component: () =>
+                            import("~/components/Slide/AddorEditSlide.vue"),
                         meta: {
                             breadcrumbName: "Thêm slide",
                             requiresAuth: true,
@@ -476,7 +492,8 @@ const routes = [
                     {
                         path: "edit/:id",
                         name: "EditSlide",
-                        component: AddorEditSlide,
+                        component: () =>
+                            import("~/components/Slide/AddorEditSlide.vue"),
                         meta: {
                             breadcrumbName: "Sửa slide",
                             requiresAuth: true,
@@ -487,7 +504,7 @@ const routes = [
             {
                 path: "typeaccount",
                 name: "TypeAccount",
-                component: TypeAccount,
+                component: LayoutView,
                 meta: {
                     breadcrumbName: "Loại tài khoản",
                     requiresAuth: true,
@@ -496,7 +513,10 @@ const routes = [
                     {
                         path: "",
                         name: "ListTypeAccount",
-                        component: ListTypeAccount,
+                        component: () =>
+                            import(
+                                "~/components/TypeAccount/ListTypeAccount.vue"
+                            ),
                         meta: {
                             breadcrumbName: "Danh sách",
                             requiresAuth: true,
@@ -505,7 +525,10 @@ const routes = [
                     {
                         path: "add",
                         name: "AddTypeAccount",
-                        component: AddorEditTypeAccount,
+                        component: () =>
+                            import(
+                                "~/components/TypeAccount/AddorEditTypeAccount.vue"
+                            ),
                         meta: {
                             breadcrumbName: "Thêm loại tài khoản",
                             requiresAuth: true,
@@ -514,7 +537,10 @@ const routes = [
                     {
                         path: "edit/:id",
                         name: "EditTypeAccount",
-                        component: AddorEditTypeAccount,
+                        component: () =>
+                            import(
+                                "~/components/TypeAccount/AddorEditTypeAccount.vue"
+                            ),
                         meta: {
                             breadcrumbName: "Sửa loại tài khoản",
                             requiresAuth: true,
@@ -525,7 +551,7 @@ const routes = [
             {
                 path: "account",
                 name: "Account",
-                component: Account,
+                component: LayoutView,
                 meta: {
                     breadcrumbName: "Tài khoản",
                     requiresAuth: true,
@@ -534,7 +560,8 @@ const routes = [
                     {
                         path: "",
                         name: "ListAccount",
-                        component: ListAccount,
+                        component: () =>
+                            import("~/components/Account/ListAccount.vue"),
                         meta: {
                             breadcrumbName: "Danh sách",
                             requiresAuth: true,
@@ -543,7 +570,8 @@ const routes = [
                     {
                         path: "add",
                         name: "AddAccount",
-                        component: AddorEditAccount,
+                        component: () =>
+                            import("~/components/Account/AddorEditAccount.vue"),
                         meta: {
                             breadcrumbName: "Thêm tài khoản",
                             requiresAuth: true,
@@ -552,7 +580,8 @@ const routes = [
                     {
                         path: "edit/:id",
                         name: "EditAccount",
-                        component: AddorEditAccount,
+                        component: () =>
+                            import("~/components/Account/AddorEditAccount.vue"),
                         meta: {
                             breadcrumbName: "Sửa tài khoản",
                             requiresAuth: true,
@@ -585,7 +614,7 @@ router.beforeEach((to, from, next) => {
     const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
     const user = store.getUser;
 
-    if (requiresAuth && !user) {
+    if (requiresAuth && (!user || Object.keys(user).length === 0)) {
         next({ name: "Login" });
     } else {
         next();

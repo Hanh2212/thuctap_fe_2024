@@ -1,20 +1,19 @@
 import { Distributor, ImportBill, ResponseData } from "~/constant/api";
+import { DistributorUrl, ImportBillUrl } from "~/constant/endpoints";
 import { apiClient } from "~/constant/request";
 
 export const searchImportBill = async (
-    data: object
+    data: Record<string, string | number>
 ): Promise<ResponseData<ImportBill>> => {
     const res = await apiClient?.post(
-        `/api-admin/HoaDonNhap/search-hoadonnhapsingle`,
+        `${ImportBillUrl}/search-hoadonnhapsingle`,
         data
     );
     return res?.data;
 };
 
 export const getAllDistributor = async (): Promise<ImportBill[]> => {
-    const res = await apiClient?.get(
-        `/api-admin/NhaPhanPhoi/get-all-nhaphanphoi`
-    );
+    const res = await apiClient?.get(`${DistributorUrl}/get-all-nhaphanphoi`);
     return res?.data;
 };
 
@@ -22,33 +21,36 @@ export const getDetailImportBillById = async (
     id: number
 ): Promise<ImportBill[]> => {
     const res = await apiClient?.get(
-        `/api-admin/HoaDonNhap/getbyid-mahoadon-chitiethoadonnhap/${id}`
+        `${ImportBillUrl}/getbyid-mahoadon-chitiethoadonnhap/${id}`
     );
     return res?.data;
 };
 
-export const createImportBill = async (data: object): Promise<ImportBill> => {
+export const createImportBill = async (
+    data: Record<string | number, string | number | Array<object>>
+): Promise<ImportBill> => {
     const res = await apiClient?.post(
-        `/api-admin/HoaDonNhap/create-hoadonnhap`,
+        `${ImportBillUrl}/create-hoadonnhap`,
         data
     );
     return res?.data;
 };
 
-export const updateImportBill = async (data: object): Promise<ImportBill> => {
+export const updateImportBill = async (
+    data: Record<string | number, string | number | Array<object>>
+): Promise<ImportBill> => {
     const res = await apiClient?.put(
-        `/api-admin/HoaDonNhap/update-hoadonnhap`,
+        `${ImportBillUrl}/update-hoadonnhap`,
         data
     );
     return res?.data;
 };
 
-export const deleteImportBill = async (data: object): Promise<ImportBill> => {
-    const res = await apiClient?.delete(
-        `/api-admin/HoaDonNhap/delete-hoadonnhap`,
-        {
-            data: data,
-        }
-    );
+export const deleteImportBill = async (
+    data: Array<number>
+): Promise<ImportBill> => {
+    const res = await apiClient?.delete(`${ImportBillUrl}/delete-hoadonnhap`, {
+        data: data,
+    });
     return res?.data;
 };

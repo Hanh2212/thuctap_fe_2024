@@ -1,41 +1,42 @@
 import { Advertisment, ResponseData } from "~/constant/api";
+import { AdvertisementUrl } from "~/constant/endpoints";
 import { apiClient } from "~/constant/request";
 
 export const searchAdvertisement = async (
-    data: object
+    data: Record<string, string | number>
 ): Promise<ResponseData<Advertisment>> => {
     const res = await apiClient?.post(
-        `/api-admin/QuangCao/search-quangcao`,
+        `${AdvertisementUrl}/search-quangcao`,
         data
     );
     return res?.data;
 };
 
 export const createAdvertisement = async (
-    data: object
+    data: Record<string, string | number>
 ): Promise<Advertisment> => {
     const res = await apiClient?.post(
-        `/api-admin/QuangCao/create-quangcao`,
+        `${AdvertisementUrl}/create-quangcao`,
         data
     );
     return res?.data;
 };
 
 export const updateAdvertisement = async (
-    data: object
+    data: Record<string, string | number>
 ): Promise<Advertisment> => {
     const res = await apiClient?.put(
-        `/api-admin/QuangCao/update-quangcao`,
+        `${AdvertisementUrl}/update-quangcao`,
         data
     );
     return res?.data;
 };
 
 export const deleteAdvertisement = async (
-    data: object
+    data: Array<number>
 ): Promise<Advertisment> => {
     const res = await apiClient?.delete(
-        `/api-admin/QuangCao/delete-quangcao2`,
+        `${AdvertisementUrl}/delete-quangcao2`,
         {
             data: data,
         }
@@ -45,7 +46,7 @@ export const deleteAdvertisement = async (
 
 export const getbyIdAdvertisement = async (Id: number): Promise<any> => {
     const res = await apiClient?.get(
-        "/api-admin/QuangCao/getbyid-quangcao/" + Id
+        `${AdvertisementUrl}/getbyid-quangcao/` + Id
     );
     return res?.data;
 };

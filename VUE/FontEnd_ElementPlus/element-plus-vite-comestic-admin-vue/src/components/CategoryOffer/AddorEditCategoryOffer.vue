@@ -39,11 +39,7 @@
 
 <script setup lang="ts">
 import { reactive, ref, onMounted } from "vue";
-import type {
-    ComponentSize,
-    FormInstance,
-    FormRules,
-} from "element-plus";
+import type { ComponentSize, FormInstance, FormRules } from "element-plus";
 import { Plus } from "@element-plus/icons-vue";
 import { ElMessage } from "element-plus";
 import router from "~/router";
@@ -102,9 +98,9 @@ const rules = reactive<FormRules>({
 
 const fetchById = async (id: number) => {
     const resNewId = await getbyIdCategoryOffer(id);
-    ruleForm.tendanhmucuudai = resNewId.tendanhmucuudai;
-    ruleForm.dacBiet = resNewId.dacBiet;
-    ruleForm.noiDung = resNewId.noiDung;
+    ruleForm.tendanhmucuudai = resNewId?.tendanhmucuudai;
+    ruleForm.dacBiet = resNewId?.dacBiet;
+    ruleForm.noiDung = resNewId?.noiDung;
 };
 
 onMounted(() => {
@@ -121,7 +117,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
         if (valid) {
             if (route.params.id) {
                 await updateCategoryOffer({
-                    Madanhmucuudai: route.params.id,
+                    Madanhmucuudai: Number(route.params.id),
                     Tendanhmucuudai: ruleForm.tendanhmucuudai,
                     DacBiet: ruleForm.dacBiet,
                     NoiDung: ruleForm.noiDung,

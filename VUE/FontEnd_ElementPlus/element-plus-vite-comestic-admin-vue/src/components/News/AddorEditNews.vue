@@ -147,10 +147,10 @@ const handleRemoveImg: UploadProps["onRemove"] = (uploadFile, uploadFiles) => {
 
 const fetchById = async (id: number) => {
     const resNewId = await getbyIdNews(id);
-    ruleForm.tieuDe = resNewId.tieuDe;
-    ruleForm.hinhAnh = resNewId.hinhAnh;
-    ruleForm.trangThai = resNewId.trangThai;
-    ruleForm.noiDung = resNewId.noiDung;
+    ruleForm.tieuDe = resNewId?.tieuDe;
+    ruleForm.hinhAnh = resNewId?.hinhAnh;
+    ruleForm.trangThai = resNewId?.trangThai;
+    ruleForm.noiDung = resNewId?.noiDung;
 
     fileListImg.value = [
         {
@@ -174,7 +174,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
         if (valid) {
             if (route.params.id) {
                 await updateNew({
-                    MaTinTuc: route.params.id,
+                    MaTinTuc: Number(route.params.id),
                     TieuDe: ruleForm.tieuDe,
                     NoiDung: ruleForm.noiDung,
                     HinhAnh: ruleForm.hinhAnh,

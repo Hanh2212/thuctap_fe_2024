@@ -323,7 +323,7 @@ const optionsDistributor = ref<OptionSelect[]>();
 
 async function fetchDistributor() {
     const res = await getAllDistributor();
-    ruleForm.maNhaPhanPhoi = Number(res[0].maNhaPhanPhoi);
+    ruleForm.maNhaPhanPhoi = Number(res[0]?.maNhaPhanPhoi);
     optionsDistributor.value = res.map(function (value: any) {
         return {
             value: value.maNhaPhanPhoi,
@@ -339,9 +339,9 @@ const optionsProduct = ref<OptionSelect[]>();
 
 async function fetchProduct() {
     const res = await getAllProduct();
-    ruleForm.maSanPham = Number(res[0].maSanPham);
-    ruleForm.donGia = Number(res[0].giaGiam);
-    ruleForm.tongTien = Number(res[0].giaGiam);
+    ruleForm.maSanPham = Number(res[0]?.maSanPham);
+    ruleForm.donGia = Number(res[0]?.giaGiam);
+    ruleForm.tongTien = Number(res[0]?.giaGiam);
     optionsProduct.value = res.map(function (value: any) {
         return {
             value: value.maSanPham,
@@ -372,10 +372,9 @@ const handleQuantityChange = (value: any) => {
 
 const fetchById = async (id: number) => {
     const resNewId = await getDetailImportBillById(id);
-    (ruleForm.maNhaPhanPhoi = resNewId[0].maNhaPhanPhoi),
-        (ruleForm.kieuThanhToan = resNewId[0].kieuThanhToan),
-        (ruleForm.tongGia = Number(resNewId[0].tongTien)),
-        console.log(resNewId);
+    (ruleForm.maNhaPhanPhoi = resNewId[0]?.maNhaPhanPhoi),
+        (ruleForm.kieuThanhToan = resNewId[0]?.kieuThanhToan),
+        (ruleForm.tongGia = Number(resNewId[0]?.tongTien));
 
     const dataTempTable = resNewId.map((value: any, index: number) => {
         return {
@@ -408,8 +407,8 @@ const confirmEvent = async (index: number, row: TableBillSell) => {
     try {
         if (route.params.id) {
             await updateImportBill({
-                MaHoaDon: route.params.id,
-                MaNhaPhanPhoi: ruleForm.maNhaPhanPhoi,
+                MaHoaDon: Number(route.params.id),
+                MaNhaPhanPhoi: Number(ruleForm.maNhaPhanPhoi),
                 KieuThanhToan: ruleForm.kieuThanhToan,
                 TongTien: Number(String(ruleForm.tongGia)),
                 MaTaiKhoan: store.user.mataikhoan,
@@ -454,8 +453,8 @@ const handlerAddDetail = async () => {
             Notification("Sản phẩm đã có, vui lòng tăng số lượng", "warning");
         } else {
             await updateImportBill({
-                MaHoaDon: route.params.id,
-                MaNhaPhanPhoi: ruleForm.maNhaPhanPhoi,
+                MaHoaDon: Number(route.params.id),
+                MaNhaPhanPhoi: Number(ruleForm.maNhaPhanPhoi),
                 KieuThanhToan: ruleForm.kieuThanhToan,
                 TongTien:
                     Number(ruleForm.tongGia) +
@@ -515,8 +514,8 @@ const updateTotalPrice = async (row: TableImportBill) => {
             Number(row.soLuong) - Number(previousQuantity);
 
         await updateImportBill({
-            MaHoaDon: route.params.Id,
-            MaNhaPhanPhoi: ruleForm.maNhaPhanPhoi,
+            MaHoaDon: Number(route.params.id),
+            MaNhaPhanPhoi: Number(ruleForm.maNhaPhanPhoi),
             KieuThanhToan: ruleForm.kieuThanhToan,
             TongTien: ruleForm.tongGia,
             list_json_chitiethoadonnhap: [
@@ -558,8 +557,8 @@ const submitForm = async (formEl: FormInstance | undefined) => {
         if (valid) {
             if (route.params.id) {
                 await updateImportBill({
-                    MaHoaDon: route.params.id,
-                    MaNhaPhanPhoi: ruleForm.maNhaPhanPhoi,
+                    MaHoaDon: Number(route.params.id),
+                    MaNhaPhanPhoi: Number(ruleForm.maNhaPhanPhoi),
                     KieuThanhToan: ruleForm.kieuThanhToan,
                     TongTien: ruleForm.tongGia,
                     list_json_chitiethoadonnhap: [
@@ -591,7 +590,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
                     Notification("Bạn chưa thêm sản phẩm", "warning");
                 } else {
                     await createImportBill({
-                        MaNhaPhanPhoi: ruleForm.maNhaPhanPhoi,
+                        MaNhaPhanPhoi: Number(ruleForm.maNhaPhanPhoi),
                         KieuThanhToan: ruleForm.kieuThanhToan,
                         TongTien: Number(String(ruleForm.tongGia)),
                         MaTaiKhoan: store.user.mataikhoan,

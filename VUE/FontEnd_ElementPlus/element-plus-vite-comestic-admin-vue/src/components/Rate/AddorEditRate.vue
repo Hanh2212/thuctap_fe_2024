@@ -62,7 +62,7 @@ const rules = reactive<FormRules>({
 
 const fetchById = async (id: number) => {
     const resDetaiRate = await getbyIdRate(id);
-    ruleForm.ghiChu = resDetaiRate.ghiChu;
+    ruleForm.ghiChu = resDetaiRate?.ghiChu;
 };
 
 onMounted(() => {
@@ -79,7 +79,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
         if (valid) {
             if (route.params.id) {
                 await editRate({
-                    MaDanhGia: route.params.id,
+                    MaDanhGia: Number(route.params.id),
                     GhiChu: ruleForm.ghiChu,
                     AnhDanhGia: "",
                     NoiDung: "",

@@ -102,9 +102,9 @@ const rules = reactive<FormRules>({
 
 const fetchById = async (id: number) => {
     const resNewId = await getbyIdCategory(id);
-    ruleForm.tenDanhMuc = resNewId.tenDanhMuc;
-    ruleForm.dacBiet = resNewId.dacBiet;
-    ruleForm.noiDung = resNewId.noiDung;
+    ruleForm.tenDanhMuc = resNewId?.tenDanhMuc;
+    ruleForm.dacBiet = resNewId?.dacBiet;
+    ruleForm.noiDung = resNewId?.noiDung;
 };
 
 onMounted(() => {
@@ -121,7 +121,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
         if (valid) {
             if (route.params.id) {
                 await updateCategory({
-                    MaDanhMuc: route.params.id,
+                    MaDanhMuc: Number(route.params.id),
                     TenDanhMuc: ruleForm.tenDanhMuc,
                     DacBiet: ruleForm.dacBiet,
                     NoiDung: ruleForm.noiDung,

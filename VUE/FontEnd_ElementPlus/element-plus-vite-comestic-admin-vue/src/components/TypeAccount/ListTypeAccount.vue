@@ -1,5 +1,5 @@
 <template>
-    <el-card class="card_content">
+    <el-card class="card_content" v-loading="loading">
         <div class="button_add">
             <el-button @click="handlerAdd" type="primary"
                 ><el-icon><CirclePlus /></el-icon
@@ -62,6 +62,7 @@ const Notification = (
 };
 
 const tableData = ref<TypeAccount[]>([]);
+const loading = ref(false);
 
 const handleEdit = (index: number, row: TypeAccount) => {
     router.push(`/typeaccount/edit/${row.maLoaitaikhoan}`);
@@ -79,6 +80,7 @@ const confirmEvent = async (Id: number) => {
 };
 
 const fetchData = async () => {
+    loading.value = true;
     try {
         const res = await getAllTypeAccount();
         tableData.value = res.map(function (value: TypeAccount) {
@@ -91,6 +93,8 @@ const fetchData = async () => {
     } catch (error) {
         console.error("Error fetching:", error);
         tableData.value = [];
+    } finally {
+        loading.value = false;
     }
 };
 

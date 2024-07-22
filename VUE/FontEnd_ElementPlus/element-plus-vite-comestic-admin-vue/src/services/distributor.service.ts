@@ -1,35 +1,42 @@
 import { Distributor, ResponseData } from "~/constant/api";
 import { apiClient } from "../constant/request";
+import { DistributorUrl } from "~/constant/endpoints";
 
 export const searchDistributor = async (
-    data: object
+    data: Record<string, string | number>
 ): Promise<ResponseData<Distributor>> => {
     const res = await apiClient?.post(
-        `/api-admin/NhaPhanPhoi/search-nhaphanphoi`,
+        `${DistributorUrl}/search-nhaphanphoi`,
         data
     );
     return res?.data;
 };
 
-export const createDistributor = async (data: object): Promise<Distributor> => {
+export const createDistributor = async (
+    data: Record<string, string | number>
+): Promise<Distributor> => {
     const res = await apiClient?.post(
-        `/api-admin/NhaPhanPhoi/create-nhaphanphoi`,
+        `${DistributorUrl}/create-nhaphanphoi`,
         data
     );
     return res?.data;
 };
 
-export const updateDistributor = async (data: object): Promise<Distributor> => {
+export const updateDistributor = async (
+    data: Record<string, string | number>
+): Promise<Distributor> => {
     const res = await apiClient?.put(
-        `/api-admin/NhaPhanPhoi/update-nhaphanphoi`,
+        `${DistributorUrl}/update-nhaphanphoi`,
         data
     );
     return res?.data;
 };
 
-export const deleteDistributor = async (data: object): Promise<Distributor> => {
+export const deleteDistributor = async (
+    data: Array<number>
+): Promise<Distributor> => {
     const res = await apiClient?.delete(
-        `/api-admin/NhaPhanPhoi/delete-nhaphanphoi`,
+        `${DistributorUrl}/delete-nhaphanphoi`,
         {
             data: data,
         }
@@ -41,7 +48,7 @@ export const getbyIdDistributor = async (
     maNhaPhanPhoi: number
 ): Promise<Distributor> => {
     const res = await apiClient?.get(
-        "/api-admin/NhaPhanPhoi/getbyid-nhaphanphoi/" + maNhaPhanPhoi
+        `${DistributorUrl}/getbyid-nhaphanphoi/` + maNhaPhanPhoi
     );
     return res?.data;
 };
