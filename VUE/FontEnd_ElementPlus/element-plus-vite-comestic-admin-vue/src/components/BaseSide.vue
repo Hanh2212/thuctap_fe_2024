@@ -133,38 +133,22 @@ const route = useRoute();
 
 const activeIndex = computed(() => {
     const path = route.path;
-    switch (path) {
-        case "/":
-            return "1-1";
-        case "/product":
-            return "2";
-        case "/billsell":
-            return "3";
-        case "/importbill":
-            return "4";
-        case "/news":
-            return "5";
-        case "/rate":
-            return "6";
-        case "/category":
-            return "7";
-        case "/categoryoffer":
-            return "8";
-        case "/manufactor":
-            return "9";
-        case "/distributor":
-            return "10";
-        case "/advertisement":
-            return "11";
-        case "/slide":
-            return "12";
-        case "/typeaccount":
-            return "13";
-        case "/account":
-            return "14";
-        default:
-            return "0";
-    }
+    if (path === "/") return "1-1";
+    if (path.startsWith("/product")) return "2";
+    if (path.startsWith("/billsell")) return "3";
+    if (path.startsWith("/importbill")) return "4";
+    if (path.startsWith("/news")) return "5";
+    if (path.startsWith("/rate")) return "6";
+    if (path.startsWith("/category")) return "7";
+    if (path.startsWith("/categoryoffer")) return "8";
+    if (path.startsWith("/manufactor")) return "9";
+    if (path.startsWith("/distributor")) return "10";
+    if (path.startsWith("/advertisement")) return "11";
+    if (path.startsWith("/slide")) return "12";
+    if (path.startsWith("/typeaccount")) return "13";
+    if (path.startsWith("/account")) return "14";
+
+    return "0";
 });
 
 const handleOpen = (key: string, keyPath: string[]) => {

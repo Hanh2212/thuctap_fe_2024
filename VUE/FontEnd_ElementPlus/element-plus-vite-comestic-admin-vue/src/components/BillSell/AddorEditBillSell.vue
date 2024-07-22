@@ -357,28 +357,53 @@ const handleQuantityChange = (value: any) => {
 };
 
 const fetchById = async (id: number) => {
-    const resNewId = await getDetailBillById(id);
-    (ruleForm.tenKH = resNewId[0].tenKH),
-        (ruleForm.sdt = resNewId[0].sdt),
-        (ruleForm.email = resNewId[0].email),
-        (ruleForm.diaChiGiaoHang = resNewId[0].diaChiGiaoHang),
-        (ruleForm.tongGia = resNewId[0].tongGia),
-        (ruleForm.trangThai = resNewId[0].trangThai);
+    try {
+        const resNewId = await getDetailBillById(id);
+        (ruleForm.tenKH = resNewId[0].tenKH),
+            (ruleForm.sdt = resNewId[0].sdt),
+            (ruleForm.email = resNewId[0].email),
+            (ruleForm.diaChiGiaoHang = resNewId[0].diaChiGiaoHang),
+            (ruleForm.tongGia = resNewId[0].tongGia),
+            (ruleForm.trangThai = resNewId[0].trangThai);
 
-    const dataTempTable = resNewId.map((value: any, index: number) => {
-        return {
-            stt: index + 1,
-            maChiTietHoaDon: value.maChiTietHoaDon,
-            maSanPham: Number(value.maSanPham),
-            hinhAnh: String(value.anhDaiDien),
-            soLuong: Number(value.soLuong),
-            originalSoLuong: Number(value.soLuong),
-            donGia: Number(value.donGia),
-            tongTien: Number(value.donGia) * Number(value.soLuong),
-        };
-    });
+        const dataTempTable = resNewId.map((value: any, index: number) => {
+            return {
+                stt: index + 1,
+                maChiTietHoaDon: value.maChiTietHoaDon,
+                maSanPham: Number(value.maSanPham),
+                hinhAnh: String(value.anhDaiDien),
+                soLuong: Number(value.soLuong),
+                originalSoLuong: Number(value.soLuong),
+                donGia: Number(value.donGia),
+                tongTien: Number(value.donGia) * Number(value.soLuong),
+            };
+        });
 
-    tableData.value = dataTempTable;
+        tableData.value = dataTempTable;
+    } catch (error) {
+        router.push("/billsell");
+        Notification("Hoá đơn không có sản phẩm", "success");
+        const listitemDeleted = tableData.value.map((value: any) => {
+            return {
+                MaChiTietHoaDon: value.maChiTietHoaDon,
+                MaSanPham: value.maSanPham,
+                SoLuongTon: value.soLuong,
+                Status: 4,
+            };
+        });
+        await updateBillSell({
+            MaHoaDon: route.params.id,
+            TrangThai: "Huỷ đơn",
+            TongGia: String(ruleForm.tongTien).replace(/\./g, ""),
+            TenKH: ruleForm.tenKH,
+            DiaChi: ruleForm.diaChiGiaoHang,
+            Email: ruleForm.email,
+            SDT: ruleForm.sdt,
+            DiaChiGiaoHang: ruleForm.diaChiGiaoHang,
+            MaTaiKhoan: store.user.mataikhoan,
+            list_json_chitiet_hoadon: listitemDeleted,
+        });
+    }
 };
 
 onMounted(() => {
