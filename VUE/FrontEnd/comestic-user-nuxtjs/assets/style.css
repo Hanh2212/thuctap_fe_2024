@@ -8,6 +8,7 @@ body {
     --color-primary:#1e1b17;
     --color-primary-two:#c1a37e;
     --color-second-text:#737373;
+    --color-price-old:#adadad;
 }
 
 *::-webkit-scrollbar {

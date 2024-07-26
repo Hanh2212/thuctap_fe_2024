@@ -8,6 +8,10 @@
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
-    "types": ["@nuxt/types"]
+    "types": ["@nuxt/types"],
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./*"],
+    }
   },
 }

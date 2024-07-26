@@ -11,6 +11,8 @@ export default defineNuxtConfig({
 
     app: {
         head: {
+            charset: "utf-8",
+            viewport: "width=device-width, initial-scale=1",
             link: [
                 {
                     href: "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css",

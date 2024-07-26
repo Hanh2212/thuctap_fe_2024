@@ -1,5 +1,5 @@
 <template>
-    <footer class="bg-light pt-5">
+    <footer class="bg-light pt-4">
         <div class="container-fluid support_content">
             <div class="container">
                 <div class="row support">
@@ -78,7 +78,7 @@
                         <h5 class="title-footer">FANPAGE</h5>
                         <a target="_blank" href="https://www.facebook.com">
                             <img
-                                src="/images/fapage.png"
+                                src=""
                                 alt="Fanpage"
                                 class="img-fluid"
                             />

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "37i05p3PQb7Lo09vEJthwCQPkSs/FQFIIixVmp0UN5/V97ksL5fx8NptGoCt4hndigVpsmBelwkwSYQ9CPoQPg==",
+  "dgSpecHash": "/axcRJnVHIy70d1I7kz/lWKf3Gx2kt6t8CpKn9ZREHL7heN6KSAhUASLwJUe4Me8WMrvjN/mcxi6Amfc2KXWYQ==",
   "success": true,
-  "projectFilePath": "D:\\Bài kiểm tra\\DO_AN_3+BTL_WEB_API_REACTJS_C#\\BTL_WEB_API_USER\\BussinessLayer\\BussinessLayer.csproj",
+  "projectFilePath": "C:\\Users\\LUU DUC QUANG\\Desktop\\thuctap_fe_2024\\VUE\\BackEnd\\BTL_WEB_API_USER\\BussinessLayer\\BussinessLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LUU DUC QUANG\\.nuget\\packages\\microsoft.extensions.configuration\\6.0.0\\microsoft.extensions.configuration.6.0.0.nupkg.sha512",
     "C:\\Users\\LUU DUC QUANG\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",

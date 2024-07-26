@@ -1642,11 +1642,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Bài kiểm tra\\DO_AN_3+BTL_WEB_API_REACTJS_C#\\BTL_WEB_API_USER\\API_MYPHAM_USER\\API_MYPHAM_USER.csproj",
+      "projectUniqueName": "C:\\Users\\LUU DUC QUANG\\Desktop\\thuctap_fe_2024\\VUE\\BackEnd\\BTL_WEB_API_USER\\API_MYPHAM_USER\\API_MYPHAM_USER.csproj",
       "projectName": "API_MYPHAM_USER",
-      "projectPath": "D:\\Bài kiểm tra\\DO_AN_3+BTL_WEB_API_REACTJS_C#\\BTL_WEB_API_USER\\API_MYPHAM_USER\\API_MYPHAM_USER.csproj",
+      "projectPath": "C:\\Users\\LUU DUC QUANG\\Desktop\\thuctap_fe_2024\\VUE\\BackEnd\\BTL_WEB_API_USER\\API_MYPHAM_USER\\API_MYPHAM_USER.csproj",
       "packagesPath": "C:\\Users\\LUU DUC QUANG\\.nuget\\packages\\",
-      "outputPath": "D:\\Bài kiểm tra\\DO_AN_3+BTL_WEB_API_REACTJS_C#\\BTL_WEB_API_USER\\API_MYPHAM_USER\\obj\\",
+      "outputPath": "C:\\Users\\LUU DUC QUANG\\Desktop\\thuctap_fe_2024\\VUE\\BackEnd\\BTL_WEB_API_USER\\API_MYPHAM_USER\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1667,11 +1667,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Bài kiểm tra\\DO_AN_3+BTL_WEB_API_REACTJS_C#\\BTL_WEB_API_USER\\BussinessLayer\\BussinessLayer.csproj": {
-              "projectPath": "D:\\Bài kiểm tra\\DO_AN_3+BTL_WEB_API_REACTJS_C#\\BTL_WEB_API_USER\\BussinessLayer\\BussinessLayer.csproj"
+            "C:\\Users\\LUU DUC QUANG\\Desktop\\thuctap_fe_2024\\VUE\\BackEnd\\BTL_WEB_API_USER\\BussinessLayer\\BussinessLayer.csproj": {
+              "projectPath": "C:\\Users\\LUU DUC QUANG\\Desktop\\thuctap_fe_2024\\VUE\\BackEnd\\BTL_WEB_API_USER\\BussinessLayer\\BussinessLayer.csproj"
             },
-            "D:\\Bài kiểm tra\\DO_AN_3+BTL_WEB_API_REACTJS_C#\\BTL_WEB_API_USER\\Model\\Model.csproj": {
-              "projectPath": "D:\\Bài kiểm tra\\DO_AN_3+BTL_WEB_API_REACTJS_C#\\BTL_WEB_API_USER\\Model\\Model.csproj"
+            "C:\\Users\\LUU DUC QUANG\\Desktop\\thuctap_fe_2024\\VUE\\BackEnd\\BTL_WEB_API_USER\\Model\\Model.csproj": {
+              "projectPath": "C:\\Users\\LUU DUC QUANG\\Desktop\\thuctap_fe_2024\\VUE\\BackEnd\\BTL_WEB_API_USER\\Model\\Model.csproj"
             }
           }
         }
