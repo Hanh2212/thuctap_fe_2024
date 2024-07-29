@@ -12,6 +12,11 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["./*"],
-    }
+    },
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   },
+  "include": ["**/*.ts", "**/*.tsx", "**/*.vue"],
+  "exclude": ["node_modules"]
 }

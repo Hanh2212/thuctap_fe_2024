@@ -18,6 +18,7 @@ export interface Product {
     trongLuong: string;
     moTa: string;
     tendanhmucuudai?: string;
+    tenDanhMuc?:string;
     xuatXu: string;
 }
 
@@ -197,3 +198,5 @@ export interface OptionSelect {
     gia?: number;
     hinhAnh?: string;
 }
+
+

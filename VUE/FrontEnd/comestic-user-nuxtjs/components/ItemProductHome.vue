@@ -1,6 +1,6 @@
 <template>
     <div class="home-product-item">
-        <NuxtLink class="linkproduct" :to="`/product/${product?.maSanPham}`">
+        <NuxtLink class="linkproduct" :to="`/detail/${product?.maSanPham}`">
             <div class="home-product-item_img">
                 <img
                     style="min-height: 200px; min-width: 100px"
@@ -19,30 +19,52 @@
         >
         <div class="home-product-item_price">
             <span class="home-product-item_price_current"
-                >{{ product?.giaGiam.toLocaleString("DE-de")
+                >{{
+                    product?.giaGiam > 0
+                        ? product?.giaGiam.toLocaleString("DE-de")
+                        : ""
                 }}<sup>đ</sup></span
             >
             <span class="home-product-item_price_old"
-                >{{ product?.gia.toLocaleString("DE-de") }}<sup>đ</sup></span
+                >{{
+                    product?.gia > 0
+                        ? product?.gia.toLocaleString("DE-de")
+                        : ""
+                }}<sup>đ</sup></span
             >
         </div>
-        <div class="home-icon-recommend">
-            <span>{{
-                product?.danhGia > 0 ? product?.danhGia.toFixed(1) : ""
-            }}</span>
-            <span>|</span>
-            <span title="Đã bán" class="fa-solid fa-shop"></span>
-            <span title="Đã bán" class="amount-product">{{
-                product?.luotBan.toLocaleString("DE-de")
-            }}</span>
+        <div class="icon_item_product">
+            <div class="home-icon-recommend">
+                <span v-if="product?.danhGia > 0">{{
+                    product?.danhGia > 0 ? product?.danhGia.toFixed(1) : ""
+                }}</span>
+                <i
+                    v-if="product?.danhGia > 0"
+                    title="Đánh giá"
+                    class="fa-solid fa-star"
+                ></i>
+                <span v-if="product?.danhGia > 0">|</span>
+                <span title="Đã bán" class="fa-solid fa-shop"></span>
+                <span title="Đã bán" class="amount-product">{{
+                    product?.luotBan > 0
+                        ? product?.luotBan.toLocaleString("DE-de")
+                        : ""
+                }}</span>
+            </div>
             <span class="fa-solid fa-truck-fast free-ship"></span>
         </div>
-        <div class="view">
-            <i class="fa-solid fa-eye"></i>
-            {{ product?.luotXem.toLocaleString("DE-de") }}
-        </div>
-        <div class="country">
-            {{ product?.xuatXu }}
+        <div class="icon_item_product">
+            <div class="view">
+                <i class="fa-solid fa-eye"></i>
+                {{
+                    product?.luotXem > 0
+                        ? product?.luotXem.toLocaleString("DE-de")
+                        : ""
+                }}
+            </div>
+            <div class="country">
+                {{ product?.xuatXu }}
+            </div>
         </div>
     </div>
 </template>
@@ -140,7 +162,7 @@ const props = defineProps<{
 }
 
 .decrip-item {
-    margin: 0px 10px 5px 10px;
+    margin: 0px 10px;
     line-height: 1.3rem;
     height: 2.6rem;
     overflow: hidden;
@@ -174,10 +196,17 @@ const props = defineProps<{
     font-size: 1rem;
 }
 
+.icon_item_product {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 10px;
+}
+
 .home-icon-recommend {
-    margin: 4px 10px 0;
     display: flex;
     align-items: center;
+    gap: 6px;
 }
 
 .home-icon-recommend i,
@@ -188,18 +217,27 @@ const props = defineProps<{
 .view {
     font-size: 15px;
     color: #999999;
-    float: left;
-    padding: 6px 0;
-    margin-left: 10px;
     display: flex;
     align-items: center;
+    gap: 5px;
 }
 
 .country {
     font-size: 15px;
     color: #999999;
     float: right;
-    padding: 6px;
-    margin-right: 5px;
+    padding: 6px 0;
+}
+
+.fa-star {
+    color: #e8c021;
+}
+
+.fa-shop {
+    color: #5f9ea0;
+}
+
+.fa-truck-fast {
+    color: #63c2b6;
 }
 </style>

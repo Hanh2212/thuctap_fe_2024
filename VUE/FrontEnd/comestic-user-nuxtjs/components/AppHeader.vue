@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">
+            <NuxtLink class="navbar-brand" to="/">
                 <img
                     src="/images/logo1.png"
                     class="img_logo"
@@ -9,7 +9,7 @@
                     width="50"
                     height="50"
                 />
-            </a>
+            </NuxtLink>
             <button
                 class="navbar-toggler"
                 type="button"
@@ -24,15 +24,18 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#"
-                            >Trang chủ</a
+                        <NuxtLink
+                            class="nav-link active"
+                            aria-current="page"
+                            to="/"
+                            >Trang chủ</NuxtLink
                         >
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Tin tức</a>
+                        <NuxtLink class="nav-link" to="/news">Tin tức</NuxtLink>
                     </li>
                     <li class="nav-item dropdown">
-                        <a
+                        <NuxtLink
                             class="nav-link dropdown-toggle"
                             href="#"
                             role="button"
@@ -40,16 +43,17 @@
                             aria-expanded="false"
                         >
                             Danh mục
-                        </a>
+                        </NuxtLink>
                         <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item" href="#">Action</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#"
-                                    >Another action</a
-                                >
-                            </li>
+                            <div v-for="item in category" :key="item.maDanhMuc">
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        :href="`/category/${item.tenDanhMuc}`"
+                                        >{{ item.tenDanhMuc }}</a
+                                    >
+                                </li>
+                            </div>
                         </ul>
                     </li>
                 </ul>
@@ -93,13 +97,34 @@
     </nav>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { type Category } from "~/constant/api";
+import { getCategory } from "~/services/home.service";
+
+const category = ref<Category[]>([]);
+
+const { data: categoryData, error: erCategory } = await useAsyncData(
+    "category",
+    () => getCategory()
+);
+
+if (categoryData.value) {
+    category.value = categoryData.value;
+    console.log(category.value);
+} else if (erCategory.value) {
+    console.error("Error while fetching products:", erCategory.value);
+}
+</script>
 
 <style scoped>
 .navbar {
     background-color: var(--color-primary) !important;
     padding: 0 10%;
     min-height: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
 .navbar-collapse {
@@ -138,12 +163,12 @@ li {
     padding: 0.25rem 0.75rem;
 }
 
-::placeholder{
+::placeholder {
     font-size: 13px;
     color: var(--color-primary-two);
 }
 
-input{
+input {
     font-size: 15px;
 }
 
