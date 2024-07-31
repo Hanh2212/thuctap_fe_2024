@@ -58,8 +58,13 @@
                     </li>
                 </ul>
 
-                <form class="d-flex position-relative" role="search">
+                <form
+                    class="d-flex position-relative"
+                    role="search"
+                    @submit.prevent="submitSearch"
+                >
                     <input
+                        v-model="searchQuery"
                         class="form-control pe-5"
                         type="search"
                         placeholder="Tìm kiếm sản phẩm"
@@ -83,13 +88,69 @@
                 </ul>
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 menu_item_right">
-                    <div class="user">
+                    <div v-if="!customer" class="user">
                         <li class="nav-item">
                             <NuxtLink to="/login">Đăng nhập</NuxtLink>
                         </li>
                         <li class="nav-item">
                             <NuxtLink to="/registry">Đăng ký</NuxtLink>
                         </li>
+                    </div>
+                    <div v-if="customer" class="dropdown">
+                        <!-- <button
+                            class="btn btn-secondary dropdown-toggle"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            Dropdown button
+                        </button> -->
+                        <div
+                            class="user dropdown-toggle"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            <img
+                                class="img_user"
+                                :src="apiImage + customer?.anhdaidien"
+                                alt="Image"
+                            />
+                            <p>{{ customer.hoten }}</p>
+                        </div>
+
+                        <ul class="dropdown-menu w-100">
+                            <li>
+                                <NuxtLink
+                                    class="dropdown-item nav-link"
+                                    to="/invoice"
+                                    >Đơn hàng của bạn</NuxtLink
+                                >
+                            </li>
+                            <li>
+                                <NuxtLink
+                                    class="dropdown-item nav-link"
+                                    to="/information"
+                                >
+                                    Thông tin tài khoản
+                                </NuxtLink>
+                            </li>
+                            <li>
+                                <NuxtLink
+                                    class="dropdown-item nav-link"
+                                    to="/changepassword"
+                                >
+                                    Đổi mật khẩu
+                                </NuxtLink>
+                            </li>
+                            <li>
+                                <NuxtLink
+                                    class="dropdown-item nav-link"
+                                    to="/login"
+                                >
+                                    Đăng xuất
+                                </NuxtLink>
+                            </li>
+                        </ul>
                     </div>
                 </ul>
             </div>
@@ -98,10 +159,30 @@
 </template>
 
 <script setup lang="ts">
-import { type Category } from "~/constant/api";
+import { ref } from "vue";
+import Cookies from "js-cookie";
+import { useRouter } from "vue-router";
+import { type Category, type User } from "~/constant/api";
 import { getCategory } from "~/services/home.service";
+import { apiImage } from "~/constant/request";
 
 const category = ref<Category[]>([]);
+
+const searchQuery = ref("");
+const router = useRouter();
+const customer = ref<User>();
+
+onMounted(() => {
+    const customerData = Cookies.get("customer");
+    if (customerData) {
+        try {
+            customer.value = JSON.parse(customerData);
+        } catch (error) {
+            console.error("Failed to parse customer data from cookies:", error);
+            Cookies.remove("customer");
+        }
+    }
+});
 
 const { data: categoryData, error: erCategory } = await useAsyncData(
     "category",
@@ -110,9 +191,13 @@ const { data: categoryData, error: erCategory } = await useAsyncData(
 
 if (categoryData.value) {
     category.value = categoryData.value;
-    console.log(category.value);
 } else if (erCategory.value) {
     console.error("Error while fetching products:", erCategory.value);
+}
+
+function submitSearch() {
+    router.push(`/search/${searchQuery.value}`);
+    searchQuery.value = "";
 }
 </script>
 
@@ -178,5 +263,18 @@ input {
 
 .fa-bars {
     color: #fff;
+}
+
+.img_user {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.user p {
+    margin: 0;
+    color: #fff;
+    cursor: pointer;
 }
 </style>

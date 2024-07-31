@@ -134,7 +134,6 @@ const { data: cleanserData, error: erCleanser } = await useAsyncData(
 
 if (cleanserData.value) {
     productCleanser.value = cleanserData.value?.data;
-    console.log(productCleanser.value);
 } else if (erCleanser.value) {
     console.error("Error while fetching products:", erSale.value);
 }

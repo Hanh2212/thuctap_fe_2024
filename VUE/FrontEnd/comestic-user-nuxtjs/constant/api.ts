@@ -18,7 +18,7 @@ export interface Product {
     trongLuong: string;
     moTa: string;
     tendanhmucuudai?: string;
-    tenDanhMuc?:string;
+    tenDanhMuc?: string;
     xuatXu: string;
 }
 
@@ -68,33 +68,6 @@ export interface TableBillSell {
     tongTien: number;
 }
 
-export interface ImportBill {
-    maHoaDon?: number;
-    maNhaPhanPhoi?: number;
-    tenNhaPhanPhoi?: string;
-    ngayTao?: Date;
-    kieuThanhToan: string;
-    tongGia: number;
-    tenTaiKhoan?: string;
-    maSanPham?: number;
-    soLuong?: number;
-    donViTinh?: string;
-    donGia?: number;
-    tongTien?: number;
-}
-
-export interface TableImportBill {
-    maChiTietHoaDon?: number;
-    stt?: number;
-    maSanPham: number;
-    hinhAnh?: string;
-    soLuong: number | string;
-    originalSoLuong?: number;
-    donViTinh?: string;
-    donGia: number;
-    tongTien: number;
-}
-
 export interface News {
     maTinTuc?: number;
     tieuDe: string;
@@ -136,39 +109,10 @@ export interface CategoryOffer {
     noiDung: string;
 }
 
-export interface Manufactor {
-    maNhaSanXuat?: number;
-    tenHang: string;
-    linkWeb: string;
-    anhDaiDien: string;
-}
-
-export interface Distributor {
-    maNhaPhanPhoi?: number;
-    tenNhaPhanPhoi: string;
-    diaChi: string;
-    soDienThoai: string;
-    linkWeb: string;
-    moTa: string;
-}
-
-export interface Advertisment {
-    id?: number;
-    anhDaiDien: string;
-    linkQuangCao: string;
-    moTa: string;
-}
-
 export interface Slide {
     maAnh?: number;
     linkAnh: string;
     tieuDe: string;
-    moTa: string;
-}
-
-export interface TypeAccount {
-    maLoaitaikhoan?: number;
-    tenLoai: string;
     moTa: string;
 }
 
@@ -178,25 +122,3 @@ export interface Account {
     email: string;
     matKhau: string;
 }
-
-export interface FormAccount {
-    maTaiKhoan?: number;
-    maChitietTaiKhoan?: number;
-    tenTaiKhoan: string;
-    matKhau: string;
-    email: string;
-    hoTen: string;
-    diaChi: string;
-    soDienThoai: string;
-    maLoaitaikhoan: number;
-    anhDaiDien: string;
-}
-
-export interface OptionSelect {
-    value: string | number;
-    label: string;
-    gia?: number;
-    hinhAnh?: string;
-}
-
-

@@ -128,6 +128,10 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import {
+    checkUserNameIsEmpty,
+    registryUser,
+} from "~/services/registry.service";
 
 definePageMeta({
     layout: "onlychildren",
@@ -149,6 +153,7 @@ const onFinish = async () => {
         const resCheckUser = await checkUserNameIsEmpty();
         const userEmpty = resCheckUser.map((value) => value.tenTaiKhoan);
         if (userEmpty.includes(username.value)) {
+            console.log("tai khoan ton tai");
         } else {
             await registryUser({
                 TenTaiKhoan: username.value,
@@ -165,6 +170,7 @@ const onFinish = async () => {
                 ],
             });
             router.push("/login");
+            console.log("dang ky thanh cong");
         }
     } catch (error) {
         console.error("Error while checking username:", error);

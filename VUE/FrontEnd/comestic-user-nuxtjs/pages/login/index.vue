@@ -24,21 +24,20 @@
                             placeholder="Password"
                         />
                     </div>
-                    <div class="form-check mb-3 d-flex remember_item">
-                        <input
+                    <!-- <div class="form-check mb-3 d-flex remember_item"> -->
+                    <!-- <input
                             type="checkbox"
                             id="remember"
                             v-model="remember"
                             class="form-check-input"
-                        />
-                        <label
+                        /> -->
+                    <!-- <label
                             for="remember"
                             class="form-check-label text-white remember_label"
                         >
                             Remember username
-                            <NuxtLink to="/registry">Create account</NuxtLink>
-                        </label>
-                    </div>
+                        </label> -->
+                    <!-- </div> -->
                     <button
                         type="submit"
                         class="btn btn-primary w-100 login_btn"
@@ -46,6 +45,10 @@
                     >
                         Log in
                     </button>
+
+                    <NuxtLink class="createAccount" to="/registry"
+                        >Create account</NuxtLink
+                    >
                 </form>
             </div>
             <div class="text-center mt-3">
@@ -62,6 +65,8 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { login } from "~/services/login.service";
+import Cookies from "js-cookie";
 
 definePageMeta({
     layout: "onlychildren",
@@ -86,6 +91,7 @@ const onFinish = async () => {
         } else {
             await loginSuccess(res);
         }
+        console.log(username.value, password.value);
     } catch (error) {
         console.error("Error logging in:", error);
     } finally {
@@ -94,7 +100,7 @@ const onFinish = async () => {
 };
 
 const loginSuccess = async (res) => {
-    localStorage.setItem("customer", JSON.stringify(res));
+    Cookies.set("customer", JSON.stringify(res), { expires: 1 });
     router.push("/");
 };
 </script>
@@ -126,41 +132,52 @@ const loginSuccess = async (res) => {
     background-color: #20b2aa;
 }
 
-::placeholder{
+::placeholder {
     color: #c1c1c1;
     font-size: 14px;
 }
 
-input{
+input {
     font-size: 14px;
 }
 
-.remember_label{
+.remember_label {
     font-size: 14px;
 }
 
-.remember_label a{ 
+.remember_label a {
     color: #ffffff;
 }
 
-.remember_label a:hover{ 
+.remember_label a:hover {
     color: #94ef91;
 }
 
-.remember_item{
+/* .remember_item {
     gap: 7px;
+} */
+
+.createAccount {
+    color: #fff;
+    padding-top: 5px;
+    float: right;
+    padding-top: 5px;
 }
 
-.remember_item input:hover{
+.createAccount:hover {
+    color: #94ef91;
+}
+
+.remember_item input:hover {
     cursor: pointer;
 }
 
-.login_btn{
+.login_btn {
     border: 1px;
-    transition: all .2s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
 
-.login_btn:hover{
+.login_btn:hover {
     transform: scale(1.05);
 }
 </style>
