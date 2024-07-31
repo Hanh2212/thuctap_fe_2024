@@ -34,7 +34,7 @@
         </NuxtLink>
         <div class="icon-recommend">
             <span title="Đánh giá" v-if="product?.danhGia > 0">{{
-                product?.danhGia > 0 ? product?.danhGia : ""
+                product?.danhGia > 0 ? product?.danhGia.toFixed() : ""
             }}</span>
             <i
                 title="Đánh giá"

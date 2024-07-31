@@ -13,8 +13,8 @@
         </div>
     </div>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-5">
+        <div class="row gy-3">
+            <div class="col-lg-5 col-md-6 col-sm-6">
                 <span class="product-item-img"
                     ><img
                         :src="apiImage + productDetail?.anhDaiDien"
@@ -37,7 +37,7 @@
                     <img src="./assets/img/Cleanser/cerave/5.webp" alt=""> -->
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-md-6 col-sm-6">
                 <table>
                     <tr>
                         <td>
@@ -499,6 +499,7 @@ if (recomendData.value) {
 
 .bind_html {
     overflow: hidden;
+    margin-top: 20px;
 }
 
 .recomend > h1 {
