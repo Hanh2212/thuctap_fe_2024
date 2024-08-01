@@ -9,7 +9,10 @@ namespace DataAccessLayer.Interfaces
 {
     public partial interface IGioHangResponsitory
     {
+        List<GioHangModel> Getbyid(int id);
         bool Create(GioHangModel model);
+        bool Update(GioHangModel model);
+        bool Delete(int MaGioHang);
 
     }
 }

@@ -151,26 +151,36 @@
                     </tr>
                     <tr>
                         <td>
-                            <div
-                                class="buy-amount-product"
-                                style="display: flex"
-                            >
+                            <div class="buy-amount-product d-flex">
                                 <span
                                     class="fa-solid fa-minus minus_btn"
+                                    @click="
+                                        () => {
+                                            if (amountProduct > 1) {
+                                                amountProduct--;
+                                            }
+                                        }
+                                    "
                                 ></span>
                                 <input
                                     type="text"
-                                    value="1"
                                     min="1"
                                     class="amount"
+                                    v-model="amountProduct"
+                                    @input="validateAmount"
                                 />
-                                <span class="fa-solid fa-plus plus_btn"></span>
+                                <span
+                                    @click="amountProduct++"
+                                    class="fa-solid fa-plus plus_btn"
+                                ></span>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <button class="add-item">THÊM VÀO GIỎ HÀNG</button>
+                            <button class="add-item" @click="addCart">
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
                         </td>
                     </tr>
                     <tr>
@@ -247,21 +257,48 @@
                 </div>
             </div>
         </div>
+        <transition name="slide-fade">
+            <div
+                v-if="alertVisible"
+                class="alert alert-success alert-dismissible"
+                role="alert"
+            >
+                {{ titleAddItem }}
+                <button
+                    type="button"
+                    class="btn-close"
+                    @click="alertVisible = false"
+                    aria-label="Close"
+                ></button>
+            </div>
+        </transition>
     </div>
 </template>
 
 <script lang="ts" setup>
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
+import Cookies from "js-cookie";
 import { ref } from "vue";
 import { type Product } from "~/constant/api";
 import { getProductById, getProductRecomend } from "~/services/detail.service";
 import { apiImage } from "~/constant/request";
+import {
+    createCart,
+    getGioHangByIdTaiKhoan,
+    updateCart,
+} from "~/services/cart.service";
+import { useCartStore } from "~/store";
 
 const route = useRoute();
+const router = useRouter();
+const store = useCartStore();
 const id = route.params.id;
 
 const productDetail = ref<Product | null>(null);
 const productRecomend = ref<Product[]>([]);
+const amountProduct = ref(1);
+const alertVisible = ref(false);
+const titleAddItem = ref("");
 
 const { data: detailData, error: erDetail } = await useAsyncData(
     "productDetail",
@@ -270,7 +307,6 @@ const { data: detailData, error: erDetail } = await useAsyncData(
 
 if (detailData.value) {
     productDetail.value = detailData.value;
-    console.log(productDetail.value);
 } else if (erDetail.value) {
     console.error("Error while fetching products:", erDetail.value);
 }
@@ -287,10 +323,66 @@ const { data: recomendData, error: erRecomend } = await useAsyncData(
 
 if (recomendData.value) {
     productRecomend.value = recomendData.value?.data;
-    console.log(productRecomend.value);
 } else if (erRecomend.value) {
     console.error("Error while fetching products:", erRecomend.value);
 }
+
+const validateAmount = (event: Event): void => {
+    const target = event.target as HTMLInputElement;
+    let value = target.value;
+    value = value.replace(/\D/g, "");
+    if (value === "") {
+        value = "1";
+    }
+    amountProduct.value = Number(value);
+};
+
+const addCart = async () => {
+    const customerData = Cookies.get("customer");
+    if (customerData) {
+        try {
+            const customer = JSON.parse(customerData);
+            const cart = await getGioHangByIdTaiKhoan(customer.mataikhoan);
+            // console.log(cart);
+            const isEmptyProduct = cart.find(
+                (value) => Number(value.maSanPham) === Number(id)
+            );
+
+            if (isEmptyProduct) {
+                await updateCart({
+                    MaGioHang: Number(isEmptyProduct.maGioHang),
+                    MaSanPham: Number(isEmptyProduct.maSanPham),
+                    SoLuongMua:
+                        amountProduct.value + Number(isEmptyProduct.soLuongMua),
+                    TrangThai: isEmptyProduct.trangThai,
+                });
+                titleAddItem.value =
+                    "Sản phẩm tồn tại, đã tăng số lượng trong giỏ hàng!";
+            } else {
+                await createCart({
+                    MaTaiKhoan: customer.mataikhoan,
+                    MaSanPham: Number(id),
+                    SoLuongMua: amountProduct.value,
+                    TrangThai: false,
+                });
+                titleAddItem.value = "Sản phẩm đã được thêm vào giỏ hàng!";
+                const cartOld = await getGioHangByIdTaiKhoan(
+                    customer.mataikhoan
+                );
+                store.setCart(cartOld);
+            }
+            alertVisible.value = true;
+            setTimeout(() => {
+                alertVisible.value = false;
+            }, 3000);
+        } catch (error) {
+            console.error("Failed to parse customer data from cookies:", error);
+            Cookies.remove("customer");
+        }
+    } else {
+        router.push("/login");
+    }
+};
 </script>
 
 <style scoped lang="css">
@@ -509,5 +601,24 @@ if (recomendData.value) {
     margin: 0;
     padding-bottom: 10px;
     color: var(--color-primary-two);
+}
+
+.alert-success {
+    position: fixed;
+    right: 20px;
+    top: 70px;
+    z-index: 999;
+    transition: all 0.3s ease-in-out;
+}
+
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+    transition: all 0.5s ease;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+    transform: translateY(-20px);
+    opacity: 0;
 }
 </style>

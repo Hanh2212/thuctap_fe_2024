@@ -6,6 +6,9 @@ export default defineNuxtConfig({
     typescript: {
         strict: true,
     },
+    modules: [
+        "@pinia/nuxt",
+    ],
 
     css: ["~/assets/style.css"],
 

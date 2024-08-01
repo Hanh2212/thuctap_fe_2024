@@ -122,3 +122,17 @@ export interface Account {
     email: string;
     matKhau: string;
 }
+
+export interface Cart {
+    maGioHang?: number;
+    maTaiKhoan: number;
+    maSanPham: number;
+    anhDaiDien: string;
+    tenSanPham: string;
+    gia: number;
+    giaGiam: number;
+    trongLuong: string;
+    xuatXu: string;
+    soLuongMua: number;
+    trangThai: boolean;
+}

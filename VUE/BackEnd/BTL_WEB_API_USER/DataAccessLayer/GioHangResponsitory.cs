@@ -19,6 +19,23 @@ namespace DataAccessLayer
             _dbHelper = dbHelper;
         }
 
+        public List<GioHangModel> Getbyid(int id)
+        {
+            string msgError = "";
+            try
+            {
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_getidtaikhoangiohang",
+                     "@MaTaiKhoan", id);
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                return dt.ConvertTo<GioHangModel>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public bool Create(GioHangModel model)
         {
             string msgError = "";
@@ -40,6 +57,49 @@ namespace DataAccessLayer
                 throw ex;
             }
 
+        }
+
+        public bool Update(GioHangModel model)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_suagiohang",
+                    "@MaGioHang", model.MaGioHang,
+                    "@MaSanPham", model.MaSanPham,
+                    "@SoLuongMua", model.SoLuongMua,
+                    "@TrangThai", model.TrangThai
+                    );
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public bool Delete(int MaGioHang)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_xoagiohang"
+                    , "@MaGioHang", MaGioHang);
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

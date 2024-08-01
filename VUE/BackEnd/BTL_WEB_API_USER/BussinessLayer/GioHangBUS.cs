@@ -18,9 +18,21 @@ namespace BussinessLayer
         {
             _res = gioHangResponsitory;
         }
+        public List<GioHangModel> Getbyid(int id)
+        {
+            return _res.Getbyid(id);
+        }
         public bool Create(GioHangModel model)
         {
             return _res.Create(model);
+        }
+        public bool Update(GioHangModel model)
+        {
+            return _res.Update(model);
+        }
+        public bool Delete(int MaGioHang)
+        {
+            return _res.Delete(MaGioHang);
         }
     }
 }

@@ -82,7 +82,11 @@
                     <li class="nav-item">
                         <NuxtLink to="/cart" class="nav-link"
                             ><i class="fa-solid fa-cart-shopping"></i>
-                            <span>(1)</span>
+                            <span
+                                >({{
+                                    store.totalItems > 0 ? store.totalItems : 0
+                                }})</span
+                            >
                         </NuxtLink>
                     </li>
                 </ul>
@@ -143,12 +147,13 @@
                                 </NuxtLink>
                             </li>
                             <li>
-                                <NuxtLink
+                                <a
                                     class="dropdown-item nav-link"
-                                    to="/login"
+                                    href="/login"
+                                    @click="logoutHandler"
                                 >
                                     Đăng xuất
-                                </NuxtLink>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -159,12 +164,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import Cookies from "js-cookie";
 import { useRouter } from "vue-router";
 import { type Category, type User } from "~/constant/api";
 import { getCategory } from "~/services/home.service";
 import { apiImage } from "~/constant/request";
+import { useCartStore } from "~/store";
+import { getGioHangByIdTaiKhoan } from "~/services/cart.service";
 
 const category = ref<Category[]>([]);
 
@@ -172,11 +179,22 @@ const searchQuery = ref("");
 const router = useRouter();
 const customer = ref<User>();
 
-onMounted(() => {
+const store = useCartStore();
+
+const logoutHandler = () => {
+    Cookies.remove("customer");
+};
+
+onMounted(async () => {
     const customerData = Cookies.get("customer");
     if (customerData) {
         try {
-            customer.value = JSON.parse(customerData);
+            const parseCustomer = JSON.parse(customerData);
+            customer.value = parseCustomer;
+            const listCarts = await getGioHangByIdTaiKhoan(
+                parseCustomer.mataikhoan
+            );
+            store.setCart(listCarts);
         } catch (error) {
             console.error("Failed to parse customer data from cookies:", error);
             Cookies.remove("customer");

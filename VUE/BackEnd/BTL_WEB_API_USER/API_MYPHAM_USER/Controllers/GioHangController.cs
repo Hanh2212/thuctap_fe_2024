@@ -8,7 +8,7 @@ using System.Reflection;
 
 namespace API_MYPHAM.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class GioHangController : ControllerBase
@@ -20,7 +20,13 @@ namespace API_MYPHAM.Controllers
             _gioHangBUS = gioHangBUS;
         }
 
-        [AllowAnonymous]
+        [Route("getbyidtaikhoan-giohang/{id}")]
+        [HttpGet]
+        public List<GioHangModel> GetByID(int id)
+        {
+            return _gioHangBUS.Getbyid(id);
+        }
+
         [Route("create-giohang")]
         [HttpPost]
         public GioHangModel CreateGioHang([FromBody] GioHangModel model)
@@ -29,5 +35,23 @@ namespace API_MYPHAM.Controllers
             return model;
         }
 
+        [Route("update-giohang")]
+        [HttpPut]
+        public GioHangModel UpdateGioHang([FromBody] GioHangModel model)
+        {
+            _gioHangBUS.Update(model);
+            return model;
+        }
+
+        [Route("delete-giohang")]
+        [HttpDelete]
+        public bool Delete([FromBody] List<int> formdata)
+        {
+            foreach (int id in formdata)
+            {
+                _gioHangBUS.Delete(id);
+            }
+            return true;
+        }
     }
 }

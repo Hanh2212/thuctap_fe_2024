@@ -9,6 +9,9 @@ namespace BussinessLayer.Interfaces
 {
     public partial interface IGioHangBUS
     {
+        List<GioHangModel> Getbyid(int id);
         bool Create(GioHangModel model);
+        bool Update(GioHangModel model);
+        bool Delete(int MaGioHang);
     }
 }
