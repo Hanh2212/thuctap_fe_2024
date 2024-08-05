@@ -43,6 +43,14 @@ namespace API_MYPHAM.Controllers
             return model;
         }
 
+        [Route("update-giohangfalse")]
+        [HttpPut]
+        public bool UpdateGioHangFalse( int mataikhoan)
+        {
+            _gioHangBUS.UpdateGioHangFalse(mataikhoan);
+            return true;
+        }
+
         [Route("delete-giohang")]
         [HttpDelete]
         public bool Delete([FromBody] List<int> formdata)

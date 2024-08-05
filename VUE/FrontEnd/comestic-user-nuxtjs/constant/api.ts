@@ -59,13 +59,15 @@ export interface BillSell {
 
 export interface TableBillSell {
     maChiTietHoaDon?: number;
+    maHoaDon?: number;
     stt?: number;
     maSanPham: number;
-    hinhAnh?: string;
+    tenSanPham?: string;
+    anhDaiDien?: string;
     soLuong: number | string;
     originalSoLuong?: number;
     donGia: number;
-    tongTien: number;
+    tongGia: number;
 }
 
 export interface News {

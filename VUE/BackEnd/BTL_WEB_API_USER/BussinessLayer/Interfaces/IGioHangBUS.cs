@@ -12,6 +12,7 @@ namespace BussinessLayer.Interfaces
         List<GioHangModel> Getbyid(int id);
         bool Create(GioHangModel model);
         bool Update(GioHangModel model);
+        bool UpdateGioHangFalse(int mataikhoan);
         bool Delete(int MaGioHang);
     }
 }

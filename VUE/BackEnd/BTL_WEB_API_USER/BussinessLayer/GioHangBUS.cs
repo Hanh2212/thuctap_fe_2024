@@ -30,6 +30,11 @@ namespace BussinessLayer
         {
             return _res.Update(model);
         }
+
+        public bool UpdateGioHangFalse(int mataikhoan)
+        {
+            return _res.UpdateGioHangFalse(mataikhoan);
+        }
         public bool Delete(int MaGioHang)
         {
             return _res.Delete(MaGioHang);

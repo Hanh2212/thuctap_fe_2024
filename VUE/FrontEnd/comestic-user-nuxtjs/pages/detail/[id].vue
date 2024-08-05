@@ -185,7 +185,9 @@
                     </tr>
                     <tr>
                         <td>
-                            <button class="buy-now">MUA NGAY</button>
+                            <button @click="buyNow" class="buy-now">
+                                MUA NGAY
+                            </button>
                         </td>
                     </tr>
 
@@ -257,10 +259,7 @@
                 </div>
             </div>
         </div>
-        <alert-toast
-            :visible="alertVisible"
-            :message="titleAddItem"
-        />
+        <alert-toast :visible="alertVisible" :message="titleAddItem" />
     </div>
 </template>
 
@@ -275,6 +274,7 @@ import {
     createCart,
     getGioHangByIdTaiKhoan,
     updateCart,
+    updateCartsFalse,
 } from "~/services/cart.service";
 import { useCartStore } from "~/store";
 
@@ -364,6 +364,50 @@ const addCart = async () => {
             setTimeout(() => {
                 alertVisible.value = false;
             }, 3000);
+        } catch (error) {
+            console.error("Failed to parse customer data from cookies:", error);
+            Cookies.remove("customer");
+        }
+    } else {
+        router.push("/login");
+    }
+};
+
+const buyNow = async () => {
+    const customerData = Cookies.get("customer");
+    if (customerData) {
+        try {
+            const customer = JSON.parse(customerData);
+
+            await updateCartsFalse(customer.mataikhoan);
+
+            const cart = await getGioHangByIdTaiKhoan(customer.mataikhoan);
+
+            const isEmptyProduct = cart.find(
+                (value) => Number(value.maSanPham) === Number(id)
+            );
+
+            if (isEmptyProduct) {
+                await updateCart({
+                    MaGioHang: Number(isEmptyProduct.maGioHang),
+                    MaSanPham: Number(isEmptyProduct.maSanPham),
+                    SoLuongMua: amountProduct.value,
+                    TrangThai: true,
+                });
+            } else {
+                await createCart({
+                    MaTaiKhoan: customer.mataikhoan,
+                    MaSanPham: Number(id),
+                    SoLuongMua: amountProduct.value,
+                    TrangThai: true,
+                });
+                const cartOld = await getGioHangByIdTaiKhoan(
+                    customer.mataikhoan
+                );
+                store.setCart(cartOld);
+            }
+
+            router.push("/order");
         } catch (error) {
             console.error("Failed to parse customer data from cookies:", error);
             Cookies.remove("customer");

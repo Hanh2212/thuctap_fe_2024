@@ -22,6 +22,13 @@ export const updateCart = async (
     return res?.data;
 };
 
+export const updateCartsFalse = async (mataikhoan: number): Promise<Cart> => {
+    const res = await apiClient?.put(
+        `/api-user/GioHang/update-giohangfalse?mataikhoan=${mataikhoan}`
+    );
+    return res?.data;
+};
+
 export const deleteCarts = async (data: Array<number>): Promise<Cart> => {
     const res = await apiClient?.delete(`/api-user/GioHang/delete-giohang`, {
         data: data,

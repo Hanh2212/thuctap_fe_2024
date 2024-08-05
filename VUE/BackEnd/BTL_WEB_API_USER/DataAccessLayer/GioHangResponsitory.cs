@@ -83,6 +83,27 @@ namespace DataAccessLayer
 
         }
 
+        public bool UpdateGioHangFalse(int mataikhoan)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_falseallgiohang",
+                    "@MaTaiKhoan", mataikhoan
+                    );
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
         public bool Delete(int MaGioHang)
         {
             string msgError = "";

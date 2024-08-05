@@ -102,7 +102,6 @@ const { data: favouriteData, error: favouriteError } = await useAsyncData(
 
 if (favouriteData.value) {
     productFavourite.value = favouriteData.value;
-    console.log(favouriteData.value);
 } else if (favouriteError.value) {
     console.error(
         "Error while fetching favourite products:",
