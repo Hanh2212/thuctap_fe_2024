@@ -257,21 +257,10 @@
                 </div>
             </div>
         </div>
-        <transition name="slide-fade">
-            <div
-                v-if="alertVisible"
-                class="alert alert-success alert-dismissible"
-                role="alert"
-            >
-                {{ titleAddItem }}
-                <button
-                    type="button"
-                    class="btn-close"
-                    @click="alertVisible = false"
-                    aria-label="Close"
-                ></button>
-            </div>
-        </transition>
+        <alert-toast
+            :visible="alertVisible"
+            :message="titleAddItem"
+        />
     </div>
 </template>
 

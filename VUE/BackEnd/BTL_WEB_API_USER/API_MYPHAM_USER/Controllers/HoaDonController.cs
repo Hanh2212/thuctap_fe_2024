@@ -7,7 +7,7 @@ using Model;
 
 namespace API_MYPHAM.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class HoaDonController : ControllerBase

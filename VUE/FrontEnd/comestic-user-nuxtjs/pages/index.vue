@@ -64,7 +64,10 @@
 <script setup lang="ts">
 import { type Product } from "~/constant/api";
 import { getProductFavourite, getProductHome } from "~/services/home.service";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
+import Cookies from "js-cookie";
+import { getGioHangByIdTaiKhoan } from "~/services/cart.service";
+import { useCartStore } from "~/store";
 
 useHead({
     title: "Trang chủ",
@@ -74,6 +77,7 @@ const productSale = ref<Product[]>([]);
 const productFavourite = ref<Product[]>([]);
 const productSerum = ref<Product[]>([]);
 const productCleanser = ref<Product[]>([]);
+const store = useCartStore();
 
 const { data: saleData, error: erSale } = await useAsyncData(
     "productSale",
@@ -137,4 +141,18 @@ if (cleanserData.value) {
 } else if (erCleanser.value) {
     console.error("Error while fetching products:", erSale.value);
 }
+
+onMounted(async () => {
+    const customerData = Cookies.get("customer");
+    if (customerData) {
+        try {
+            const customer = JSON.parse(customerData);
+            const cart = await getGioHangByIdTaiKhoan(customer.mataikhoan);
+
+            store.setCart(cart);
+        } catch (error) {
+            console.error("Failed to parse customer data from cookies:", error);
+        }
+    }
+});
 </script>

@@ -5,6 +5,14 @@
             <i class="fa-solid fa-arrow-right"></i>
             <NuxtLink to="/cart">Giỏ Hàng</NuxtLink>
         </div>
+        <div class="null_content">
+            <h1 class="null_item" v-if="dataCart.length === 0">Giỏ hàng trống</h1>
+            <div class="null_item">
+                <NuxtLink v-if="dataCart.length === 0" to="/"
+                    >Quay Lại trang chủ</NuxtLink
+                >
+            </div>
+        </div>
         <item-cart
             :dataCart="dataCart"
             :fetch="fetchDataCart"
@@ -110,7 +118,16 @@ if (recomendData.value) {
     font-size: 10px;
     padding: 0 10px;
 }
+.null_content{
+    padding: 10px 0;
+}
 
+.null_item {
+    font-size: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0;
+}
 .recomend > h1 {
     font-size: 30px;
     text-align: center;
@@ -120,5 +137,4 @@ if (recomendData.value) {
     padding-top: 10px;
     color: var(--color-primary-two);
 }
-
 </style>
