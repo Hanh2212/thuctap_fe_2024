@@ -235,7 +235,7 @@
 
 <script setup lang="ts">
 import Cookies from "js-cookie";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { type Product, type Cart } from "~/constant/api";
 import {

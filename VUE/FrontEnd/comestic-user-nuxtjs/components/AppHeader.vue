@@ -139,14 +139,6 @@
                                 </NuxtLink>
                             </li>
                             <li>
-                                <NuxtLink
-                                    class="dropdown-item nav-link"
-                                    to="/changepassword"
-                                >
-                                    Đổi mật khẩu
-                                </NuxtLink>
-                            </li>
-                            <li>
                                 <a
                                     class="dropdown-item nav-link"
                                     href="/login"
@@ -214,6 +206,9 @@ if (categoryData.value) {
 }
 
 function submitSearch() {
+    if (searchQuery.value === "") {
+        return;
+    }
     router.push(`/search/${searchQuery.value}`);
     searchQuery.value = "";
 }

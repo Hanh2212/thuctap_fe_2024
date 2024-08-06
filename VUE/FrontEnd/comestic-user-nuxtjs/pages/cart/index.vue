@@ -6,7 +6,9 @@
             <NuxtLink to="/cart">Giỏ Hàng</NuxtLink>
         </div>
         <div class="null_content">
-            <h1 class="null_item" v-if="dataCart.length === 0">Giỏ hàng trống</h1>
+            <h1 class="null_item" v-if="dataCart.length === 0">
+                Giỏ hàng trống
+            </h1>
             <div class="null_item">
                 <NuxtLink v-if="dataCart.length === 0" to="/"
                     >Quay Lại trang chủ</NuxtLink
@@ -41,7 +43,7 @@
 
 <script setup lang="ts">
 import Cookies from "js-cookie";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { type Product, type Cart } from "~/constant/api";
 import { getGioHangByIdTaiKhoan } from "~/services/cart.service";
@@ -118,7 +120,7 @@ if (recomendData.value) {
     font-size: 10px;
     padding: 0 10px;
 }
-.null_content{
+.null_content {
     padding: 10px 0;
 }
 

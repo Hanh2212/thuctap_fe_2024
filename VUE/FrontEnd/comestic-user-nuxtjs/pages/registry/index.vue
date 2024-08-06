@@ -122,6 +122,7 @@
                 </div>
             </div>
         </div>
+        <alert-toast :visible="alertVisible" :message="title" />
     </div>
 </template>
 
@@ -146,6 +147,8 @@ const confirmPassword = ref("");
 const acceptTerms = ref(false);
 const loading = ref(false);
 const router = useRouter();
+const alertVisible = ref(false);
+const title = ref("");
 
 const onFinish = async () => {
     loading.value = true;
@@ -153,7 +156,11 @@ const onFinish = async () => {
         const resCheckUser = await checkUserNameIsEmpty();
         const userEmpty = resCheckUser.map((value) => value.tenTaiKhoan);
         if (userEmpty.includes(username.value)) {
-            console.log("tai khoan ton tai");
+            alertVisible.value = true;
+            title.value = "Tài khoản đã tồn tại !";
+            setTimeout(() => {
+                alertVisible.value = false;
+            }, 3000);
         } else {
             await registryUser({
                 TenTaiKhoan: username.value,
@@ -169,8 +176,12 @@ const onFinish = async () => {
                     },
                 ],
             });
-            router.push("/login");
-            console.log("dang ky thanh cong");
+            alertVisible.value = true;
+            title.value = "Đăng ký tài khoản thành công !";
+            setTimeout(() => {
+                router.push("/login");
+                alertVisible.value = false;
+            }, 1000);
         }
     } catch (error) {
         console.error("Error while checking username:", error);

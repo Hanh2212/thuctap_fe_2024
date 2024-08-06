@@ -81,22 +81,6 @@ export interface News {
     trangThai: string;
 }
 
-export interface Rate {
-    maDanhGia?: number;
-    maSanPham?: number;
-    maTaiKhoan?: number;
-    anhDanhGia?: string;
-    chatLuong?: number;
-    noiDung?: string;
-    trangThai?: boolean;
-    thoiGian?: Date;
-    ghiChu: string;
-    tenSanPham?: string;
-    hoTen?: string;
-    tenTaiKhoan?: string;
-    soDienThoai?: string;
-}
-
 export interface Category {
     maDanhMuc?: number;
     tenDanhMuc: string;
@@ -119,10 +103,18 @@ export interface Slide {
 }
 
 export interface Account {
-    maTaiKhoan?: number;
-    tenTaiKhoan: string;
-    email: string;
-    matKhau: string;
+    anhDaiDien?: string;
+    diaChi?: string;
+    email?: string;
+    hoTen?: string;
+    maChitietTaiKhoan?: Number;
+    maLoaitaikhoan?: Number;
+    maTaiKhoan?: Number;
+    matKhau?: string;
+    soDienThoai?: string;
+    status?: number;
+    tenLoai?: string;
+    tenTaiKhoan?: string;
 }
 
 export interface Cart {

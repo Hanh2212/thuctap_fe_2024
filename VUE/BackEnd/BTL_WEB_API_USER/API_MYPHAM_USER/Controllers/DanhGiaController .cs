@@ -8,7 +8,7 @@ using System.Reflection;
 
 namespace API_MYPHAM.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class DanhGiaController : ControllerBase
